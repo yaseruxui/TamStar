@@ -98,18 +98,6 @@
     "body": "Buying-agent, sourcing and supply agreements across mining, petrochemicals, energy and giga-projects.",
     "link": "All projects"
   },
-  "promos": {
-    "account": {
-      "title": "Your company account",
-      "body": "Contract pricing, team permissions and per-buyer purchase limits.",
-      "cta": "Request an account"
-    },
-    "boq": {
-      "title": "Upload your BOQ",
-      "body": "Send a bill of quantities or drawings and we price it line by line.",
-      "cta": "Start a quotation request"
-    }
-  },
   "benefits": {
     "sourcing": {
       "title": "27 sourcing countries",
