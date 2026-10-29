@@ -44,36 +44,6 @@
     "body": "Send your BOQ, drawings or specifications. Our team matches each line, sources from qualified suppliers and returns a complete quotation.",
     "cta": "Send a BOQ for pricing"
   },
-  "models": {
-    "eyebrow": "Contracting models",
-    "title": "Procurement that goes beyond a single purchase order",
-    "body": "Flexible models that reduce inventory, control cost and keep critical sites supplied.",
-    "bpa": {
-      "title": "Blanket Purchase Agreements",
-      "body": "Long-term contracts with fixed pricing for recurring consumables and spares."
-    },
-    "vmi": {
-      "title": "Vendor Managed Inventory",
-      "body": "We manage stock levels on your behalf to reduce overhead and avoid stock-outs."
-    },
-    "finance": {
-      "title": "Flexible payment terms",
-      "body": "Financial arrangements tailored to your cash-flow needs with transparent reporting."
-    },
-    "local": {
-      "title": "Local content",
-      "body": "We market Saudi manufacturers' products and increase local content in every supply line."
-    }
-  },
-  "logistics": {
-    "eyebrow": "Sourcing & logistics",
-    "title": "Sourcing from 27 countries, delivered to your site",
-    "body": "Global supplier partnerships combined with local market knowledge, and a dedicated logistics team for project cargo, JIT delivery and multi-modal freight.",
-    "hq": "Head office & operations",
-    "freight": "Air, sea and land freight coordination",
-    "jit": "Just-in-time delivery to reduce inventory cost",
-    "cargo": "Industrial project cargo and heavy equipment"
-  },
   "rfqFlow": {
     "eyebrow": "How a quotation request works",
     "title": "From requirement to quotation",
@@ -94,12 +64,6 @@
       "body": "You receive a complete quotation to accept, reject or ask us to revise."
     },
     "cta": "Request a quotation"
-  },
-  "projects": {
-    "eyebrow": "Track record",
-    "title": "A record of agreements with the Kingdom’s leading operators",
-    "body": "Buying-agent, sourcing and supply agreements across mining, petrochemicals, energy and giga-projects.",
-    "link": "All projects"
   },
   "sectors": {
     "eyebrow": "Sectors",

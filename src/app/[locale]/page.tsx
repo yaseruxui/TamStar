@@ -1,12 +1,9 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { ContactBand } from '@/components/common/contact-band';
 import { ClientsStrip } from '@/features/company/components/clients-strip';
-import { CapabilitiesSection } from '@/features/home/components/capabilities-section';
 import { CategoriesSection } from '@/features/home/components/categories-section';
 import { FeaturedSection } from '@/features/home/components/featured-section';
 import { Hero } from '@/features/home/components/hero';
-import { ProjectsSection } from '@/features/home/components/projects-section';
 import { RfqSection } from '@/features/home/components/rfq-section';
 import { SectorsSection } from '@/features/home/components/sectors-section';
 import { resolveLocale } from '@/lib/i18n/resolve-locale';
@@ -36,10 +33,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
       <FeaturedSection />
       <RfqSection />
       <SectorsSection />
-      <CapabilitiesSection />
       <ClientsStrip label={t('clients.label')} />
-      <ProjectsSection />
-      <ContactBand />
     </>
   );
 }
