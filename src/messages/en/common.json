@@ -1,0 +1,55 @@
+{
+  "brand": "TAMSTAR",
+  "legalName": "Tamstar Trading Est.",
+  "tagline": "Your success is our success",
+  "skipToContent": "Skip to content",
+  "email": "Email",
+  "phone": "Phone",
+  "officeHours": "Office hours",
+  "officeHoursDays": "Saturday – Thursday",
+  "officeHoursTime": "8:30 am – 5:30 pm (AST)",
+  "officeHoursShort": "Sat – Thu · 8:30 – 17:30",
+  "address": "Head office",
+  "addressLine1": "8287, 6th Street, Ar Rabi",
+  "addressLine2": "Dammam 32241, Saudi Arabia",
+  "openInMaps": "Open in Google Maps",
+  "vision2030": "Supporting Saudi Vision 2030 local content",
+  "requestQuote": "Request a quotation",
+  "learnMore": "Learn more",
+  "viewAll": "View all",
+  "backHome": "Back to home",
+  "tryAgain": "Try again",
+  "loading": "Loading…",
+  "stats": {
+    "years": "Years of successful work",
+    "projects": "Projects completed",
+    "materials": "Materials supplied",
+    "countries": "Sourcing countries, six continents"
+  },
+  "sectors": {
+    "mining": "Mining",
+    "petrochemicals": "Petrochemicals",
+    "energy": "Power & energy",
+    "utilities": "Water & utilities",
+    "maritime": "Maritime",
+    "megaProjects": "Giga-projects",
+    "urbanDevelopment": "Urban development",
+    "realEstate": "Real estate"
+  },
+  "contactBand": {
+    "eyebrow": "Procurement desk",
+    "title": "Need a part matched, a BOQ priced or a supplier qualified?",
+    "body": "Our team is available Saturday to Thursday, 8:30 am – 5:30 pm.",
+    "call": "Call us",
+    "email": "info@tamstar.com.sa"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "body": "This page could not be loaded. Please try again, or email us at info@tamstar.com.sa."
+  },
+  "notFound": {
+    "eyebrow": "Error 404",
+    "title": "Page not found",
+    "body": "The page you are looking for does not exist or has been moved."
+  }
+}

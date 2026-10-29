@@ -1,0 +1,54 @@
+{
+  "eyebrow": "Request for quotation",
+  "title": "Request a quotation",
+  "lead": "List the items you need, or attach a BOQ, drawings or datasheets. Our procurement team reviews every line and returns a sourced quotation.",
+  "itemsTitle": "Requested items",
+  "itemsHint": "Add one line per item. Lines added from the catalog are pre-filled.",
+  "line": "Item {index}",
+  "addLine": "Add another item",
+  "removeLine": "Remove item {index}",
+  "fields": {
+    "product": "Product name or description",
+    "productPlaceholder": "e.g. Ball valve, trunnion, 4\" Class 600",
+    "specs": "Technical specifications or intended use",
+    "specsPlaceholder": "Standard, material, rating, part number, service conditions…",
+    "quantity": "Quantity",
+    "unit": "Unit",
+    "brand": "Preferred manufacturer or brand",
+    "brandPlaceholder": "Optional",
+    "deliveryLocation": "Delivery location",
+    "deliveryLocationPlaceholder": "City, site or warehouse",
+    "deliveryDate": "Required delivery date",
+    "notes": "Additional notes",
+    "notesPlaceholder": "Packing, certificates (MTC, CoC), inspection or payment terms…",
+    "attachments": "Attachments",
+    "attachmentsHint": "BOQ, drawings or specification files — PDF, Excel, Word, CSV, DWG or images. Up to {count} files, {size} MB each.",
+    "company": "Company name",
+    "name": "Contact person",
+    "email": "Business email",
+    "phone": "Mobile or phone"
+  },
+  "deliveryTitle": "Delivery",
+  "contactTitle": "Contact details",
+  "submit": "Submit quotation request",
+  "submitting": "Submitting…",
+  "privacy": "Your data is used only to prepare this quotation, in line with the Saudi Personal Data Protection Law (PDPL).",
+  "success": {
+    "title": "Quotation request submitted",
+    "body": "Reference {reference}. Our procurement team will review your request and contact you by email.",
+    "again": "Submit another request"
+  },
+  "status": {
+    "submitted": "Submitted",
+    "underReview": "Under review",
+    "sourcing": "Sourcing",
+    "quotationPrepared": "Quotation prepared",
+    "sentToCustomer": "Sent to customer",
+    "accepted": "Accepted",
+    "rejected": "Rejected"
+  },
+  "basket": {
+    "empty": "Your RFQ list is empty. Add items from the catalog or type them below.",
+    "fromCatalog": "From catalog"
+  }
+}

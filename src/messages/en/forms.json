@@ -1,0 +1,20 @@
+{
+  "required": "Required",
+  "optional": "Optional",
+  "removeFile": "Remove file",
+  "errors": {
+    "required": "This field is required.",
+    "email": "Enter a valid email address.",
+    "phone": "Enter a valid phone number.",
+    "tooLong": "This entry is too long.",
+    "quantity": "Enter a quantity greater than zero.",
+    "date": "Choose a date from today onwards.",
+    "fileType": "One or more files have an unsupported type.",
+    "fileSize": "One or more files are larger than the allowed size.",
+    "fileCount": "Too many files attached.",
+    "lines": "Add at least one item, or attach a BOQ file.",
+    "invalidForm": "Please correct the highlighted fields.",
+    "unavailable": "Online submission is not active yet. Please email your request to info@tamstar.com.sa.",
+    "server": "We could not send your message. Please try again or email info@tamstar.com.sa."
+  }
+}

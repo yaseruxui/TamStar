@@ -1,0 +1,28 @@
+{
+  "eyebrow": "Contact us",
+  "title": "Get in touch",
+  "lead": "Ready to streamline your procurement? Reach out to TAMSTAR to discuss how we can support your business.",
+  "callUs": "Call us",
+  "emailUs": "Email us",
+  "formTitle": "Send us a message",
+  "fields": {
+    "name": "Your name",
+    "email": "Email address",
+    "phone": "Phone",
+    "topic": "Subject",
+    "message": "Message"
+  },
+  "topics": {
+    "rfq": "Request for quotation",
+    "product": "Product enquiry",
+    "supplier": "Supplier registration",
+    "other": "Other"
+  },
+  "submit": "Send message",
+  "submitting": "Sending…",
+  "success": {
+    "title": "Message sent",
+    "body": "Thank you. Reference {reference}. We will reply by email during office hours.",
+    "again": "Send another message"
+  }
+}

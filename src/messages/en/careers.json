@@ -1,0 +1,58 @@
+{
+  "eyebrow": "Careers",
+  "title": "Join our team and make a difference",
+  "lead": "Discover career opportunities that align with your values and passion.",
+  "apply": "Apply now",
+  "introTitle": "Shape the future with us",
+  "intro1": "At Tamstar Trading Est., we don't just offer jobs — we offer journeys. If you have a vision for your future, we provide the tools, challenges and support to turn it into reality. As a procurement partner to mining, petrochemicals, renewable energy and urban development, we help shape the industries that build tomorrow.",
+  "intro2": "Our purpose goes beyond business. Every team member plays a part in advancing Saudi Vision 2030, supporting economic growth and innovation that uplifts our communities.",
+  "approachTitle": "Our approach to careers",
+  "approach": {
+    "growth": {
+      "title": "Personalised growth plans",
+      "body": "Tailored development tracks to help you master your craft and define your future."
+    },
+    "innovation": {
+      "title": "Innovation beyond borders",
+      "body": "Work with global experts, embrace new technologies and find creative solutions."
+    },
+    "impact": {
+      "title": "Impactful projects",
+      "body": "Be part of initiatives that change businesses and communities."
+    }
+  },
+  "thriveTitle": "Who thrives at TAMSTAR",
+  "thrive": {
+    "curious": "Driven by curiosity and the hunger to learn",
+    "collaborative": "Value collaboration, innovation and resilience",
+    "ambitious": "Dream big and deliver bigger"
+  },
+  "cultureTitle": "A culture that cares",
+  "culture": "We're not just colleagues — we're a family that celebrates diversity, supports personal and professional milestones, and fosters a workplace where everyone feels seen, heard and valued.",
+  "formTitle": "Apply for a job",
+  "formLead": "Take the first step — fill in the form and attach your CV.",
+  "fields": {
+    "name": "Full name",
+    "email": "Email address",
+    "phone": "Contact number",
+    "position": "Position you're applying for",
+    "message": "Tell us about yourself",
+    "cv": "CV",
+    "cvHint": "PDF or Word, up to {size} MB."
+  },
+  "positions": {
+    "sales": "Sales",
+    "purchase": "Purchasing",
+    "accounting": "Accounting",
+    "logistics": "Logistics",
+    "warehouse": "Warehouse",
+    "other": "Other"
+  },
+  "submit": "Submit application",
+  "submitting": "Submitting…",
+  "success": {
+    "title": "Application received",
+    "body": "Thank you. Reference {reference}. Our HR team will contact shortlisted candidates.",
+    "again": "Submit another application"
+  }
+}

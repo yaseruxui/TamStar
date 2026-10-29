@@ -1,0 +1,97 @@
+{
+  "hero": {
+    "eyebrow": "B2B industrial procurement · Dammam, KSA",
+    "title": "Procurement and supply for the industries building the Kingdom",
+    "lead": "Valves and piping, instrumentation, safety, electrical and MRO supply for mining, petrochemicals, energy and urban development — sourced from 27 countries and delivered across Saudi Arabia.",
+    "primary": "Browse the catalog",
+    "secondary": "Request a quotation"
+  },
+  "quickSearch": {
+    "title": "Find a part or send a requirement",
+    "subtitle": "Search by product, standard or material",
+    "tabSearch": "Search catalog",
+    "tabRfq": "Upload BOQ",
+    "label": "Product, standard or specification",
+    "placeholder": "e.g. ball valve API 6D, EN 388 gloves",
+    "examples": "Common searches",
+    "submit": "Search",
+    "rfqBody": "Have a bill of quantities, drawing or datasheet? Attach it to a quotation request and our procurement team will price it line by line.",
+    "rfqSubmit": "Start a quotation request",
+    "note1": "Supply against your specification",
+    "note2": "Spot, BPA and VMI models"
+  },
+  "clients": {
+    "label": "Supplying leading Saudi and international operators"
+  },
+  "categories": {
+    "eyebrow": "Catalog",
+    "title": "Product categories",
+    "body": "The product families we source most for plants, shutdowns and project sites.",
+    "link": "All categories",
+    "count": "{count, plural, one {# product family} other {# product families}}"
+  },
+  "featured": {
+    "eyebrow": "Frequently requested",
+    "title": "Items our clients order most",
+    "link": "View catalog"
+  },
+  "bom": {
+    "title": "Have a custom list or a project requirement?",
+    "body": "Send your BOQ, drawings or specifications. Our team matches each line, sources from qualified suppliers and returns a complete quotation.",
+    "cta": "Send a BOQ for pricing"
+  },
+  "models": {
+    "eyebrow": "Contracting models",
+    "title": "Procurement that goes beyond a single purchase order",
+    "body": "Flexible models that reduce inventory, control cost and keep critical sites supplied.",
+    "bpa": {
+      "title": "Blanket Purchase Agreements",
+      "body": "Long-term contracts with fixed pricing for recurring consumables and spares."
+    },
+    "vmi": {
+      "title": "Vendor Managed Inventory",
+      "body": "We manage stock levels on your behalf to reduce overhead and avoid stock-outs."
+    },
+    "finance": {
+      "title": "Flexible payment terms",
+      "body": "Financial arrangements tailored to your cash-flow needs with transparent reporting."
+    },
+    "local": {
+      "title": "Local content",
+      "body": "We market Saudi manufacturers' products and increase local content in every supply line."
+    }
+  },
+  "logistics": {
+    "eyebrow": "Sourcing & logistics",
+    "title": "Sourcing from 27 countries, delivered to your site",
+    "body": "Global supplier partnerships combined with local market knowledge, and a dedicated logistics team for project cargo, JIT delivery and multi-modal freight.",
+    "hq": "Head office & operations",
+    "freight": "Air, sea and land freight coordination",
+    "jit": "Just-in-time delivery to reduce inventory cost",
+    "cargo": "Industrial project cargo and heavy equipment"
+  },
+  "rfqFlow": {
+    "eyebrow": "How a quotation request works",
+    "title": "From requirement to quotation",
+    "submitted": {
+      "title": "Submit",
+      "body": "Describe each item, quantity and delivery location, and attach your BOQ or drawings."
+    },
+    "review": {
+      "title": "Technical review",
+      "body": "Our team reviews specifications and confirms anything that needs clarification."
+    },
+    "sourcing": { "title": "Sourcing", "body": "We source from qualified local and international suppliers." },
+    "quotation": {
+      "title": "Quotation",
+      "body": "You receive a complete quotation to accept, reject or ask us to revise."
+    },
+    "cta": "Request a quotation"
+  },
+  "projects": {
+    "eyebrow": "Track record",
+    "title": "Long-term agreements with the Kingdom's leading operators",
+    "body": "Buying-agent, sourcing and supply agreements across mining, petrochemicals, energy and giga-projects.",
+    "link": "All projects"
+  }
+}
