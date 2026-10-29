@@ -81,9 +81,12 @@ export default async function ItemPage({ params }: ItemPageProps) {
         />
       </div>
 
-      <div className="container-site grid gap-8 py-6 lg:grid-cols-12 lg:gap-12 lg:py-8">
+      <div data-product className="container-site grid gap-8 py-6 lg:grid-cols-12 lg:gap-12 lg:py-8">
         <div className="lg:col-span-6">
-          <div className="relative aspect-square overflow-hidden rounded-2xl bg-tile lg:sticky lg:top-40">
+          <div
+            data-product-media
+            className="motion-rise relative aspect-square overflow-hidden rounded-2xl bg-tile lg:sticky lg:top-40"
+          >
             <Image
               src={productImage(item.slug)}
               alt={name}
@@ -101,7 +104,7 @@ export default async function ItemPage({ params }: ItemPageProps) {
           </div>
         </div>
 
-        <div className="lg:col-span-6 lg:py-2">
+        <div className="motion-rise lg:col-span-6 lg:py-2" style={{ animationDelay: '120ms' }}>
           <Link
             href={`/catalog/${category.slug}`}
             className="inline-flex rounded-full bg-tile px-3.5 py-1.5 text-xs font-semibold text-ink hover:bg-tile-strong"
@@ -157,7 +160,7 @@ export default async function ItemPage({ params }: ItemPageProps) {
             ))}
           </ul>
 
-          <section aria-labelledby="item-specs" className="mt-10">
+          <section aria-labelledby="item-specs" className="reveal mt-10">
             <h2 id="item-specs" className="text-xl">
               {t('specifications')}
             </h2>

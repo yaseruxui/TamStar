@@ -2,12 +2,13 @@
 
 import { Check, ShoppingCart } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { type MouseEvent, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { QuantityStepper } from '@/components/ui/quantity-stepper';
 import { cn } from '@/utils/cn';
 import { useCart } from '../hooks/use-cart';
 import { addToCart, MAX_QUANTITY } from '../store/cart-store';
+import { flyToCart } from '../utils/fly-to-cart';
 import { openCartDrawer } from './cart-drawer-events';
 
 interface AddToCartProps {
@@ -30,9 +31,10 @@ export function AddToCart({ category, slug, itemName, variant = 'card', classNam
     return () => window.clearTimeout(timer);
   }, [justAdded]);
 
-  const add = () => {
+  const add = async (event: MouseEvent<HTMLButtonElement>) => {
     addToCart({ category, slug }, quantity);
     setJustAdded(true);
+    await flyToCart(event.currentTarget);
     if (variant === 'detail') openCartDrawer();
   };
 
@@ -55,7 +57,7 @@ export function AddToCart({ category, slug, itemName, variant = 'card', classNam
         variant={justAdded ? 'soft' : 'primary'}
         size={detail ? 'lg' : 'sm'}
         aria-label={`${t('addToCart')}: ${itemName}`}
-        className={cn('flex-1', detail ? 'h-13' : 'h-9')}
+        className={cn('flex-1', detail ? 'h-13' : 'h-9', justAdded && 'motion-pop')}
       >
         {justAdded ? <Check aria-hidden /> : <ShoppingCart aria-hidden />}
         <span>

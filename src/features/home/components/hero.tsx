@@ -25,7 +25,7 @@ export async function Hero() {
         />
 
         <div className="grid items-center gap-8 px-6 pt-10 pb-6 sm:px-12 sm:pt-14 lg:grid-cols-[1.1fr_1fr] lg:gap-6 lg:py-14">
-          <div className="relative z-10">
+          <div className="motion-rise relative z-10">
             <p className="inline-flex items-center gap-2 rounded-full bg-surface/80 px-3.5 py-1.5 text-xs font-semibold text-navy shadow-card backdrop-blur">
               <span aria-hidden className="size-2 rounded-full bg-brand" />
               {t('hero.eyebrow')}
@@ -49,7 +49,7 @@ export async function Hero() {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="motion-rise relative" style={{ animationDelay: '150ms' }}>
             <Image
               src="/products/hero-composite.webp"
               alt=""
@@ -59,7 +59,7 @@ export async function Hero() {
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="h-auto w-full drop-shadow-[0_30px_40px_rgb(11_20_36/0.12)] rtl:-scale-x-100"
             />
-            <div className="absolute start-0 bottom-4 hidden items-center gap-3 rounded-lg bg-surface/90 p-3.5 pe-5 shadow-raised backdrop-blur sm:flex">
+            <div className="motion-float absolute start-0 bottom-4 hidden items-center gap-3 rounded-lg bg-surface/90 p-3.5 pe-5 shadow-raised backdrop-blur sm:flex">
               <span className="grid size-10 place-items-center rounded-full bg-sand text-brand-ink">
                 <LockKeyhole aria-hidden className="size-[18px]" />
               </span>
@@ -68,7 +68,10 @@ export async function Hero() {
                 <span className="block text-xs text-muted">{t('hero.priceCardBody')}</span>
               </span>
             </div>
-            <div className="absolute end-2 top-2 hidden items-center gap-2 rounded-full bg-navy-950 px-4 py-2 text-xs font-semibold text-white shadow-raised sm:inline-flex">
+            <div
+              className="motion-float absolute end-2 top-2 hidden items-center gap-2 rounded-full bg-navy-950 px-4 py-2 text-xs font-semibold text-white shadow-raised sm:inline-flex"
+              style={{ animationDelay: '-2.5s' }}
+            >
               <Globe aria-hidden className="size-4 text-brand" />
               {t('hero.sourcingChip')}
             </div>

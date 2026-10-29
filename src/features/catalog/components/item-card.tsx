@@ -14,9 +14,10 @@ export async function ItemCard({ item, priority = false }: { item: CatalogItem; 
   const name = item.name[locale];
 
   return (
-    <article className="group flex h-full flex-col">
+    <article data-product className="reveal group flex h-full flex-col">
       <Link
         href={href}
+        data-product-media
         className="relative block aspect-square overflow-hidden rounded-xl bg-tile"
         tabIndex={-1}
         aria-hidden

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/utils/cn';
 import { useCart } from '../hooks/use-cart';
 import { addToCart } from '../store/cart-store';
+import { flyToCart } from '../utils/fly-to-cart';
 
 /** Round "+" button on product cards: adds one unit; quantities are edited in the cart. */
 export function QuickAdd({ category, slug, itemName }: { category: string; slug: string; itemName: string }) {
@@ -23,14 +24,15 @@ export function QuickAdd({ category, slug, itemName }: { category: string; slug:
     <span className="relative inline-flex">
       <button
         type="button"
-        onClick={() => {
+        onClick={(event) => {
           addToCart({ category, slug }, 1);
           setJustAdded(true);
+          void flyToCart(event.currentTarget);
         }}
         aria-label={`${t('addToCart')}: ${itemName}`}
         className={cn(
           'grid size-11 place-items-center rounded-full text-white transition-all active:scale-95',
-          justAdded ? 'bg-success' : 'bg-navy-950 hover:bg-navy',
+          justAdded ? 'motion-pop bg-success' : 'bg-navy-950 hover:bg-navy',
         )}
       >
         {justAdded ? <Check aria-hidden className="size-5" /> : <Plus aria-hidden className="size-5" />}

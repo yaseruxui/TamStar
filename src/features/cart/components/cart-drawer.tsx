@@ -2,13 +2,14 @@
 
 import { ShoppingCart, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { buttonVariants } from '@/components/ui/button';
 import { Link } from '@/lib/i18n/navigation';
 import { cn } from '@/utils/cn';
 import { useCart, useCartCount } from '../hooks/use-cart';
 import type { CartCatalog } from '../types';
 import { CartLines } from './cart-lines';
+import { onCartBump } from '../utils/fly-to-cart';
 import { onOpenCartDrawer } from './cart-drawer-events';
 
 /** Header cart button + native <dialog> drawer (focus trap, Esc and backdrop handled by the browser). */
@@ -21,7 +22,10 @@ export function CartDrawer({ catalog }: { catalog: CartCatalog }) {
   const open = () => dialogRef.current?.showModal();
   const close = () => dialogRef.current?.close();
 
+  const [bump, setBump] = useState(0);
+
   useEffect(() => onOpenCartDrawer(open), []);
+  useEffect(() => onCartBump(() => setBump((value) => value + 1)), []);
 
   return (
     <>
@@ -30,7 +34,12 @@ export function CartDrawer({ catalog }: { catalog: CartCatalog }) {
         onClick={open}
         aria-haspopup="dialog"
         aria-label={`${t('open')} — ${t('count', { count })}`}
-        className="relative grid size-12 place-items-center rounded-full bg-navy-950 text-white transition-colors hover:bg-navy"
+        data-cart-target
+        key={bump}
+        className={cn(
+          bump > 0 && 'motion-pop',
+          'relative grid size-12 place-items-center rounded-full bg-navy-950 text-white transition-colors hover:bg-navy',
+        )}
       >
         <ShoppingCart aria-hidden className="size-5" />
         <span
@@ -50,7 +59,7 @@ export function CartDrawer({ catalog }: { catalog: CartCatalog }) {
         onClick={(event) => {
           if (event.target === dialogRef.current) close();
         }}
-        className="fixed inset-y-0 end-0 start-auto m-0 h-dvh max-h-none w-full max-w-md bg-surface p-0 text-body shadow-raised backdrop:bg-navy-950/40 backdrop:backdrop-blur-[2px] open:flex open:flex-col sm:rounded-s-xl"
+        className="cart-drawer fixed inset-y-0 end-0 start-auto m-0 h-dvh max-h-none w-full max-w-md bg-surface p-0 text-body shadow-raised backdrop:bg-navy-950/40 backdrop:backdrop-blur-[2px] open:flex open:flex-col sm:rounded-s-xl"
       >
         <header className="flex items-center justify-between border-b border-line px-5 py-4">
           <h2 id="cart-drawer-title" className="text-lg">

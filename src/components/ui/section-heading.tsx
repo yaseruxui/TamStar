@@ -24,7 +24,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   const dark = tone === 'dark';
   return (
-    <div className={cn('flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between', className)}>
+    <div className={cn('reveal flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between', className)}>
       <div className="max-w-2xl">
         {eyebrow ? (
           <p className={cn('mb-2 text-sm font-semibold', dark ? 'text-brand' : 'text-brand-hover')}>{eyebrow}</p>

@@ -16,7 +16,7 @@ export async function SectorsSection() {
       <SectionHeading id="home-sectors" eyebrow={t('eyebrow')} title={t('title')} />
       <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {SECTORS.map(({ key, icon: Icon }) => (
-          <li key={key} className="rounded-xl bg-tile p-7 transition-colors hover:bg-tile-strong">
+          <li key={key} className="reveal rounded-xl bg-tile p-7 transition-colors hover:bg-tile-strong">
             <Icon aria-hidden className="size-8 text-brand" strokeWidth={1.6} />
             <h3 className="mt-6 text-lg">{t(`${key}.title`)}</h3>
             <p className="mt-2 text-sm leading-6">{t(`${key}.body`)}</p>
