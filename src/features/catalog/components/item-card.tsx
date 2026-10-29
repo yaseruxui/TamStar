@@ -15,13 +15,13 @@ export async function ItemCard({ item, priority = false }: { item: CatalogItem; 
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-line bg-surface transition-shadow hover:shadow-hover">
-      <Link href={href} className="relative block aspect-square overflow-hidden bg-canvas" tabIndex={-1} aria-hidden>
+      <Link href={href} className="relative block aspect-[5/4] overflow-hidden bg-canvas" tabIndex={-1} aria-hidden>
         <Image
           src={productImage(item.slug)}
           alt=""
           fill
           priority={priority}
-          sizes="(min-width: 1280px) 300px, (min-width: 640px) 45vw, 90vw"
+          sizes="(min-width: 1280px) 260px, (min-width: 640px) 45vw, 90vw"
           className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
         {item.standards.length > 0 ? (
@@ -38,7 +38,7 @@ export async function ItemCard({ item, priority = false }: { item: CatalogItem; 
         ) : null}
       </Link>
 
-      <div className="flex flex-1 flex-col p-4">
+      <div className="flex flex-1 flex-col p-3.5">
         {category ? <p className="text-xs text-muted">{category.name[locale]}</p> : null}
         <h3 className="mt-1 line-clamp-2 font-sans text-base leading-snug font-semibold">
           <Link href={href} className="hover:text-navy-700">

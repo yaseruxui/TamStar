@@ -1,7 +1,7 @@
 {
   "eyebrow": "Catalog",
   "title": "Product catalog",
-  "lead": "Product families TAMSTAR sources for industrial, commercial and residential clients. Contract pricing is shared per company — add items to your RFQ list to receive a quotation.",
+  "lead": "Product families TAMSTAR sources for industrial, commercial and residential clients. Add items to your cart — prices follow your company contract.",
   "categoriesTitle": "Categories",
   "itemsCount": "{count, plural, one {# product family} other {# product families}}",
   "viewCategory": "View category",
@@ -53,5 +53,6 @@
   "addToRfq": "Add to RFQ list",
   "inRfq": "In RFQ list",
   "requestNow": "Request a quotation",
-  "delivery": "Delivery to your site anywhere in the Kingdom"
+  "delivery": "Delivery to your site anywhere in the Kingdom",
+  "allProducts": "All products"
 }
