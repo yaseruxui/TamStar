@@ -1,9 +1,19 @@
-import { ArrowLeft, ArrowRight, ClipboardList, FileSpreadsheet, UserRound, type LucideIcon } from 'lucide-react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  ClipboardList,
+  FileSpreadsheet,
+  Headset,
+  UserRound,
+  type LucideIcon,
+} from 'lucide-react';
 import Image from 'next/image';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { ButtonLink } from '@/components/ui/button-link';
 import { Link } from '@/lib/i18n/navigation';
+import { company } from '@/lib/config/site';
 import { cn } from '@/utils/cn';
+import { toTelHref } from '@/utils/format';
 
 interface PromoProps {
   href: string;
@@ -21,7 +31,7 @@ function Promo({ href, icon: Icon, title, body, cta, arrow: Arrow, tone }: Promo
     <Link
       href={href}
       className={cn(
-        'group flex items-start gap-4 rounded-xl p-5 transition-colors',
+        'group flex items-start gap-4 rounded-xl p-4 transition-colors',
         navy ? 'bg-navy text-navy-on hover:bg-navy-700' : 'bg-brand text-navy-950 hover:bg-brand-hover',
       )}
     >
@@ -49,7 +59,7 @@ function Promo({ href, icon: Icon, title, body, cta, arrow: Arrow, tone }: Promo
 }
 
 export async function Hero() {
-  const [t, locale] = await Promise.all([getTranslations('home'), getLocale()]);
+  const [t, tCommon, locale] = await Promise.all([getTranslations('home'), getTranslations('common'), getLocale()]);
   const Arrow = locale === 'ar' ? ArrowLeft : ArrowRight;
 
   return (
@@ -85,7 +95,7 @@ export async function Hero() {
           />
         </div>
 
-        <div className="grid content-start gap-4 sm:grid-cols-2 lg:col-span-3 lg:grid-cols-1 lg:content-stretch">
+        <div className="grid content-start gap-3 sm:grid-cols-2 lg:col-span-3 lg:grid-cols-1">
           <Promo
             href="/account"
             icon={UserRound}
@@ -104,6 +114,20 @@ export async function Hero() {
             arrow={Arrow}
             tone="brand"
           />
+          <a
+            href={toTelHref(company.phones[0])}
+            className="flex items-center gap-4 rounded-xl border border-line bg-surface p-5 transition-colors hover:border-navy sm:col-span-2 lg:col-span-1"
+          >
+            <span className="grid size-10 shrink-0 place-items-center rounded-md bg-tint-100 text-navy">
+              <Headset aria-hidden className="size-5" />
+            </span>
+            <span className="min-w-0">
+              <span className="block text-sm text-muted">{tCommon('contactBand.eyebrow')}</span>
+              <span dir="ltr" className="block font-display text-md text-ink tabular">
+                {company.phones[0]}
+              </span>
+            </span>
+          </a>
         </div>
       </div>
     </section>
