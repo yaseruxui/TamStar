@@ -23,8 +23,8 @@ export async function CapabilitiesSection() {
   ]);
 
   return (
-    <section aria-labelledby="home-capabilities" className="bg-grid-navy text-navy-on">
-      <div className="reveal container-site grid gap-14 py-20 sm:py-24 lg:grid-cols-12">
+    <section aria-labelledby="home-capabilities" className="bg-navy-900 text-navy-on">
+      <div className="container-site grid gap-14 py-16 sm:py-20 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <p className="flex items-center gap-2 text-xs font-medium text-brand">
             <span aria-hidden className="h-px w-8 bg-brand" />
@@ -60,14 +60,14 @@ export async function CapabilitiesSection() {
           </div>
         </div>
 
-        <ul className="grid gap-px self-start overflow-hidden rounded-xs border border-white/10 bg-white/10 sm:grid-cols-2 lg:col-span-7">
-          {MODELS.map(({ key, icon: Icon }, index) => (
-            <li key={key} className="bg-navy-900 p-7 transition-colors hover:bg-navy-850">
-              <div className="flex items-center justify-between">
-                <Icon aria-hidden className="size-6 text-brand" strokeWidth={1.5} />
-                <span className="font-mono text-2xs text-navy-on/60">M-0{index + 1}</span>
-              </div>
-              <h3 className="mt-8 text-lg text-white">{t(`${key}.title`)}</h3>
+        <ul className="grid gap-3 self-start sm:grid-cols-2 lg:col-span-7">
+          {MODELS.map(({ key, icon: Icon }) => (
+            <li
+              key={key}
+              className="rounded-lg bg-white/[0.05] p-6 ring-1 ring-white/10 transition-colors hover:bg-white/[0.08]"
+            >
+              <Icon aria-hidden className="size-6 text-brand" strokeWidth={1.5} />
+              <h3 className="mt-5 text-lg text-white">{t(`${key}.title`)}</h3>
               <p className="mt-2 text-sm leading-6">{t(`${key}.body`)}</p>
             </li>
           ))}

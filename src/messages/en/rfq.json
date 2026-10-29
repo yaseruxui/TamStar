@@ -48,7 +48,7 @@
     "rejected": "Rejected"
   },
   "basket": {
-    "empty": "Your RFQ list is empty. Add items from the catalog or type them below.",
-    "fromCatalog": "From catalog"
+    "empty": "Your cart is empty. Add items from the catalog or type them below.",
+    "fromCatalog": "From cart"
   }
 }

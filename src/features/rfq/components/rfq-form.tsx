@@ -22,8 +22,8 @@ import {
   type AttachmentError,
 } from '@/lib/validation/attachments';
 import { submitRfq } from '../actions/submit-rfq';
-import { useRfqBasket } from '../hooks/use-rfq-basket';
-import { clearBasket, removeFromBasket } from '../store/rfq-basket';
+import { useCart } from '@/features/cart/hooks/use-cart';
+import { clearCart, removeFromCart } from '@/features/cart/store/cart-store';
 import { RFQ_MAX_LINES } from '../schemas/rfq';
 
 export interface CatalogOption {
@@ -70,7 +70,7 @@ function RfqFormInstance({ catalog, minDeliveryDate, onReset }: RfqFormProps & {
   const tCatalog = useTranslations('catalog');
   const tForms = useTranslations('forms');
   const formId = useId();
-  const basket = useRfqBasket();
+  const basket = useCart();
 
   const [attachmentError, setAttachmentError] = useState<AttachmentError | null>(null);
   const { state, pending, onSubmit } = useFormAction(submitRfq, () => attachmentError === null);
@@ -95,7 +95,7 @@ function RfqFormInstance({ catalog, minDeliveryDate, onReset }: RfqFormProps & {
 
   const submitted = state.status === 'success';
   useEffect(() => {
-    if (submitted) clearBasket();
+    if (submitted) clearCart();
   }, [submitted]);
 
   const updateLine = (id: string, patch: Partial<Omit<LineDraft, 'id'>>) =>
@@ -104,7 +104,7 @@ function RfqFormInstance({ catalog, minDeliveryDate, onReset }: RfqFormProps & {
   const removeLine = (line: LineDraft) => {
     if (line.catalogRef) {
       const [category = '', slug = ''] = line.catalogRef.split('/');
-      removeFromBasket({ category, slug });
+      removeFromCart({ category, slug });
     }
     setLines((current) => {
       const next = current.filter((candidate) => candidate.id !== line.id);

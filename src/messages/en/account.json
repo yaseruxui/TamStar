@@ -1,0 +1,31 @@
+{
+  "eyebrow": "Company accounts",
+  "title": "Buy with your company account",
+  "lead": "TAMSTAR opens an account for each company, invites a company admin, and the admin adds the procurement team with their roles and purchase limits.",
+  "steps": {
+    "create": {
+      "title": "Account created by TAMSTAR",
+      "body": "Our team opens your company account and assigns a company admin."
+    },
+    "invite": {
+      "title": "Admin activates",
+      "body": "The admin receives an invitation, activates the account and sets up the team."
+    },
+    "team": {
+      "title": "Team & limits",
+      "body": "Add buyers, assign permissions and set per-order and monthly purchase limits."
+    },
+    "buy": {
+      "title": "Order at contract prices",
+      "body": "Browse, add to cart and order — prices follow your company agreement."
+    }
+  },
+  "requestTitle": "Request a company account",
+  "requestLead": "Tell us about your company and our team will contact you to open the account.",
+  "signInTitle": "Sign in",
+  "signInBody": "Online sign-in opens with the launch of company accounts. Until then, request an account or send a quotation request.",
+  "checkoutTitle": "Checkout requires a company account",
+  "checkoutBody": "Orders are placed by verified company buyers so that contract prices, purchase limits and e-invoicing apply. Request an account, or send this cart as a quotation request now.",
+  "toRfq": "Send cart as quotation request",
+  "toAccount": "Request a company account"
+}

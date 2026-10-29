@@ -13,6 +13,7 @@
     "message": "Message"
   },
   "topics": {
+    "account": "Company account request",
     "rfq": "Request for quotation",
     "product": "Product enquiry",
     "supplier": "Supplier registration",

@@ -1,6 +1,8 @@
 import type { Messages } from '@/messages';
 import about from './about.json';
+import account from './account.json';
 import careers from './careers.json';
+import cart from './cart.json';
 import catalog from './catalog.json';
 import common from './common.json';
 import contact from './contact.json';
@@ -14,7 +16,9 @@ import services from './services.json';
 
 const messages: Messages = {
   about,
+  account,
   careers,
+  cart,
   catalog,
   common,
   contact,

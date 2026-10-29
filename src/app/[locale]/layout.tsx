@@ -15,7 +15,7 @@ import { cn } from '@/utils/cn';
 import '@/styles/globals.css';
 
 /** Namespaces read by site-wide client components (header, RFQ buttons, error boundary). */
-const CLIENT_NAMESPACES = ['common', 'navigation', 'catalog'] as const;
+const CLIENT_NAMESPACES = ['common', 'navigation', 'catalog', 'cart'] as const;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

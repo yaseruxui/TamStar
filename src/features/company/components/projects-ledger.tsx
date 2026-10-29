@@ -7,10 +7,10 @@ export async function ProjectsLedger({ projects }: { projects: readonly Project[
   const [t, tCommon, locale] = await Promise.all([getTranslations('projects'), getTranslations('common'), getLocale()]);
 
   return (
-    <div className="border-t border-ink/80">
+    <div className="rounded-lg border border-line bg-surface px-5 sm:px-6">
       <div
         aria-hidden
-        className="hidden grid-cols-[1.3fr_0.8fr_2fr_0.7fr_0.8fr] gap-6 border-b border-paper-line py-3 label-tech text-muted lg:grid"
+        className="hidden grid-cols-[1.3fr_0.8fr_2fr_0.7fr_0.8fr] gap-6 border-b border-line py-3 label-tech text-muted lg:grid"
       >
         <span>{t('client')}</span>
         <span>{t('sector')}</span>
@@ -18,13 +18,13 @@ export async function ProjectsLedger({ projects }: { projects: readonly Project[
         <span>{t('since')}</span>
         <span>{t('term')}</span>
       </div>
-      <ul>
+      <ul className="[&>li:last-child]:border-b-0">
         {projects.map((project) => {
           const active = project.status === 'active';
           return (
             <li
               key={project.key}
-              className="grid gap-2 border-b border-paper-line py-6 lg:grid-cols-[1.3fr_0.8fr_2fr_0.7fr_0.8fr] lg:items-baseline lg:gap-6"
+              className="grid gap-2 border-b border-line py-6 lg:grid-cols-[1.3fr_0.8fr_2fr_0.7fr_0.8fr] lg:items-baseline lg:gap-6"
             >
               <div>
                 <h3 className="text-md font-medium">{project.client[locale]}</h3>

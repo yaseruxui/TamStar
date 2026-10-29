@@ -11,14 +11,16 @@ import { Honeypot } from '@/components/ui/honeypot';
 import { useFormAction } from '@/hooks/use-form-action';
 import { useFormErrors } from '@/hooks/use-form-errors';
 import { submitContact } from '../actions/submit-contact';
-import { inquiryTopics } from '../schemas/contact';
+import { inquiryTopics, type InquiryTopicKey } from '../schemas/contact';
 
-export function ContactForm() {
+export function ContactForm({ defaultTopic = 'rfq' }: { defaultTopic?: InquiryTopicKey }) {
   const [instance, setInstance] = useState(0);
-  return <ContactFormInstance key={instance} onReset={() => setInstance((value) => value + 1)} />;
+  return (
+    <ContactFormInstance key={instance} defaultTopic={defaultTopic} onReset={() => setInstance((value) => value + 1)} />
+  );
 }
 
-function ContactFormInstance({ onReset }: { onReset: () => void }) {
+function ContactFormInstance({ defaultTopic, onReset }: { defaultTopic: InquiryTopicKey; onReset: () => void }) {
   const t = useTranslations('contact');
   const tForms = useTranslations('forms');
   const id = useId();
@@ -86,7 +88,7 @@ function ContactFormInstance({ onReset }: { onReset: () => void }) {
           />
         </Field>
         <Field id={fieldId('topic')} label={t('fields.topic')} required error={errorFor('topic')}>
-          <Select id={fieldId('topic')} name="topic" defaultValue="rfq">
+          <Select id={fieldId('topic')} name="topic" defaultValue={defaultTopic}>
             {inquiryTopics.map((topic) => (
               <option key={topic} value={topic}>
                 {t(`topics.${topic}`)}

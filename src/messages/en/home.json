@@ -1,11 +1,11 @@
 {
   "hero": {
-    "eyebrow": "Industrial procurement desk · Dammam",
-    "title": "Supplying the Kingdom’s industry, to the exact specification.",
-    "lead": "Valves and piping, instrumentation, safety, electrical and spare parts — sourced from 27 countries and delivered to mining, petrochemical and energy sites across Saudi Arabia.",
-    "primary": "Request a quotation",
-    "secondary": "Browse the catalog",
-    "caption": "Sheet 01 — Weld-neck flange, raised face"
+    "eyebrow": "B2B industrial procurement platform",
+    "title": "Everything your site needs, at your company’s contract prices.",
+    "lead": "Valves and piping, instrumentation, safety and fire fighting, electrical and spare parts — sourced from 27 countries and delivered across Saudi Arabia.",
+    "primary": "Shop the catalog",
+    "secondary": "Request a quotation",
+    "caption": ""
   },
   "quickSearch": {
     "title": "Find a part or send a requirement",
@@ -25,14 +25,14 @@
     "label": "Supplying leading Saudi and international operators"
   },
   "categories": {
-    "eyebrow": "What we supply",
-    "title": "Nine categories covering a site from the gate to the process line",
-    "body": "The product families we source most for plants, shutdowns and project sites.",
+    "eyebrow": "Catalog",
+    "title": "Shop by category",
+    "body": "Nine categories covering plants, shutdowns and project sites.",
     "link": "All categories",
     "count": "{count, plural, one {# product family} other {# product families}}"
   },
   "featured": {
-    "eyebrow": "Frequently requested",
+    "eyebrow": "Most requested",
     "title": "Items our clients order most",
     "link": "View catalog"
   },
@@ -97,5 +97,35 @@
     "title": "A record of agreements with the Kingdom’s leading operators",
     "body": "Buying-agent, sourcing and supply agreements across mining, petrochemicals, energy and giga-projects.",
     "link": "All projects"
+  },
+  "promos": {
+    "account": {
+      "title": "Your company account",
+      "body": "Contract pricing, team permissions and per-buyer purchase limits.",
+      "cta": "Request an account"
+    },
+    "boq": {
+      "title": "Upload your BOQ",
+      "body": "Send a bill of quantities or drawings and we price it line by line.",
+      "cta": "Start a quotation request"
+    }
+  },
+  "benefits": {
+    "sourcing": {
+      "title": "27 sourcing countries",
+      "body": "Supplier network on six continents"
+    },
+    "contract": {
+      "title": "Contract pricing",
+      "body": "Per company agreement"
+    },
+    "models": {
+      "title": "BPA & VMI",
+      "body": "Blanket agreements and managed stock"
+    },
+    "local": {
+      "title": "Local content",
+      "body": "Supporting Saudi manufacturers"
+    }
   }
 }

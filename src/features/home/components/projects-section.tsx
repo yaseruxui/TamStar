@@ -4,14 +4,14 @@ import { SectionHeading } from '@/components/ui/section-heading';
 import { ProjectsLedger } from '@/features/company/components/projects-ledger';
 import { projects } from '@/features/company/data/projects';
 
-const HOME_PROJECTS = ['maaden', 'petroRabigh', 'acwaPower', 'veolia', 'imi', 'neom'];
+const HOME_PROJECTS = ['maaden', 'petroRabigh', 'acwaPower', 'veolia'];
 
 export async function ProjectsSection() {
   const t = await getTranslations('home.projects');
   const selected = projects.filter((project) => HOME_PROJECTS.includes(project.key));
 
   return (
-    <section aria-labelledby="home-projects" className="reveal container-site py-20 sm:py-24">
+    <section aria-labelledby="home-projects" className="container-site py-12 sm:py-16">
       <SectionHeading
         id="home-projects"
         eyebrow={t('eyebrow')}

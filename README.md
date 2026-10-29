@@ -3,8 +3,8 @@
 Bilingual (Arabic RTL / English LTR) B2B storefront for **Tamstar Trading Est.**, Dammam — built with
 Next.js 16 (App Router, RSC), TypeScript (strict), Tailwind CSS v4 and next-intl 4.
 
-Visual system follows the TAMSTAR Figma file (Ahmed); company content is taken only from
-<https://tamstar.com.sa>; scope follows `TAMSTAR_MVP.md` (Phase 1).
+Storefront layout follows Gulf B2B commerce conventions (header search, category bar, image product cards,
+cart drawer); company content is taken only from <https://tamstar.com.sa>; scope follows `TAMSTAR_MVP.md` (Phase 1).
 
 ## Commands
 
@@ -60,7 +60,12 @@ Key decisions
   buttons, quick-search tabs, forms). Translation namespaces are shipped to the client per page
   (`ClientMessages`).
 - **No fabricated data.** Product families carry standards and spec ranges only — no SKUs, prices or stock;
-  those come from Odoo per company contract (MVP §2). The catalog read model (`features/catalog/services`)
+  cards show "contract price — sign in" and real prices come from Odoo per company contract (MVP §2).
+- **Product images** in `public/products` are studio renders made in Blender for this project (no stock or
+  AI-generated imagery). Replace any file with a real product photo of the same name (1000×1000, square) and
+  nothing else changes.
+- **Cart** (`features/cart`) is a client store persisted in localStorage: add with quantity, drawer, cart page,
+  checkout gate (company account required) and one-click conversion of the cart into an RFQ. The catalog read model (`features/catalog/services`)
   is the single seam to swap for the Odoo sync.
 - **RFQ = MVP §3 fields**: per-line product, specs/usage, quantity + UoM, preferred brand; delivery location
   and date, notes, attachments (5 × 8 MB, 20 MB total), contact details. Status model

@@ -8,7 +8,7 @@ import { company } from '@/lib/config/site';
 import { primaryNav, routes } from '@/lib/config/routes';
 import { cn } from '@/utils/cn';
 import { toMailHref, toTelHref } from '@/utils/format';
-import { isActivePath } from './main-nav';
+import { isActivePath } from '@/lib/config/is-active-path';
 
 export function MobileMenu() {
   const t = useTranslations('navigation');
@@ -49,7 +49,7 @@ export function MobileMenu() {
           setOpenedAt(pathname);
           setOpen((value) => !value);
         }}
-        className="grid size-11 place-items-center rounded-sm border border-paper-line text-navy"
+        className="grid size-11 place-items-center rounded-sm border border-line text-navy"
       >
         {open ? <X aria-hidden className="size-5" /> : <Menu aria-hidden className="size-5" />}
       </button>
@@ -57,7 +57,7 @@ export function MobileMenu() {
       <div
         id={panelId}
         hidden={!open}
-        className="absolute inset-x-0 top-full z-40 h-dvh overflow-y-auto overscroll-contain border-t border-paper-line bg-canvas"
+        className="absolute inset-x-0 top-full z-40 h-dvh overflow-y-auto overscroll-contain border-t border-line bg-surface"
       >
         <nav aria-label={t('mainLabel')} className="container-site py-4">
           <ul className="divide-y divide-line">

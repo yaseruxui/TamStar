@@ -1,11 +1,14 @@
-import { Clock, Mail, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
+import { Link } from '@/lib/i18n/navigation';
 import { company } from '@/lib/config/site';
 import { toMailHref, toTelHref } from '@/utils/format';
 import { LocaleSwitcher } from './locale-switcher';
 
+const COMPANY_LINKS = ['services', 'projects', 'about', 'careers', 'contact'] as const;
+
 export async function TopBar() {
-  const t = await getTranslations('common');
+  const [t, tNav] = await Promise.all([getTranslations('common'), getTranslations('navigation')]);
   const [primaryPhone] = company.phones;
 
   return (
@@ -22,16 +25,24 @@ export async function TopBar() {
             <Mail aria-hidden className="size-3.5 text-brand" />
             {company.email}
           </a>
-          <span className="hidden items-center gap-1.5 lg:inline-flex">
+          <span className="hidden items-center gap-1.5 xl:inline-flex">
             <span aria-hidden className="size-1.5 rounded-full bg-success" />
             {t('vision2030')}
           </span>
         </div>
         <div className="flex items-center gap-5">
-          <span className="hidden items-center gap-1.5 md:inline-flex">
-            <Clock aria-hidden className="size-3.5" />
-            {t('officeHoursShort')}
-          </span>
+          <nav aria-label={tNav('company')} className="hidden lg:block">
+            <ul className="flex items-center gap-4">
+              {COMPANY_LINKS.map((key) => (
+                <li key={key}>
+                  <Link href={`/${key}`} className="hover:text-white">
+                    {tNav(key)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <span aria-hidden className="hidden h-3 w-px bg-white/20 lg:block" />
           <LocaleSwitcher />
         </div>
       </div>

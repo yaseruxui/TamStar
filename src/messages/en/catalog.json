@@ -10,7 +10,7 @@
   "specifications": "Specifications",
   "unit": "Unit of measure",
   "related": "More in this category",
-  "pricingNote": "Pricing is quoted per company contract and quantity.",
+  "pricingNote": "Priced per your company contract and quantity",
   "pricingTitle": "Contract pricing",
   "pricingBody": "Prices depend on your company agreement, quantity and delivery location. Add this item to your RFQ list, or send the full requirement.",
   "notListed": "Can't find what you need?",
@@ -52,5 +52,6 @@
   },
   "addToRfq": "Add to RFQ list",
   "inRfq": "In RFQ list",
-  "requestNow": "Request a quotation"
+  "requestNow": "Request a quotation",
+  "delivery": "Delivery to your site anywhere in the Kingdom"
 }

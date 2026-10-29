@@ -12,6 +12,7 @@ const STATIC_PATHS: ReadonlyArray<{ pathname: string; priority: number }> = [
   { pathname: '/about', priority: 0.7 },
   { pathname: '/contact', priority: 0.7 },
   { pathname: '/careers', priority: 0.5 },
+  { pathname: '/account', priority: 0.6 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

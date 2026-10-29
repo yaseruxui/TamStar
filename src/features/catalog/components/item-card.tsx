@@ -1,72 +1,61 @@
+import { LockKeyhole } from 'lucide-react';
+import Image from 'next/image';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { Badge } from '@/components/ui/badge';
-import { AddToRfqButton } from '@/features/rfq/components/add-to-rfq-button';
+import { AddToCart } from '@/features/cart/components/add-to-cart';
 import { Link } from '@/lib/i18n/navigation';
-import { cn } from '@/utils/cn';
 import { getCategory } from '../services/catalog';
 import type { CatalogItem } from '../types';
-import { CategoryIcon } from './category-icon';
-import { specValue } from '../utils/spec-value';
+import { productImage } from '../utils/images';
 
-export async function ItemCard({ item }: { item: CatalogItem }) {
-  const [t, locale] = await Promise.all([getTranslations('catalog'), getLocale()]);
+export async function ItemCard({ item, priority = false }: { item: CatalogItem; priority?: boolean }) {
+  const [t, tCart, locale] = await Promise.all([getTranslations('catalog'), getTranslations('cart'), getLocale()]);
   const category = getCategory(item.category);
   const href = `/catalog/${item.category}/${item.slug}`;
   const name = item.name[locale];
-  const previewSpecs = item.specs.slice(0, 2);
 
   return (
-    <article className="flex h-full flex-col rounded-lg border border-line bg-surface p-4 shadow-card">
-      <div className="bg-grid-light relative flex h-32 items-center justify-center rounded-md border border-tint-200 bg-tint-50">
-        {category ? (
-          <CategoryIcon icon={category.icon} className="size-14 bg-surface shadow-card [&_svg]:size-7" />
-        ) : null}
+    <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-line bg-surface transition-shadow hover:shadow-hover">
+      <Link href={href} className="relative block aspect-square overflow-hidden bg-canvas" tabIndex={-1} aria-hidden>
+        <Image
+          src={productImage(item.slug)}
+          alt=""
+          fill
+          priority={priority}
+          sizes="(min-width: 1280px) 300px, (min-width: 640px) 45vw, 90vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+        />
         {item.standards.length > 0 ? (
-          <div className="absolute inset-x-3 top-3 flex flex-wrap gap-1">
+          <span className="absolute start-3 top-3 flex flex-wrap gap-1">
             {item.standards.slice(0, 2).map((standard) => (
-              <Badge key={standard} tone="neutral" size="sm" mono className="bg-surface">
+              <span
+                key={standard}
+                className="rounded-xs bg-surface/90 px-1.5 py-0.5 font-mono text-2xs font-medium text-navy shadow-card backdrop-blur"
+              >
                 {standard}
-              </Badge>
+              </span>
             ))}
-          </div>
+          </span>
         ) : null}
-      </div>
+      </Link>
 
-      {category ? <p className="mt-4 text-xs font-medium text-brand-ink">{category.name[locale]}</p> : null}
-      <h3 className="mt-1 text-md font-semibold">
-        <Link href={href} className="hover:text-navy-700">
-          {name}
-        </Link>
-      </h3>
-      <p className="mt-1.5 line-clamp-3 flex-1 text-sm">{item.summary[locale]}</p>
+      <div className="flex flex-1 flex-col p-4">
+        {category ? <p className="text-xs text-muted">{category.name[locale]}</p> : null}
+        <h3 className="mt-1 line-clamp-2 font-sans text-base leading-snug font-semibold">
+          <Link href={href} className="hover:text-navy-700">
+            {name}
+          </Link>
+        </h3>
+        <p className="mt-1.5 line-clamp-2 flex-1 text-sm text-muted">{item.summary[locale]}</p>
 
-      {previewSpecs.length > 0 ? (
-        <dl
-          className={cn(
-            'mt-4 grid gap-px overflow-hidden rounded-sm border border-line bg-line text-xs',
-            previewSpecs.length > 1 ? 'grid-cols-2' : 'grid-cols-1',
-          )}
-        >
-          {previewSpecs.map((spec) => (
-            <div key={spec.label} className="bg-canvas px-2.5 py-2">
-              <dt className="text-muted">{t(`specs.${spec.label}`)}</dt>
-              <dd className="mt-0.5 truncate font-medium text-ink">
-                <bdi>{specValue(spec, locale)}</bdi>
-              </dd>
-            </div>
-          ))}
-        </dl>
-      ) : null}
+        <div className="mt-4 flex items-center justify-between gap-2 rounded-sm bg-sand px-3 py-2">
+          <span className="flex items-center gap-1.5 text-xs font-semibold text-brand-ink">
+            <LockKeyhole aria-hidden className="size-3.5" />
+            {tCart('priceLocked')}
+          </span>
+          <span className="text-2xs text-muted">{t(`units.${item.unit}`)}</span>
+        </div>
 
-      <div className="mt-4 flex flex-col gap-2">
-        <AddToRfqButton category={item.category} slug={item.slug} itemName={name} size="sm" />
-        <Link
-          href={href}
-          className="inline-flex h-8 items-center justify-center rounded-sm border border-line px-3 text-xs font-semibold text-navy hover:bg-tint-100"
-        >
-          {t('viewItem')}
-          <span className="sr-only">: {name}</span>
-        </Link>
+        <AddToCart category={item.category} slug={item.slug} itemName={name} className="mt-3" />
       </div>
     </article>
   );

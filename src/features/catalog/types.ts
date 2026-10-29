@@ -28,6 +28,8 @@ export interface ItemSpec {
 export interface CatalogCategory {
   slug: string;
   icon: CategoryIcon;
+  /** Item whose studio render represents the category. */
+  cover: string;
   name: LocalizedText;
   summary: LocalizedText;
 }

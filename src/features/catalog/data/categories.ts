@@ -3,6 +3,7 @@ import type { CatalogCategory } from '../types';
 export const categories: readonly CatalogCategory[] = [
   {
     slug: 'valves-piping',
+    cover: 'ball-valves',
     icon: 'valve',
     name: { en: 'Valves, Pipes & Fittings', ar: 'الصمامات والأنابيب والوصلات' },
     summary: {
@@ -12,6 +13,7 @@ export const categories: readonly CatalogCategory[] = [
   },
   {
     slug: 'instrumentation',
+    cover: 'pressure-gauges',
     icon: 'gauge',
     name: { en: 'Instrumentation & Control', ar: 'أجهزة القياس والتحكم' },
     summary: {
@@ -21,6 +23,7 @@ export const categories: readonly CatalogCategory[] = [
   },
   {
     slug: 'safety-ppe',
+    cover: 'gas-detection-respiratory',
     icon: 'hardHat',
     name: { en: 'Safety & PPE', ar: 'معدات السلامة والوقاية الشخصية' },
     summary: {
@@ -30,6 +33,7 @@ export const categories: readonly CatalogCategory[] = [
   },
   {
     slug: 'fire-safety',
+    cover: 'fire-extinguishers',
     icon: 'flame',
     name: { en: 'Fire Fighting & Protection', ar: 'معدات مكافحة الحريق والحماية' },
     summary: {
@@ -39,6 +43,7 @@ export const categories: readonly CatalogCategory[] = [
   },
   {
     slug: 'electrical',
+    cover: 'cables',
     icon: 'plug',
     name: { en: 'Electrical & Lighting', ar: 'المواد الكهربائية والإنارة' },
     summary: {
@@ -48,6 +53,7 @@ export const categories: readonly CatalogCategory[] = [
   },
   {
     slug: 'mechanical-mro',
+    cover: 'mechanical-seals-pump-spares',
     icon: 'cog',
     name: { en: 'Mechanical Spares & MRO', ar: 'قطع الغيار الميكانيكية ومستلزمات الصيانة' },
     summary: {
@@ -57,6 +63,7 @@ export const categories: readonly CatalogCategory[] = [
   },
   {
     slug: 'tools-lifting',
+    cover: 'hand-power-tools',
     icon: 'hammer',
     name: { en: 'Tools, Lifting & Welding', ar: 'العدد ومعدات الرفع واللحام' },
     summary: {
@@ -66,6 +73,7 @@ export const categories: readonly CatalogCategory[] = [
   },
   {
     slug: 'plumbing',
+    cover: 'sanitary-ware',
     icon: 'droplets',
     name: { en: 'Plumbing & Building Materials', ar: 'مواد السباكة والبناء' },
     summary: {
@@ -75,6 +83,7 @@ export const categories: readonly CatalogCategory[] = [
   },
   {
     slug: 'consumables',
+    cover: 'janitorial-hygiene',
     icon: 'package',
     name: { en: 'Consumables & Office Supplies', ar: 'المواد الاستهلاكية والقرطاسية' },
     summary: {

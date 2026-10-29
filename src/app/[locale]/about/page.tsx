@@ -68,7 +68,7 @@ export default async function AboutPage({ params }: PageProps<'/[locale]/about'>
       </section>
 
       <section aria-labelledby="about-experience" className="container-site pb-16">
-        <div className="grid gap-10 rounded-lg bg-navy-900 p-6 sm:p-10 lg:grid-cols-2">
+        <div className="grid gap-10 rounded-xl bg-navy-900 p-6 sm:p-10 lg:grid-cols-2">
           <div>
             <SectionHeading
               id="about-experience"
@@ -77,9 +77,6 @@ export default async function AboutPage({ params }: PageProps<'/[locale]/about'>
               title={t('experienceTitle')}
               description={t('experienceBody')}
             />
-            <div className="mt-8 border-t border-white/10 pt-6">
-              <ClientsStrip label={tHome('clients.label')} />
-            </div>
           </div>
           <div>
             <h3 className="text-md font-semibold text-white">{t('capabilitiesTitle')}</h3>
@@ -94,6 +91,8 @@ export default async function AboutPage({ params }: PageProps<'/[locale]/about'>
           </div>
         </div>
       </section>
+
+      <ClientsStrip label={tHome('clients.label')} />
 
       <section aria-labelledby="about-vision" className="border-t border-line bg-surface">
         <div className="container-site max-w-4xl py-16">

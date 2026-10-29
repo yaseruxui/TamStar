@@ -24,5 +24,9 @@
   "company": "Company",
   "shop": "Procurement",
   "getInTouch": "Get in touch",
-  "copyright": "© {year} Tamstar Trading Est. All rights reserved."
+  "copyright": "© {year} Tamstar Trading Est. All rights reserved.",
+  "cart": "Cart",
+  "account": "Company account",
+  "signIn": "Sign in",
+  "checkout": "Checkout"
 }

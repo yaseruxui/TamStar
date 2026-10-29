@@ -1,7 +1,9 @@
 import { z } from 'zod';
 import { emailField, optionalPhoneField, requiredText } from '@/lib/validation/fields';
 
-export const inquiryTopics = ['rfq', 'product', 'supplier', 'other'] as const;
+export const inquiryTopics = ['account', 'rfq', 'product', 'supplier', 'other'] as const;
+
+export type InquiryTopicKey = (typeof inquiryTopics)[number];
 
 export const contactSchema = z.object({
   name: requiredText(120),

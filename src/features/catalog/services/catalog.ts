@@ -40,11 +40,13 @@ export function getRelatedItems(item: CatalogItem, limit = 3): readonly CatalogI
 
 const FEATURED_SLUGS = [
   'ball-valves',
+  'pressure-gauges',
   'flanges',
-  'transmitters',
-  'gas-detection-respiratory',
-  'mechanical-seals-pump-spares',
   'fire-extinguishers',
+  'bearings-transmission',
+  'mechanical-seals-pump-spares',
+  'cable-glands-accessories',
+  'industrial-lighting',
 ] as const;
 
 export function getFeaturedItems(): readonly CatalogItem[] {
@@ -88,4 +90,8 @@ export function searchItems(query: string, { category }: SearchOptions = {}): re
     }))
     .sort((a, b) => b.score - a.score)
     .map((entry) => entry.item);
+}
+
+export function getAllItems(): readonly CatalogItem[] {
+  return items;
 }

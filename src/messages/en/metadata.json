@@ -2,12 +2,17 @@
   "siteName": "TAMSTAR",
   "defaultTitle": "TAMSTAR — Industrial Procurement & Supply in Saudi Arabia",
   "description": "TAMSTAR (Tamstar Trading Est.) is a procurement solutions partner in Dammam, Saudi Arabia: global sourcing from 27 countries, local supplier management, MRO supply and logistics for mining, petrochemicals, energy and urban development.",
-  "home": { "title": "TAMSTAR — Industrial Procurement & Supply in Saudi Arabia" },
+  "home": {
+    "title": "TAMSTAR — Industrial Procurement & Supply in Saudi Arabia"
+  },
   "catalog": {
     "title": "Product catalog",
     "description": "Valves and piping, instrumentation, PPE, fire fighting, electrical, MRO spares, tools and consumables sourced by TAMSTAR for industrial clients in Saudi Arabia."
   },
-  "search": { "title": "Search results for “{query}”", "titleEmpty": "Search the catalog" },
+  "search": {
+    "title": "Search results for “{query}”",
+    "titleEmpty": "Search the catalog"
+  },
   "rfq": {
     "title": "Request a quotation",
     "description": "Send TAMSTAR your requirement, BOQ or drawings and receive a sourced quotation from our procurement team."
@@ -32,5 +37,17 @@
     "title": "Contact us",
     "description": "Contact TAMSTAR in Dammam: +966 13 857 5514 · info@tamstar.com.sa · Saturday – Thursday, 8:30 am – 5:30 pm."
   },
-  "notFound": { "title": "Page not found" }
+  "notFound": {
+    "title": "Page not found"
+  },
+  "cart": {
+    "title": "Cart"
+  },
+  "checkout": {
+    "title": "Checkout"
+  },
+  "account": {
+    "title": "Company accounts",
+    "description": "TAMSTAR opens an account for each company, invites a company admin, and the admin adds the procurement team with their roles and purchase limits."
+  }
 }

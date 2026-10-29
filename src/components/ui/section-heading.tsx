@@ -34,11 +34,11 @@ export function SectionHeading({
             {eyebrow}
           </p>
         ) : null}
-        <Heading id={id} className={cn('text-xl leading-snug sm:text-3xl', dark && 'text-white')}>
+        <Heading id={id} className={cn('text-xl leading-snug sm:text-2xl', dark && 'text-white')}>
           {title}
         </Heading>
         {description ? (
-          <p className={cn('mt-4 text-md leading-8', dark ? 'text-navy-on' : 'text-body')}>{description}</p>
+          <p className={cn('mt-2 text-base leading-7', dark ? 'text-navy-on' : 'text-muted')}>{description}</p>
         ) : null}
       </div>
       {action ? <div className="shrink-0">{action}</div> : null}
