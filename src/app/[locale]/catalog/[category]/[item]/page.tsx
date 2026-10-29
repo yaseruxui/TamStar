@@ -1,11 +1,10 @@
-import { ClipboardList, LockKeyhole, ShieldCheck, Truck, UserRound } from 'lucide-react';
+import { ClipboardList, FileCheck, LockKeyhole, ShieldCheck, Truck } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Breadcrumbs } from '@/components/common/breadcrumbs';
 import { JsonLdScript } from '@/components/seo/json-ld';
-import { Badge } from '@/components/ui/badge';
 import { ButtonLink } from '@/components/ui/button-link';
 import { AddToCart } from '@/features/cart/components/add-to-cart';
 import { ItemCard } from '@/features/catalog/components/item-card';
@@ -43,7 +42,7 @@ export async function generateMetadata({ params }: ItemPageProps): Promise<Metad
   });
   return {
     ...metadata,
-    openGraph: { ...metadata.openGraph, images: [{ url: productImage(item.slug), width: 1200, height: 1200 }] },
+    openGraph: { ...metadata.openGraph, images: [{ url: productImage(item.slug), width: 1000, height: 1000 }] },
   };
 }
 
@@ -64,23 +63,27 @@ export default async function ItemPage({ params }: ItemPageProps) {
   const related = getRelatedItems(item, 4);
   const pathname = `/catalog/${item.category}/${item.slug}`;
 
+  const assurances = [
+    { icon: ShieldCheck, text: t('pricingNote') },
+    { icon: Truck, text: t('delivery') },
+    { icon: FileCheck, text: t('certificates') },
+  ] as const;
+
   return (
     <>
-      <div className="border-b border-line bg-surface">
-        <div className="container-site py-4">
-          <Breadcrumbs
-            items={[
-              { label: tNav('catalog'), href: '/catalog' },
-              { label: category.name[locale], href: `/catalog/${category.slug}` },
-              { label: name },
-            ]}
-          />
-        </div>
+      <div className="container-site pt-6">
+        <Breadcrumbs
+          items={[
+            { label: tNav('catalog'), href: '/catalog' },
+            { label: category.name[locale], href: `/catalog/${category.slug}` },
+            { label: name },
+          ]}
+        />
       </div>
 
-      <div className="container-site grid gap-8 py-8 lg:grid-cols-12 lg:py-10">
+      <div className="container-site grid gap-8 py-6 lg:grid-cols-12 lg:gap-12 lg:py-8">
         <div className="lg:col-span-6">
-          <div className="relative aspect-square overflow-hidden rounded-xl border border-line bg-canvas lg:sticky lg:top-40">
+          <div className="relative aspect-square overflow-hidden rounded-2xl bg-tile lg:sticky lg:top-40">
             <Image
               src={productImage(item.slug)}
               alt={name}
@@ -90,101 +93,114 @@ export default async function ItemPage({ params }: ItemPageProps) {
               sizes="(min-width: 1024px) 600px, 100vw"
               className="h-full w-full object-cover"
             />
+            {item.standards[0] ? (
+              <span className="absolute start-5 top-5 rounded-full bg-surface/90 px-3 py-1.5 font-mono text-xs font-medium text-navy backdrop-blur">
+                {item.standards[0]}
+              </span>
+            ) : null}
           </div>
         </div>
 
-        <div className="lg:col-span-6">
-          <Link href={`/catalog/${category.slug}`} className="text-sm font-medium text-brand-ink hover:underline">
+        <div className="lg:col-span-6 lg:py-2">
+          <Link
+            href={`/catalog/${category.slug}`}
+            className="inline-flex rounded-full bg-tile px-3.5 py-1.5 text-xs font-semibold text-ink hover:bg-tile-strong"
+          >
             {category.name[locale]}
           </Link>
-          <h1 className="mt-2 text-2xl leading-tight sm:text-3xl">{name}</h1>
+          <h1 className="mt-4 text-[1.75rem] leading-tight sm:text-[2.5rem] sm:leading-[1.2]">{name}</h1>
+          <p className="mt-4 text-md leading-8 text-body">{item.summary[locale]}</p>
+
           {item.standards.length > 0 ? (
-            <ul className="mt-4 flex flex-wrap gap-2" aria-label={t('standards')}>
+            <ul className="mt-5 flex flex-wrap gap-2" aria-label={t('standards')}>
               {item.standards.map((standard) => (
-                <li key={standard}>
-                  <Badge tone="navy" mono>
-                    {standard}
-                  </Badge>
+                <li
+                  key={standard}
+                  className="rounded-full border border-line px-3 py-1 font-mono text-xs font-medium text-navy"
+                >
+                  {standard}
                 </li>
               ))}
             </ul>
           ) : null}
-          <p className="mt-5 text-md leading-8">{item.summary[locale]}</p>
 
-          <div className="mt-6 rounded-lg border border-line bg-surface p-5 shadow-card">
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-md bg-sand px-4 py-3">
-              <span className="flex items-center gap-2 font-semibold text-brand-ink">
-                <LockKeyhole aria-hidden className="size-4" />
-                {tCart('priceLocked')}
-              </span>
-              <Link
-                href="/account"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-navy hover:underline"
-              >
-                <UserRound aria-hidden className="size-4" />
-                {tCart('priceLockedHint')}
+          <div className="mt-8 rounded-xl border border-line p-5 sm:p-6">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <span className="grid size-11 place-items-center rounded-full bg-sand text-brand-ink">
+                  <LockKeyhole aria-hidden className="size-5" />
+                </span>
+                <span>
+                  <span className="block font-display text-lg font-bold text-ink">{tCart('priceLocked')}</span>
+                  <span className="block text-xs text-muted">
+                    {tCart('unitPer', { unit: t(`units.${item.unit}`) })}
+                  </span>
+                </span>
+              </div>
+              <Link href="/account" className="text-sm font-semibold text-brand-hover hover:underline">
+                {t('signInForPrice')}
               </Link>
             </div>
-            <p className="mt-3 text-xs text-muted">
-              {t('unit')}: <span className="font-medium text-ink">{t(`units.${item.unit}`)}</span>
-            </p>
-            <AddToCart category={item.category} slug={item.slug} itemName={name} variant="detail" className="mt-4" />
-            <ButtonLink href="/rfq" variant="outline" size="lg" className="mt-2 h-12 w-full">
+            <AddToCart category={item.category} slug={item.slug} itemName={name} variant="detail" className="mt-5" />
+            <ButtonLink href="/rfq" variant="outline" size="lg" className="mt-3 w-full">
               <ClipboardList aria-hidden />
               {t('requestNow')}
             </ButtonLink>
-            <ul className="mt-5 grid gap-3 border-t border-line pt-4 text-sm sm:grid-cols-2">
-              <li className="flex items-start gap-2.5">
-                <ShieldCheck aria-hidden className="mt-0.5 size-4 shrink-0 text-success" />
-                {t('pricingNote')}
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Truck aria-hidden className="mt-0.5 size-4 shrink-0 text-navy" />
-                {t('delivery')}
-              </li>
-            </ul>
           </div>
 
-          <section aria-labelledby="item-specs" className="mt-8">
-            <h2 id="item-specs" className="text-lg">
+          <ul className="mt-4 grid gap-2 rounded-xl bg-tile p-4 sm:p-5">
+            {assurances.map(({ icon: Icon, text }) => (
+              <li key={text} className="flex items-start gap-3 text-sm text-ink">
+                <Icon aria-hidden className="mt-0.5 size-[18px] shrink-0 text-brand-hover" />
+                {text}
+              </li>
+            ))}
+          </ul>
+
+          <section aria-labelledby="item-specs" className="mt-10">
+            <h2 id="item-specs" className="text-xl">
               {t('specifications')}
             </h2>
-            <dl className="mt-4 divide-y divide-line overflow-hidden rounded-lg border border-line bg-surface">
-              {item.specs.map((spec) => (
-                <div key={spec.label} className="grid gap-1 px-4 py-3 sm:grid-cols-[11rem_1fr] sm:gap-4">
+            <dl className="mt-4 overflow-hidden rounded-xl border border-line">
+              {item.specs.map((spec, index) => (
+                <div
+                  key={spec.label}
+                  className={`grid gap-1 px-5 py-3.5 sm:grid-cols-[11rem_1fr] sm:gap-4 ${index % 2 === 0 ? 'bg-tile/60' : ''}`}
+                >
                   <dt className="text-sm text-muted">{t(`specs.${spec.label}`)}</dt>
-                  <dd className="text-sm font-medium text-ink">
+                  <dd className="text-sm font-semibold text-ink">
                     <bdi>{specValue(spec, locale)}</bdi>
                   </dd>
                 </div>
               ))}
-              {item.standards.length > 0 ? (
-                <div className="grid gap-1 px-4 py-3 sm:grid-cols-[11rem_1fr] sm:gap-4">
-                  <dt className="text-sm text-muted">{t('standards')}</dt>
-                  <dd className="text-sm font-medium text-ink">
-                    <bdi>{item.standards.join(' · ')}</bdi>
-                  </dd>
-                </div>
-              ) : null}
+              <div
+                className={`grid gap-1 px-5 py-3.5 sm:grid-cols-[11rem_1fr] sm:gap-4 ${item.specs.length % 2 === 0 ? 'bg-tile/60' : ''}`}
+              >
+                <dt className="text-sm text-muted">{t('unit')}</dt>
+                <dd className="text-sm font-semibold text-ink">{t(`units.${item.unit}`)}</dd>
+              </div>
             </dl>
           </section>
         </div>
       </div>
 
       {related.length > 0 ? (
-        <section aria-labelledby="related-items" className="border-t border-line bg-surface">
-          <div className="container-site py-12">
-            <h2 id="related-items" className="text-xl">
+        <section aria-labelledby="related-items" className="container-site py-14 sm:py-20">
+          <div className="flex items-end justify-between gap-4">
+            <h2 id="related-items" className="text-2xl sm:text-[2rem]">
               {t('related')}
             </h2>
-            <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-4">
-              {related.map((relatedItem) => (
-                <li key={relatedItem.slug}>
-                  <ItemCard item={relatedItem} />
-                </li>
-              ))}
-            </ul>
+            <ButtonLink href={`/catalog/${category.slug}`} variant="outline">
+              {t('viewCategory')}
+            </ButtonLink>
           </div>
+          <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-4">
+            {related.map((relatedItem) => (
+              <li key={relatedItem.slug}>
+                <ItemCard item={relatedItem} />
+              </li>
+            ))}
+          </ul>
         </section>
       ) : null}
 

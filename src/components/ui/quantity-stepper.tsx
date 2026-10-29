@@ -36,7 +36,7 @@ export function QuantityStepper({
       role="group"
       aria-label={label}
       className={cn(
-        'inline-flex items-stretch overflow-hidden rounded-sm border border-line bg-surface',
+        'inline-flex items-stretch overflow-hidden rounded-full border border-line bg-surface',
         height,
         className,
       )}

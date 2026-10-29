@@ -48,14 +48,14 @@ export function AddToCart({ category, slug, itemName, variant = 'card', classNam
         label={`${t('quantity')}: ${itemName}`}
         decreaseLabel={t('decrease')}
         increaseLabel={t('increase')}
-        className={detail ? 'h-12' : undefined}
+        className={detail ? 'h-13' : undefined}
       />
       <Button
         onClick={add}
         variant={justAdded ? 'soft' : 'primary'}
         size={detail ? 'lg' : 'sm'}
         aria-label={`${t('addToCart')}: ${itemName}`}
-        className={cn('flex-1', detail ? 'h-12' : 'h-9')}
+        className={cn('flex-1', detail ? 'h-13' : 'h-9')}
       >
         {justAdded ? <Check aria-hidden /> : <ShoppingCart aria-hidden />}
         <span>
