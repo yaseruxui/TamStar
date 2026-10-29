@@ -5,6 +5,7 @@ import { getCartCatalog } from '@/features/cart/services/cart-catalog';
 import { CatalogSearchForm } from '@/features/catalog/components/catalog-search-form';
 import { getCategories } from '@/features/catalog/services/catalog';
 import { Link } from '@/lib/i18n/navigation';
+import { cn } from '@/utils/cn';
 import { CategoryBar } from './category-bar';
 import { Logo } from './logo';
 import { MobileMenu } from './mobile-menu';
@@ -25,11 +26,11 @@ export async function SiteHeader() {
           <Logo priority className="h-9 sm:h-11" />
           <CatalogSearchForm idPrefix="header-search" className="hidden max-w-3xl flex-1 md:flex" />
           <div className="ms-auto flex items-center gap-1 sm:gap-2">
-            <Link href="/account" className={`${action} hidden xl:inline-flex`}>
+            <Link href="/account" className={cn(action, 'hidden xl:inline-flex')}>
               <UserRound aria-hidden className="size-5 text-navy" />
               {t('account')}
             </Link>
-            <Link href="/rfq" className={`${action} hidden lg:inline-flex`}>
+            <Link href="/rfq" className={cn(action, 'hidden lg:inline-flex')}>
               <ClipboardList aria-hidden className="size-5 text-navy" />
               {t('rfq')}
             </Link>

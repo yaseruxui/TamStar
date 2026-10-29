@@ -58,7 +58,17 @@ export function AddToCart({ category, slug, itemName, variant = 'card', classNam
         className={cn('flex-1', detail ? 'h-12' : 'h-9')}
       >
         {justAdded ? <Check aria-hidden /> : <ShoppingCart aria-hidden />}
-        <span>{justAdded ? t('added') : inCart > 0 && detail ? t('inCart', { count: inCart }) : t('addToCart')}</span>
+        <span>
+          {justAdded
+            ? detail
+              ? t('added')
+              : t('addedShort')
+            : inCart > 0 && detail
+              ? t('inCart', { count: inCart })
+              : detail
+                ? t('addToCart')
+                : t('add')}
+        </span>
       </Button>
       <span aria-live="polite" className="sr-only">
         {justAdded ? `${t('added')}: ${itemName}` : ''}

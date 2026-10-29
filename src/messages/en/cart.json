@@ -26,5 +26,7 @@
   "checkout": "Proceed to checkout",
   "requestQuote": "Request a quotation for this cart",
   "clear": "Clear cart",
-  "unitPer": "per {unit}"
+  "unitPer": "per {unit}",
+  "add": "Add",
+  "addedShort": "Added"
 }

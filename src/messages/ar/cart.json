@@ -26,5 +26,7 @@
   "checkout": "إتمام الطلب",
   "requestQuote": "اطلب عرض سعر لهذه السلة",
   "clear": "إفراغ السلة",
-  "unitPer": "لكل {unit}"
+  "unitPer": "لكل {unit}",
+  "add": "أضف",
+  "addedShort": "أُضيف"
 }

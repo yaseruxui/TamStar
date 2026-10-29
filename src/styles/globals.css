@@ -35,6 +35,8 @@
   --color-surface: #ffffff;
   --color-canvas: #f4f6f9;
   --color-sand: #fff4e8;
+  /* Banner tone the hero composite is flattened onto (see public/products/hero.webp). */
+  --color-hero: #eaeff6;
   --color-tint-50: #f1f5fb;
   --color-tint-100: #eaf0f8;
   --color-tint-200: #dfe8f4;

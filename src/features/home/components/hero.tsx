@@ -11,13 +11,13 @@ export async function Hero() {
   return (
     <section className="container-site pt-6 pb-4 sm:pt-8">
       <div className="grid gap-4 lg:grid-cols-12">
-        <div className="relative isolate overflow-hidden rounded-xl bg-[radial-gradient(120%_120%_at_85%_20%,#ffffff_0%,#eef2f8_45%,#e3e9f2_100%)] lg:col-span-8">
-          <div className="relative z-10 flex flex-col p-6 sm:p-10 lg:max-w-[58%] lg:py-14">
+        <div className="relative isolate overflow-hidden rounded-xl bg-hero lg:col-span-8">
+          <div className="relative z-10 flex flex-col p-6 sm:p-10 lg:max-w-[54%] lg:py-12">
             <p className="inline-flex w-fit items-center gap-2 rounded-full bg-surface px-3 py-1 text-xs font-medium text-navy shadow-card">
               <span aria-hidden className="size-1.5 rounded-full bg-brand" />
               {t('hero.eyebrow')}
             </p>
-            <h1 className="mt-5 text-2xl leading-tight sm:text-4xl sm:leading-[1.2]">{t('hero.title')}</h1>
+            <h1 className="mt-5 text-2xl leading-tight sm:text-3xl sm:leading-[1.25]">{t('hero.title')}</h1>
             <p className="mt-4 text-base leading-7 text-body sm:text-md">{t('hero.lead')}</p>
             <div className="mt-7 flex flex-wrap gap-3">
               <ButtonLink href="/catalog" size="lg">
@@ -37,7 +37,7 @@ export async function Hero() {
             height={1100}
             priority
             sizes="(min-width: 1024px) 60vw, 100vw"
-            className="relative -mt-4 w-full lg:absolute lg:inset-y-0 lg:end-[-6%] lg:mt-0 lg:h-full lg:w-[72%] lg:object-contain lg:object-bottom rtl:lg:-scale-x-100"
+            className="relative -mt-2 w-full lg:absolute lg:end-[-4%] lg:bottom-0 lg:mt-0 lg:h-[88%] lg:w-[58%] lg:object-contain lg:object-bottom rtl:lg:-scale-x-100"
           />
         </div>
 
