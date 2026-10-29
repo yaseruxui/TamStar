@@ -1,14 +1,12 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ContactBand } from '@/components/common/contact-band';
-import { BomBand } from '@/features/home/components/bom-band';
+import { ClientsMarquee } from '@/features/company/components/clients-marquee';
+import { CapabilitiesSection } from '@/features/home/components/capabilities-section';
 import { CategoriesSection } from '@/features/home/components/categories-section';
-import { FeaturedSection } from '@/features/home/components/featured-section';
 import { Hero } from '@/features/home/components/hero';
-import { LogisticsSection } from '@/features/home/components/logistics-section';
-import { ModelsSection } from '@/features/home/components/models-section';
 import { ProjectsSection } from '@/features/home/components/projects-section';
-import { RfqFlowSection } from '@/features/home/components/rfq-flow-section';
+import { RfqSection } from '@/features/home/components/rfq-section';
 import { resolveLocale } from '@/lib/i18n/resolve-locale';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 
@@ -27,17 +25,16 @@ export async function generateMetadata({ params }: PageProps<'/[locale]'>): Prom
 
 export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   setRequestLocale(resolveLocale((await params).locale));
+  const t = await getTranslations('home');
 
   return (
     <>
       <Hero />
+      <ClientsMarquee label={t('clients.label')} />
       <CategoriesSection />
-      <FeaturedSection />
-      <BomBand />
-      <ModelsSection />
-      <LogisticsSection />
-      <RfqFlowSection />
+      <CapabilitiesSection />
       <ProjectsSection />
+      <RfqSection />
       <ContactBand />
     </>
   );

@@ -49,7 +49,7 @@ export function MobileMenu() {
           setOpenedAt(pathname);
           setOpen((value) => !value);
         }}
-        className="grid size-11 place-items-center rounded-sm border border-line text-navy"
+        className="grid size-11 place-items-center rounded-sm border border-paper-line text-navy"
       >
         {open ? <X aria-hidden className="size-5" /> : <Menu aria-hidden className="size-5" />}
       </button>
@@ -57,7 +57,7 @@ export function MobileMenu() {
       <div
         id={panelId}
         hidden={!open}
-        className="absolute inset-x-0 top-full z-40 h-dvh overflow-y-auto overscroll-contain border-t border-line bg-surface shadow-raised"
+        className="absolute inset-x-0 top-full z-40 h-dvh overflow-y-auto overscroll-contain border-t border-paper-line bg-canvas"
       >
         <nav aria-label={t('mainLabel')} className="container-site py-4">
           <ul className="divide-y divide-line">
@@ -69,7 +69,10 @@ export function MobileMenu() {
                   <Link
                     href={href}
                     aria-current={active ? 'page' : undefined}
-                    className={cn('flex h-12 items-center text-md font-medium text-ink', active && 'text-navy-700')}
+                    className={cn(
+                      'flex h-14 items-center font-display text-lg font-medium text-ink',
+                      active && 'text-navy-700',
+                    )}
                   >
                     {active ? <span aria-hidden className="me-3 h-5 w-0.5 bg-brand" /> : null}
                     {t(key)}

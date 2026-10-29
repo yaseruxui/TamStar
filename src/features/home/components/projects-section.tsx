@@ -1,15 +1,17 @@
 import { getTranslations } from 'next-intl/server';
 import { ButtonLink } from '@/components/ui/button-link';
 import { SectionHeading } from '@/components/ui/section-heading';
-import { ProjectCard } from '@/features/company/components/project-card';
+import { ProjectsLedger } from '@/features/company/components/projects-ledger';
 import { projects } from '@/features/company/data/projects';
+
+const HOME_PROJECTS = ['maaden', 'petroRabigh', 'acwaPower', 'veolia', 'imi', 'neom'];
 
 export async function ProjectsSection() {
   const t = await getTranslations('home.projects');
-  const featured = projects.filter((project) => project.featured);
+  const selected = projects.filter((project) => HOME_PROJECTS.includes(project.key));
 
   return (
-    <section aria-labelledby="home-projects" className="container-site py-16 sm:py-20">
+    <section aria-labelledby="home-projects" className="reveal container-site py-20 sm:py-24">
       <SectionHeading
         id="home-projects"
         eyebrow={t('eyebrow')}
@@ -21,13 +23,9 @@ export async function ProjectsSection() {
           </ButtonLink>
         }
       />
-      <ul className="mt-10 grid gap-4 lg:grid-cols-3">
-        {featured.map((project) => (
-          <li key={project.key}>
-            <ProjectCard project={project} />
-          </li>
-        ))}
-      </ul>
+      <div className="mt-12">
+        <ProjectsLedger projects={selected} />
+      </div>
     </section>
   );
 }

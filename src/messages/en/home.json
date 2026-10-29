@@ -1,10 +1,11 @@
 {
   "hero": {
-    "eyebrow": "B2B industrial procurement · Dammam, KSA",
-    "title": "Procurement and supply for the industries building the Kingdom",
-    "lead": "Valves and piping, instrumentation, safety, electrical and MRO supply for mining, petrochemicals, energy and urban development — sourced from 27 countries and delivered across Saudi Arabia.",
-    "primary": "Browse the catalog",
-    "secondary": "Request a quotation"
+    "eyebrow": "Industrial procurement desk · Dammam",
+    "title": "Supplying the Kingdom’s industry, to the exact specification.",
+    "lead": "Valves and piping, instrumentation, safety, electrical and spare parts — sourced from 27 countries and delivered to mining, petrochemical and energy sites across Saudi Arabia.",
+    "primary": "Request a quotation",
+    "secondary": "Browse the catalog",
+    "caption": "Sheet 01 — Weld-neck flange, raised face"
   },
   "quickSearch": {
     "title": "Find a part or send a requirement",
@@ -24,8 +25,8 @@
     "label": "Supplying leading Saudi and international operators"
   },
   "categories": {
-    "eyebrow": "Catalog",
-    "title": "Product categories",
+    "eyebrow": "What we supply",
+    "title": "Nine categories covering a site from the gate to the process line",
     "body": "The product families we source most for plants, shutdowns and project sites.",
     "link": "All categories",
     "count": "{count, plural, one {# product family} other {# product families}}"
@@ -81,7 +82,10 @@
       "title": "Technical review",
       "body": "Our team reviews specifications and confirms anything that needs clarification."
     },
-    "sourcing": { "title": "Sourcing", "body": "We source from qualified local and international suppliers." },
+    "sourcing": {
+      "title": "Sourcing",
+      "body": "We source from qualified local and international suppliers."
+    },
     "quotation": {
       "title": "Quotation",
       "body": "You receive a complete quotation to accept, reject or ask us to revise."
@@ -90,7 +94,7 @@
   },
   "projects": {
     "eyebrow": "Track record",
-    "title": "Long-term agreements with the Kingdom's leading operators",
+    "title": "A record of agreements with the Kingdom’s leading operators",
     "body": "Buying-agent, sourcing and supply agreements across mining, petrochemicals, energy and giga-projects.",
     "link": "All projects"
   }

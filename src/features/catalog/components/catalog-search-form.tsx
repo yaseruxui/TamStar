@@ -1,29 +1,48 @@
 import { Search } from 'lucide-react';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { getCategories } from '@/features/catalog/services/catalog';
 import { getPathname } from '@/lib/i18n/navigation';
 import { cn } from '@/utils/cn';
+import { getCategories } from '../services/catalog';
 
-interface HeaderSearchProps {
-  className?: string;
+interface CatalogSearchFormProps {
   idPrefix: string;
+  defaultQuery?: string;
+  defaultCategory?: string;
+  size?: 'md' | 'lg';
+  className?: string;
 }
 
 /** Plain GET form — works before hydration and costs no client JavaScript. */
-export async function HeaderSearch({ className, idPrefix }: HeaderSearchProps) {
+export async function CatalogSearchForm({
+  idPrefix,
+  defaultQuery = '',
+  defaultCategory = '',
+  size = 'md',
+  className,
+}: CatalogSearchFormProps) {
   const [t, locale] = await Promise.all([getTranslations('navigation'), getLocale()]);
   const action = getPathname({ href: '/search', locale });
+  const large = size === 'lg';
 
   return (
-    <form action={action} method="get" role="search" className={cn('flex h-11 w-full', className)}>
+    <form
+      action={action}
+      method="get"
+      role="search"
+      className={cn(
+        'flex w-full overflow-hidden rounded-sm border border-navy/25 bg-surface shadow-card focus-within:border-navy',
+        large ? 'h-14' : 'h-12',
+        className,
+      )}
+    >
       <label htmlFor={`${idPrefix}-category`} className="sr-only">
         {t('categoriesLabel')}
       </label>
       <select
         id={`${idPrefix}-category`}
         name="category"
-        defaultValue=""
-        className="hidden w-40 shrink-0 appearance-none truncate rounded-s-sm border border-e-0 border-line bg-tint-100 px-3 text-sm text-ink outline-none focus:border-navy-600 lg:block"
+        defaultValue={defaultCategory}
+        className="hidden w-44 shrink-0 appearance-none truncate border-e border-line bg-canvas/60 px-4 text-sm text-ink outline-none sm:block"
       >
         <option value="">{t('allCategories')}</option>
         {getCategories().map((category) => (
@@ -38,7 +57,7 @@ export async function HeaderSearch({ className, idPrefix }: HeaderSearchProps) {
         </label>
         <Search
           aria-hidden
-          className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted"
+          className="pointer-events-none absolute start-4 top-1/2 size-[18px] -translate-y-1/2 text-muted"
         />
         <input
           id={`${idPrefix}-q`}
@@ -46,15 +65,19 @@ export async function HeaderSearch({ className, idPrefix }: HeaderSearchProps) {
           type="search"
           required
           maxLength={120}
+          defaultValue={defaultQuery}
           enterKeyHint="search"
           autoComplete="off"
           placeholder={t('searchPlaceholder')}
-          className="h-full w-full rounded-s-sm border border-line bg-surface ps-9 pe-3 text-sm text-ink outline-none placeholder:text-muted/80 focus:border-navy-600 lg:rounded-none"
+          className={cn(
+            'h-full w-full bg-transparent ps-11 pe-3 text-ink outline-none placeholder:text-muted/80',
+            large ? 'text-md' : 'text-base',
+          )}
         />
       </div>
       <button
         type="submit"
-        className="inline-flex shrink-0 items-center gap-2 rounded-e-sm bg-navy px-4 text-sm font-semibold text-white transition-colors hover:bg-navy-700 sm:px-5"
+        className="inline-flex shrink-0 items-center gap-2 bg-navy px-5 text-sm font-semibold text-white transition-colors hover:bg-navy-700 sm:px-7"
       >
         <Search aria-hidden className="size-4 sm:hidden" />
         <span className="sr-only sm:not-sr-only">{t('searchSubmit')}</span>

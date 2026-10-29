@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { PageHeader } from '@/components/common/page-header';
 import { EmptyState } from '@/components/feedback/empty-state';
 import { ButtonLink } from '@/components/ui/button-link';
+import { CatalogSearchForm } from '@/features/catalog/components/catalog-search-form';
 import { ItemCard } from '@/features/catalog/components/item-card';
 import { NotListedCard } from '@/features/catalog/components/not-listed-card';
 import { getCategory, searchItems } from '@/features/catalog/services/catalog';
@@ -54,6 +55,13 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
         crumbs={[{ label: tNav('catalog'), href: '/catalog' }, { label: t('search.title') }]}
       />
       <div className="container-site py-12">
+        <CatalogSearchForm
+          idPrefix="search-page"
+          size="lg"
+          defaultQuery={query}
+          defaultCategory={category?.slug}
+          className="mb-10"
+        />
         {results.length > 0 ? (
           <>
             <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

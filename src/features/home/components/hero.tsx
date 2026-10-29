@@ -1,53 +1,98 @@
-import { ArrowLeft, ArrowRight, MapPin } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ClipboardList } from 'lucide-react';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { ClientMessages } from '@/components/common/client-messages';
+import { FlangeDrawing } from '@/components/illustrations/flange-drawing';
 import { ButtonLink } from '@/components/ui/button-link';
-import { ClientsStrip } from '@/features/company/components/clients-strip';
-import { StatsRow } from '@/features/company/components/stats-row';
-import { QuickSearchCard } from './quick-search-card';
+import { CatalogSearchForm } from '@/features/catalog/components/catalog-search-form';
+import { Link } from '@/lib/i18n/navigation';
+import { stats } from '@/lib/config/site';
+
+const EXAMPLES = ['API 6D', 'ASME B16.5', 'EN 388', 'ATEX'] as const;
 
 export async function Hero() {
-  const [t, tCommon, locale] = await Promise.all([getTranslations('home'), getTranslations('common'), getLocale()]);
+  const [t, tStats, locale] = await Promise.all([
+    getTranslations('home'),
+    getTranslations('common.stats'),
+    getLocale(),
+  ]);
   const Arrow = locale === 'ar' ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="bg-grid-navy relative overflow-hidden text-white">
-      <div aria-hidden className="absolute inset-y-0 end-0 hidden w-[38%] bg-navy-950/40 lg:block" />
-      <div className="container-site relative grid gap-10 pt-12 pb-10 lg:grid-cols-[1fr_26rem] lg:gap-14 lg:pt-16">
-        <div className="flex flex-col">
-          <p className="inline-flex w-fit items-center gap-2 rounded-xs border border-white/15 bg-white/5 px-2.5 py-1 text-xs font-medium text-navy-on">
-            <span aria-hidden className="size-1.5 rounded-full bg-brand" />
-            {t('hero.eyebrow')}
+    <section className="bg-drafting relative overflow-hidden border-b border-paper-line">
+      <div className="container-site grid items-center gap-12 pt-12 pb-14 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-20">
+        <div className="lg:col-span-7">
+          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium text-navy">
+            <span className="inline-flex items-center gap-2">
+              <span aria-hidden className="h-px w-8 bg-brand" />
+              {t('hero.eyebrow')}
+            </span>
+            <span dir="ltr" className="font-mono text-2xs text-muted">
+              26.43°N · 50.10°E
+            </span>
           </p>
-          <h1 className="mt-5 max-w-2xl text-3xl font-bold text-white sm:text-4xl">{t('hero.title')}</h1>
-          <p className="mt-5 max-w-2xl text-md leading-7 text-navy-on">{t('hero.lead')}</p>
+          <h1 className="mt-6 text-3xl leading-[1.15] font-semibold text-ink sm:text-4xl lg:text-5xl lg:leading-[1.1]">
+            {t('hero.title')}
+          </h1>
+          <p className="mt-6 max-w-xl text-md leading-8 text-body">{t('hero.lead')}</p>
+
           <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href="/catalog" size="lg">
+            <ButtonLink href="/rfq" size="lg">
+              <ClipboardList aria-hidden />
               {t('hero.primary')}
+            </ButtonLink>
+            <ButtonLink href="/catalog" size="lg" variant="outline" className="bg-transparent">
+              {t('hero.secondary')}
               <Arrow aria-hidden />
             </ButtonLink>
-            <ButtonLink href="/rfq" size="lg" variant="inverseOutline">
-              {t('hero.secondary')}
-            </ButtonLink>
           </div>
-          <StatsRow className="mt-10" />
+
+          <div className="mt-10 max-w-2xl">
+            <CatalogSearchForm idPrefix="hero-search" size="lg" />
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+              <span className="text-muted">{t('quickSearch.examples')}:</span>
+              {EXAMPLES.map((example) => (
+                <Link
+                  key={example}
+                  href={{ pathname: '/search', query: { q: example } }}
+                  className="rounded-xs border border-paper-line bg-surface/70 px-2 py-0.5 font-mono text-navy transition-colors hover:border-navy"
+                >
+                  {example}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="lg:pt-2">
-          <ClientMessages namespaces={['home']}>
-            <QuickSearchCard />
-          </ClientMessages>
-          <p className="mt-4 flex items-center gap-2 text-xs text-navy-on">
-            <MapPin aria-hidden className="size-3.5 text-brand" />
-            {tCommon('addressLine1')} · {tCommon('addressLine2')}
-          </p>
-        </div>
+        <figure className="relative lg:col-span-5">
+          <div className="relative rounded-xs border border-navy/20 bg-canvas/70 p-4 sm:p-6">
+            {[
+              'start-0 top-0 border-s border-t',
+              'end-0 top-0 border-e border-t',
+              'start-0 bottom-0 border-s border-b',
+              'end-0 bottom-0 border-e border-b',
+            ].map((corner) => (
+              <span key={corner} aria-hidden className={`absolute size-4 border-brand ${corner} -m-px`} />
+            ))}
+            <FlangeDrawing className="h-auto w-full" />
+          </div>
+          <figcaption className="label-tech mt-3 text-muted">{t('hero.caption')}</figcaption>
+        </figure>
       </div>
-      <div className="relative border-t border-white/10 bg-navy-950/50">
-        <div className="container-site py-6">
-          <ClientsStrip label={t('clients.label')} />
+
+      <dl className="border-t border-paper-line bg-canvas/80">
+        <div className="container-site grid grid-cols-2 lg:grid-cols-4">
+          {stats.map((stat, index) => (
+            <div
+              key={stat.key}
+              className={`flex flex-col-reverse gap-1 py-6 ${index % 2 === 1 ? 'ps-6' : ''} ${index > 0 ? 'lg:border-s lg:border-paper-line lg:ps-8' : ''} ${index < 2 ? 'max-lg:border-b max-lg:border-paper-line' : ''}`}
+            >
+              <dt className="text-sm text-muted">{tStats(stat.key)}</dt>
+              <dd className="font-display text-3xl font-semibold text-navy tabular lg:text-4xl">
+                <bdi>{stat.value}</bdi>
+              </dd>
+            </div>
+          ))}
         </div>
-      </div>
+      </dl>
     </section>
   );
 }

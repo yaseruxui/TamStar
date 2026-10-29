@@ -1,50 +1,54 @@
 @import 'tailwindcss';
 
 /*
- * Design tokens extracted from the TAMSTAR Figma file (Ahmed) — colors, type scale,
- * radii and elevation map 1:1 to the values used in the frames.
+ * TAMSTAR identity — "precision procurement": warm drafting-paper surfaces, the logo's navy and
+ * orange, a geometric display face (Alexandria) and technical-drawing line work.
+ * Token names are shared by every component; change values here, not in markup.
  */
 @theme {
   --font-sans: var(--font-plex-arabic), 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-alexandria), var(--font-plex-arabic), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, 'SFMono-Regular', monospace;
 
-  --color-ink: #101c2a;
-  --color-ink-strong: #0f172a;
-  --color-body: #424750;
-  --color-muted: #63676f;
-  --color-subtle: #c3c6d1;
+  --color-ink: #0b1424;
+  --color-ink-strong: #070d18;
+  --color-body: #3a4150;
+  --color-muted: #5b6270;
+  --color-subtle: #b9bcc4;
 
-  --color-navy-950: #0f172a;
-  --color-navy-900: #101c2a;
-  --color-navy-850: #253140;
+  --color-navy-950: #07111f;
+  --color-navy-900: #0b1a2e;
+  --color-navy-850: #1a2a40;
   --color-navy: #002d59;
   --color-navy-700: #0b3c7b;
   --color-navy-600: #0e437c;
-  --color-navy-on: #d7e3f6;
+  --color-navy-on: #cfdaeb;
 
   --color-brand: #fc9025;
-  --color-brand-hover: #e67e22;
-  --color-brand-ink: #914d00;
+  --color-brand-hover: #ec7f12;
+  --color-brand-ink: #8a4a00;
   --color-brand-soft: #ffdcc3;
+  --color-brand-tint: #fda04a;
   --color-logo-orange: #fa9e0d;
   --color-logo-blue: #0047ba;
 
   --color-surface: #ffffff;
-  --color-canvas: #f8fafc;
-  --color-sand: #f4f1ea;
-  --color-tint-50: #eff6ff;
-  --color-tint-100: #eef4ff;
-  --color-tint-200: #e4efff;
-  --color-tint-300: #dde9fc;
-  --color-tint-400: #d7e3f6;
-  --color-line: #e2e8f0;
-  --color-link: #1e40af;
+  --color-canvas: #f4f1ea;
+  --color-sand: #ebe5d8;
+  --color-paper-line: #d9d2c2;
+  --color-tint-50: #f1f5fb;
+  --color-tint-100: #eaf0f8;
+  --color-tint-200: #dfe8f4;
+  --color-tint-300: #cfdcee;
+  --color-tint-400: #bfd0e8;
+  --color-line: #e2ddd1;
+  --color-link: #0b3c7b;
 
   --color-success: #047857;
   --color-success-ink: #065f46;
-  --color-success-soft: #ecfdf5;
-  --color-danger: #ba1a1a;
-  --color-danger-soft: #fdecec;
+  --color-success-soft: #e6f4ee;
+  --color-danger: #b42318;
+  --color-danger-soft: #fdecea;
 
   --text-2xs: 0.6875rem;
   --text-2xs--line-height: 0.875rem;
@@ -52,30 +56,47 @@
   --text-xs--line-height: 1rem;
   --text-sm: 0.8125rem;
   --text-sm--line-height: 1.25rem;
-  --text-base: 0.875rem;
-  --text-base--line-height: 1.375rem;
-  --text-md: 1rem;
-  --text-md--line-height: 1.5rem;
-  --text-lg: 1.125rem;
-  --text-lg--line-height: 1.75rem;
-  --text-xl: 1.375rem;
-  --text-xl--line-height: 1.875rem;
-  --text-2xl: 1.75rem;
-  --text-2xl--line-height: 2.375rem;
-  --text-3xl: 2.25rem;
-  --text-3xl--line-height: 2.875rem;
-  --text-4xl: 2.75rem;
-  --text-4xl--line-height: 3.5rem;
+  --text-base: 0.9375rem;
+  --text-base--line-height: 1.5rem;
+  --text-md: 1.0625rem;
+  --text-md--line-height: 1.625rem;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.875rem;
+  --text-xl: 1.5rem;
+  --text-xl--line-height: 2.125rem;
+  --text-2xl: 2rem;
+  --text-2xl--line-height: 2.625rem;
+  --text-3xl: 2.75rem;
+  --text-3xl--line-height: 3.375rem;
+  --text-4xl: 3.5rem;
+  --text-4xl--line-height: 4.125rem;
+  --text-5xl: 4.5rem;
+  --text-5xl--line-height: 5.125rem;
 
   --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
 
-  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-raised: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-card: 0 1px 0 0 rgb(11 20 36 / 0.04);
+  --shadow-raised: 0 12px 32px -12px rgb(11 20 36 / 0.25);
 
-  --container-site: 80rem;
+  --container-site: 82rem;
+
+  --animate-draw: draw 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(var(--marquee-shift, -50%));
+    }
+  }
 }
 
 @layer base {
@@ -99,7 +120,14 @@
   h3,
   h4 {
     color: var(--color-ink);
+    font-family: var(--font-display);
+    font-weight: 600;
     text-wrap: balance;
+  }
+
+  /* Negative tracking for Latin display type only — tracking breaks Arabic joins. */
+  :lang(en) :is(h1, h2) {
+    letter-spacing: -0.02em;
   }
 
   p {
@@ -139,20 +167,78 @@
 }
 
 @utility bg-grid-navy {
-  background-color: var(--color-navy);
+  background-color: var(--color-navy-900);
   background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 @utility bg-grid-light {
   background-image:
-    linear-gradient(to right, var(--color-tint-200) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-tint-200) 1px, transparent 1px);
+    linear-gradient(to right, rgb(0 45 89 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 45 89 / 0.06) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+/* Drafting paper: fine 8px grid with a heavier 40px major grid. */
+@utility bg-drafting {
+  background-color: var(--color-canvas);
+  background-image:
+    linear-gradient(to right, rgb(0 45 89 / 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 45 89 / 0.07) 1px, transparent 1px),
+    linear-gradient(to right, rgb(0 45 89 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 45 89 / 0.03) 1px, transparent 1px);
+  background-size:
+    40px 40px,
+    40px 40px,
+    8px 8px,
+    8px 8px;
+}
+
+/* Line-drawing reveal: give an element pathLength="1" and this utility. */
+@utility line-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: var(--animate-draw);
+
+  @media (prefers-reduced-motion: reduce) {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
+
+/* Scroll-linked fade-up for sections; no JavaScript, ignored where unsupported. */
+@utility reveal {
+  @supports (animation-timeline: view()) {
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
 }
 
 @utility tabular {
   font-variant-numeric: tabular-nums;
+}
+
+/* Technical caption: mono caps in Latin; plain medium weight in Arabic (no tracking, no mono). */
+@utility label-tech {
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  font-weight: 500;
+
+  &:lang(en) {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
 }

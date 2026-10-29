@@ -7,7 +7,7 @@ import { SiteFooter } from '@/components/common/site-footer';
 import { SiteHeader } from '@/components/common/site-header';
 import { JsonLdScript } from '@/components/seo/json-ld';
 import { siteUrl } from '@/lib/env';
-import { plexArabic, plexMono } from '@/lib/fonts';
+import { alexandria, plexArabic, plexMono } from '@/lib/fonts';
 import { localeDirection, routing } from '@/lib/i18n/routing';
 import { organizationJsonLd } from '@/lib/seo/json-ld';
 import { buildPageMetadata } from '@/lib/seo/metadata';
@@ -56,7 +56,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
   const [t, tMeta] = await Promise.all([getTranslations('common'), getTranslations('metadata')]);
 
   return (
-    <html lang={locale} dir={localeDirection[locale]} className={cn(plexArabic.variable, plexMono.variable)}>
+    <html
+      lang={locale}
+      dir={localeDirection[locale]}
+      className={cn(alexandria.variable, plexArabic.variable, plexMono.variable)}
+    >
       <body className="flex min-h-dvh flex-col">
         <a
           href="#main"

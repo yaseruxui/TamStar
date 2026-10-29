@@ -14,8 +14,8 @@ export function MainNav() {
   const pathname = usePathname();
 
   return (
-    <nav aria-label={t('mainLabel')} className="hidden bg-navy lg:block">
-      <ul className="container-site flex h-11 items-stretch gap-1">
+    <nav aria-label={t('mainLabel')} className="hidden h-full lg:block">
+      <ul className="flex h-full items-stretch gap-1">
         {primaryNav.map((key) => {
           const href = routes[key];
           const active = isActivePath(pathname, href);
@@ -25,8 +25,9 @@ export function MainNav() {
                 href={href}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'relative flex items-center px-3 text-sm font-medium text-navy-on transition-colors hover:text-white',
-                  active && 'text-white after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-brand',
+                  'relative flex items-center px-3 text-sm font-medium text-body transition-colors hover:text-ink',
+                  'after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:scale-x-0 after:bg-brand after:transition-transform hover:after:scale-x-100',
+                  active && 'text-ink after:scale-x-100',
                 )}
               >
                 {t(key)}

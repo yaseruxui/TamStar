@@ -11,17 +11,17 @@ interface PageHeaderProps {
 
 export function PageHeader({ eyebrow, title, lead, crumbs, aside }: PageHeaderProps) {
   return (
-    <section className="border-b border-line bg-surface">
-      <div className="container-site py-8 sm:py-12">
+    <section className="bg-drafting border-b border-paper-line">
+      <div className="container-site py-10 sm:py-16">
         <Breadcrumbs items={crumbs} />
-        <div className="mt-6 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div className="max-w-3xl">
-            <p className="mb-3 flex items-center gap-2 text-xs font-semibold text-brand-ink">
-              <span aria-hidden className="h-px w-5 bg-current" />
+            <p className="flex items-center gap-2 text-xs font-medium text-brand-ink">
+              <span aria-hidden className="h-px w-8 bg-brand" />
               {eyebrow}
             </p>
-            <h1 className="text-2xl font-bold sm:text-3xl">{title}</h1>
-            {lead ? <p className="mt-4 text-md text-body">{lead}</p> : null}
+            <h1 className="mt-4 text-2xl leading-tight sm:text-4xl">{title}</h1>
+            {lead ? <p className="mt-5 max-w-2xl text-md leading-8 text-body">{lead}</p> : null}
           </div>
           {aside}
         </div>
