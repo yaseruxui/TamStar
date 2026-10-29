@@ -9,7 +9,7 @@ export async function CategoryTile({ category, itemCount }: { category: CatalogC
   const [t, locale] = await Promise.all([getTranslations('catalog'), getLocale()]);
 
   return (
-    <Link href={`/catalog/${category.slug}`} className="group flex flex-col items-center text-center">
+    <Link href={`/catalog/${category.slug}`} className="reveal group flex flex-col items-center text-center">
       <span className="relative block aspect-square w-full overflow-hidden rounded-xl bg-tile">
         <Image
           src={productImage(category.cover)}
