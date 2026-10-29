@@ -49,7 +49,7 @@ export function MobileMenu() {
           setOpenedAt(pathname);
           setOpen((value) => !value);
         }}
-        className="grid size-11 place-items-center rounded-sm border border-line text-navy"
+        className="grid size-12 place-items-center rounded-full border border-line text-ink"
       >
         {open ? <X aria-hidden className="size-5" /> : <Menu aria-hidden className="size-5" />}
       </button>

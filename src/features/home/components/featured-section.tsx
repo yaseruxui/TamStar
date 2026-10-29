@@ -8,8 +8,8 @@ export async function FeaturedSection() {
   const t = await getTranslations('home.featured');
 
   return (
-    <section aria-labelledby="home-featured" className="border-y border-line bg-surface">
-      <div className="container-site py-12 sm:py-16">
+    <section aria-labelledby="home-featured">
+      <div className="container-site pb-14 sm:pb-20">
         <SectionHeading
           id="home-featured"
           eyebrow={t('eyebrow')}
@@ -20,7 +20,7 @@ export async function FeaturedSection() {
             </ButtonLink>
           }
         />
-        <ul className="mt-8 grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-4">
           {getFeaturedItems().map((item) => (
             <li key={item.slug}>
               <ItemCard item={item} />

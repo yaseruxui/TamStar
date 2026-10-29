@@ -60,7 +60,7 @@ export default async function CategoryPage({ params }: PageProps<'/[locale]/cata
           </div>
         </aside>
         <div>
-          <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <ul className="grid grid-cols-2 gap-x-4 gap-y-8 xl:grid-cols-3">
             {items.map((item) => (
               <li key={item.slug}>
                 <ItemCard item={item} />

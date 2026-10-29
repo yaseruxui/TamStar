@@ -3,23 +3,24 @@ import type { ComponentPropsWithoutRef } from 'react';
 import { cn } from '@/utils/cn';
 
 export const buttonVariants = cva(
-  'inline-flex shrink-0 items-center justify-center gap-2 rounded-sm font-semibold whitespace-nowrap transition-colors duration-150 disabled:pointer-events-none disabled:opacity-60 [&_svg]:size-4 [&_svg]:shrink-0',
+  'inline-flex shrink-0 items-center justify-center gap-2 rounded-full font-semibold whitespace-nowrap transition-colors duration-150 disabled:pointer-events-none disabled:opacity-60 [&_svg]:size-4 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
-        primary: 'bg-brand text-navy-950 hover:bg-brand-hover',
-        navy: 'bg-navy text-white hover:bg-navy-700',
-        outline: 'border border-line bg-surface text-navy hover:border-navy-600 hover:bg-tint-100',
+        primary:
+          'bg-gradient-to-b from-brand-light to-brand text-navy-950 shadow-[0_8px_20px_-8px_rgb(252_144_37/0.7)] hover:to-brand-hover',
+        navy: 'bg-navy-950 text-white hover:bg-navy',
+        outline: 'border border-line bg-surface text-ink hover:border-ink/30',
         soft: 'bg-tint-200 text-navy hover:bg-tint-300',
         ghost: 'text-navy hover:bg-tint-100',
         inverse: 'bg-white text-navy hover:bg-tint-100',
         inverseOutline: 'border border-white/25 text-white hover:bg-white/10',
       },
       size: {
-        sm: 'h-8 px-3 text-xs',
-        md: 'h-10 px-4 text-sm',
-        lg: 'h-12 px-6 text-base',
-        icon: 'size-10',
+        sm: 'h-9 px-4 text-xs',
+        md: 'h-11 px-5 text-sm',
+        lg: 'h-13 px-7 text-base',
+        icon: 'size-11',
       },
     },
     defaultVariants: {

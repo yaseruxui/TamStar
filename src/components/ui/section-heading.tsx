@@ -27,14 +27,9 @@ export function SectionHeading({
     <div className={cn('flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between', className)}>
       <div className="max-w-2xl">
         {eyebrow ? (
-          <p
-            className={cn('mb-2 flex items-center gap-2 text-xs font-semibold', dark ? 'text-brand' : 'text-brand-ink')}
-          >
-            <span aria-hidden className="h-px w-5 bg-current" />
-            {eyebrow}
-          </p>
+          <p className={cn('mb-2 text-sm font-semibold', dark ? 'text-brand' : 'text-brand-hover')}>{eyebrow}</p>
         ) : null}
-        <Heading id={id} className={cn('text-xl leading-snug sm:text-2xl', dark && 'text-white')}>
+        <Heading id={id} className={cn('text-2xl leading-snug sm:text-[2rem] sm:leading-[1.3]', dark && 'text-white')}>
           {title}
         </Heading>
         {description ? (

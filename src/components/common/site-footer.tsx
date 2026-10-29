@@ -20,24 +20,22 @@ export async function SiteFooter() {
   ] as const;
 
   return (
-    <footer className="bg-navy-900 text-sm text-navy-on">
+    <footer className="border-t-4 border-brand bg-tile text-sm text-body">
       <div className="container-site grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
         <div>
-          <span className="inline-flex rounded-md bg-white px-3 py-2">
-            <Image src={logo} alt={t('brand')} sizes="140px" className="h-9 w-auto" />
-          </span>
+          <Image src={logo} alt={t('brand')} sizes="160px" className="h-11 w-auto" />
           <p className="mt-5 max-w-xs leading-6">{t('vision2030')}.</p>
-          <p className="mt-3 font-semibold text-white">{t('tagline')}</p>
+          <p className="mt-3 font-bold text-ink">{t('tagline')}</p>
         </div>
 
         <div>
-          <h2 className="mb-4 text-md font-semibold text-white">{t('address')}</h2>
+          <h2 className="mb-4 text-md font-semibold text-ink">{t('address')}</h2>
           <address className="flex flex-col gap-3 not-italic">
             <a
               href={company.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex gap-2.5 hover:text-white"
+              className="flex gap-2.5 hover:text-brand-hover"
             >
               <MapPin aria-hidden className="mt-0.5 size-4 shrink-0 text-brand" />
               <span>
@@ -58,11 +56,11 @@ export async function SiteFooter() {
         </div>
 
         <div>
-          <h2 className="mb-4 text-md font-semibold text-white">{tNav('getInTouch')}</h2>
+          <h2 className="mb-4 text-md font-semibold text-ink">{tNav('getInTouch')}</h2>
           <ul className="flex flex-col gap-3">
             {company.phones.map((phone) => (
               <li key={phone}>
-                <a href={toTelHref(phone)} className="inline-flex items-center gap-2.5 hover:text-white">
+                <a href={toTelHref(phone)} className="inline-flex items-center gap-2.5 hover:text-brand-hover">
                   <Phone aria-hidden className="size-4 text-brand" />
                   <span dir="ltr" className="tabular">
                     {phone}
@@ -71,7 +69,7 @@ export async function SiteFooter() {
               </li>
             ))}
             <li>
-              <a href={toMailHref(company.email)} className="inline-flex items-center gap-2.5 hover:text-white">
+              <a href={toMailHref(company.email)} className="inline-flex items-center gap-2.5 hover:text-brand-hover">
                 <Mail aria-hidden className="size-4 text-brand" />
                 {company.email}
               </a>
@@ -84,11 +82,11 @@ export async function SiteFooter() {
           className="grid grid-cols-2 gap-6 sm:col-span-2 lg:col-span-1 lg:grid-cols-1"
         >
           <div>
-            <h2 className="mb-4 text-md font-semibold text-white">{tNav('company')}</h2>
+            <h2 className="mb-4 text-md font-semibold text-ink">{tNav('company')}</h2>
             <ul className="flex flex-col gap-2.5">
               {companyLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="hover:text-white">
+                  <Link href={link.href} className="hover:text-brand-hover">
                     {link.label}
                   </Link>
                 </li>
@@ -96,13 +94,13 @@ export async function SiteFooter() {
             </ul>
           </div>
           <div className="lg:hidden">
-            <h2 className="mb-4 text-md font-semibold text-white">{tNav('catalog')}</h2>
+            <h2 className="mb-4 text-md font-semibold text-ink">{tNav('catalog')}</h2>
             <ul className="flex flex-col gap-2.5">
               {getCategories()
                 .slice(0, 5)
                 .map((category) => (
                   <li key={category.slug}>
-                    <Link href={`/catalog/${category.slug}`} className="hover:text-white">
+                    <Link href={`/catalog/${category.slug}`} className="hover:text-brand-hover">
                       {category.name[locale]}
                     </Link>
                   </li>
@@ -111,14 +109,14 @@ export async function SiteFooter() {
           </div>
         </nav>
       </div>
-      <div className="border-t border-white/10 bg-navy-950">
+      <div className="border-t border-line">
         <div className="container-site flex flex-col gap-2 py-5 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>{tNav('copyright', { year })}</p>
           <p className="flex gap-4">
-            <Link href="/catalog" className="hover:text-white">
+            <Link href="/catalog" className="hover:text-brand-hover">
               {tNav('catalog')}
             </Link>
-            <Link href="/rfq" className="hover:text-white">
+            <Link href="/rfq" className="hover:text-brand-hover">
               {tNav('rfq')}
             </Link>
           </p>

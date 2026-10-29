@@ -8,24 +8,24 @@ export async function ContactBand() {
   const [primaryPhone] = company.phones;
 
   return (
-    <section className="bg-sand">
-      <div className="container-site flex flex-col gap-6 py-10 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex items-start gap-4">
-          <span className="grid size-14 shrink-0 place-items-center rounded-lg bg-navy text-white">
-            <Headset aria-hidden className="size-7" />
+    <section className="container-site pb-14 sm:pb-20">
+      <div className="flex flex-col gap-6 rounded-2xl bg-sand p-7 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex items-start gap-5">
+          <span className="grid size-14 shrink-0 place-items-center rounded-full bg-surface text-brand-hover shadow-card">
+            <Headset aria-hidden className="size-6" />
           </span>
           <div>
-            <p className="text-xs font-semibold text-brand-ink">{t('eyebrow')}</p>
-            <h2 className="mt-1 text-lg font-bold sm:text-xl">{t('title')}</h2>
-            <p className="mt-1 text-sm">{t('body')}</p>
+            <p className="text-sm font-semibold text-brand-hover">{t('eyebrow')}</p>
+            <h2 className="mt-1 text-xl sm:text-2xl">{t('title')}</h2>
+            <p className="mt-1.5 text-sm text-muted">{t('body')}</p>
           </div>
         </div>
         <div className="flex flex-wrap gap-3">
           <a
             href={toTelHref(primaryPhone)}
-            className="inline-flex h-12 items-center gap-2.5 rounded-sm border border-line bg-surface px-5 text-sm font-semibold text-navy hover:border-navy-600"
+            className="inline-flex h-13 items-center gap-2.5 rounded-full bg-surface px-6 text-sm font-bold text-ink shadow-card hover:shadow-hover"
           >
-            <Phone aria-hidden className="size-4 text-brand" />
+            <Phone aria-hidden className="size-4 text-brand-hover" />
             <span className="sr-only">{t('call')}: </span>
             <span dir="ltr" className="tabular">
               {primaryPhone}
@@ -33,7 +33,7 @@ export async function ContactBand() {
           </a>
           <a
             href={toMailHref(company.email)}
-            className="inline-flex h-12 items-center gap-2.5 rounded-sm bg-navy px-5 text-sm font-semibold text-white hover:bg-navy-700"
+            className="inline-flex h-13 items-center gap-2.5 rounded-full bg-navy-950 px-6 text-sm font-bold text-white hover:bg-navy"
           >
             <Mail aria-hidden className="size-4" />
             {t('email')}

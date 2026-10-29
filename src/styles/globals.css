@@ -26,6 +26,7 @@
 
   --color-brand: #fc9025;
   --color-brand-hover: #ec7f12;
+  --color-brand-light: #ffa340;
   --color-brand-ink: #8a4a00;
   --color-brand-soft: #ffdcc3;
   --color-brand-tint: #fda04a;
@@ -33,16 +34,18 @@
   --color-logo-blue: #0047ba;
 
   --color-surface: #ffffff;
-  --color-canvas: #f4f6f9;
+  --color-canvas: #ffffff;
+  --color-tile: #f3f4f6;
+  --color-tile-strong: #e9ebef;
   --color-sand: #fff4e8;
-  /* Banner tone the hero composite is flattened onto (see public/products/hero.webp). */
-  --color-hero: #eaeff6;
+  /* Hero banner base tone (warm white). */
+  --color-hero: #fff7ef;
   --color-tint-50: #f1f5fb;
   --color-tint-100: #eaf0f8;
   --color-tint-200: #dfe8f4;
   --color-tint-300: #cfdcee;
   --color-tint-400: #bfd0e8;
-  --color-line: #e5e8ee;
+  --color-line: #eceef2;
   --color-link: #0b3c7b;
 
   --color-success: #047857;
@@ -67,20 +70,21 @@
   --text-xl--line-height: 2.125rem;
   --text-2xl: 2rem;
   --text-2xl--line-height: 2.625rem;
-  --text-3xl: 2.75rem;
-  --text-3xl--line-height: 3.375rem;
+  --text-3xl: 2.5rem;
+  --text-3xl--line-height: 3.25rem;
   --text-4xl: 3.5rem;
   --text-4xl--line-height: 4.125rem;
   --text-5xl: 4.5rem;
   --text-5xl--line-height: 5.125rem;
 
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
 
-  --shadow-card: 0 1px 2px 0 rgb(11 20 36 / 0.05);
+  --shadow-card: 0 1px 2px 0 rgb(11 20 36 / 0.04), 0 8px 24px -12px rgb(11 20 36 / 0.08);
   --shadow-hover: 0 10px 30px -12px rgb(11 20 36 / 0.18);
   --shadow-raised: 0 24px 48px -16px rgb(11 20 36 / 0.3);
 
@@ -109,7 +113,7 @@
   h4 {
     color: var(--color-ink);
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 700;
     text-wrap: balance;
   }
 

@@ -30,13 +30,13 @@ export function CartDrawer({ catalog }: { catalog: CartCatalog }) {
         onClick={open}
         aria-haspopup="dialog"
         aria-label={`${t('open')} — ${t('count', { count })}`}
-        className="relative grid size-11 place-items-center rounded-sm border border-line bg-surface text-navy transition-colors hover:border-navy"
+        className="relative grid size-12 place-items-center rounded-full bg-navy-950 text-white transition-colors hover:bg-navy"
       >
         <ShoppingCart aria-hidden className="size-5" />
         <span
           aria-hidden
           className={cn(
-            'absolute -end-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full px-1 text-2xs font-bold tabular transition-transform',
+            'absolute -end-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full px-1 text-2xs font-bold tabular ring-2 ring-surface transition-transform',
             count > 0 ? 'scale-100 bg-brand text-navy-950' : 'scale-0',
           )}
         >
@@ -50,7 +50,7 @@ export function CartDrawer({ catalog }: { catalog: CartCatalog }) {
         onClick={(event) => {
           if (event.target === dialogRef.current) close();
         }}
-        className="fixed inset-y-0 end-0 start-auto m-0 h-dvh max-h-none w-full max-w-md bg-surface p-0 text-body shadow-raised backdrop:bg-navy-950/40 backdrop:backdrop-blur-[2px] open:flex open:flex-col"
+        className="fixed inset-y-0 end-0 start-auto m-0 h-dvh max-h-none w-full max-w-md bg-surface p-0 text-body shadow-raised backdrop:bg-navy-950/40 backdrop:backdrop-blur-[2px] open:flex open:flex-col sm:rounded-s-xl"
       >
         <header className="flex items-center justify-between border-b border-line px-5 py-4">
           <h2 id="cart-drawer-title" className="text-lg">

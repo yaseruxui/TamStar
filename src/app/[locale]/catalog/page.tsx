@@ -50,7 +50,7 @@ export default async function CatalogPage({ params }: PageProps<'/[locale]/catal
             </h2>
             <p className="text-sm text-muted tabular">{t('itemsCount', { count: items.length })}</p>
           </div>
-          <ul className="mt-5 grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {items.map((item, index) => (
               <li key={`${item.category}-${item.slug}`}>
                 <ItemCard item={item} priority={index < 4} />

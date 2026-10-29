@@ -177,7 +177,7 @@ export default async function ItemPage({ params }: ItemPageProps) {
             <h2 id="related-items" className="text-xl">
               {t('related')}
             </h2>
-            <ul className="mt-6 grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 lg:grid-cols-4">
+            <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-4">
               {related.map((relatedItem) => (
                 <li key={relatedItem.slug}>
                   <ItemCard item={relatedItem} />

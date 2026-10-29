@@ -1,11 +1,14 @@
 {
   "hero": {
     "eyebrow": "B2B industrial procurement platform",
-    "title": "Everything your site needs, at your company’s contract prices.",
     "lead": "Valves and piping, instrumentation, safety and fire fighting, electrical and spare parts — sourced from 27 countries and delivered across Saudi Arabia.",
     "primary": "Shop the catalog",
     "secondary": "Request a quotation",
-    "caption": ""
+    "titleLead": "Everything your site needs,",
+    "titleHighlight": "at your contract prices.",
+    "priceCardTitle": "Your company price",
+    "priceCardBody": "Contract pricing shown after sign-in",
+    "sourcingChip": "Sourced from 27 countries"
   },
   "quickSearch": {
     "title": "Find a part or send a requirement",
@@ -98,22 +101,24 @@
     "body": "Buying-agent, sourcing and supply agreements across mining, petrochemicals, energy and giga-projects.",
     "link": "All projects"
   },
-  "benefits": {
-    "sourcing": {
-      "title": "27 sourcing countries",
-      "body": "Supplier network on six continents"
+  "sectors": {
+    "eyebrow": "Sectors",
+    "title": "Serving the sectors that build the Kingdom",
+    "mining": {
+      "title": "Mining",
+      "body": "Local Buying Agent for Ma'aden since 2024, with 7 master agreements covering 3,000+ line items."
     },
-    "contract": {
-      "title": "Contract pricing",
-      "body": "Per company agreement"
+    "petrochemicals": {
+      "title": "Petrochemicals & refining",
+      "body": "Operating materials for Petro Rabigh, including shutdown support."
     },
-    "models": {
-      "title": "BPA & VMI",
-      "body": "Blanket agreements and managed stock"
+    "energy": {
+      "title": "Power & water",
+      "body": "Purchase agreements for ACWA Power plants and strategic sourcing for Veolia's Jeddah and Jubail plants."
     },
-    "local": {
-      "title": "Local content",
-      "body": "Supporting Saudi manufacturers"
+    "urban": {
+      "title": "Urban development & giga-projects",
+      "body": "Supplying NEOM, KAEC and JASARA with safety, electrical, plumbing and consumables."
     }
   }
 }

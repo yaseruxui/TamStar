@@ -11,7 +11,7 @@ export async function ProjectsSection() {
   const selected = projects.filter((project) => HOME_PROJECTS.includes(project.key));
 
   return (
-    <section aria-labelledby="home-projects" className="container-site py-12 sm:py-16">
+    <section aria-labelledby="home-projects" className="container-site pb-14 sm:pb-20">
       <SectionHeading
         id="home-projects"
         eyebrow={t('eyebrow')}

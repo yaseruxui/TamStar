@@ -58,13 +58,14 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
         <CatalogSearchForm
           idPrefix="search-page"
           size="lg"
+          withCategory
           defaultQuery={query}
           defaultCategory={category?.slug}
           className="mb-10"
         />
         {results.length > 0 ? (
           <>
-            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-4">
               {results.map((item) => (
                 <li key={`${item.category}-${item.slug}`}>
                   <ItemCard item={item} />
