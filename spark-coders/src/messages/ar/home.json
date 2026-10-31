@@ -18,20 +18,15 @@
     "stackLabel": "التقنيات التي نعمل بها",
     "stackAria": "التقنيات التي نستخدمها",
     "stage": {
-      "website": "موقع",
-      "app": "تطبيق",
-      "storeName": "لَمسة",
       "storeHeadline": "أناقة هادئة لكل يوم",
-      "storeCta": "تسوّقي الآن",
-      "products": {
-        "one": "كنزة صوف",
-        "two": "عباية كلاسيكية",
-        "three": "حقيبة جلد"
+      "website": {
+        "title": "موقع إلكتروني",
+        "detail": "جاهز للإطلاق"
       },
-      "price": "٢٤٩ ر.س",
-      "checkoutTitle": "سلّة المشتريات",
-      "checkoutTotal": "الإجمالي",
-      "checkoutPay": "ادفع بمدى"
+      "app": {
+        "title": "تطبيق جوال",
+        "detail": "iOS و Android"
+      }
     }
   },
   "intro": {

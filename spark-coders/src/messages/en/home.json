@@ -18,20 +18,15 @@
     "stackLabel": "The tools we build with",
     "stackAria": "Technologies we use",
     "stage": {
-      "website": "Website",
-      "app": "App",
-      "storeName": "Lamsa",
       "storeHeadline": "Quiet elegance, every day",
-      "storeCta": "Shop now",
-      "products": {
-        "one": "Wool sweater",
-        "two": "Classic abaya",
-        "three": "Leather bag"
+      "website": {
+        "title": "Website",
+        "detail": "Ready to launch"
       },
-      "price": "SAR 249",
-      "checkoutTitle": "Your bag",
-      "checkoutTotal": "Total",
-      "checkoutPay": "Pay with mada"
+      "app": {
+        "title": "Mobile app",
+        "detail": "iOS & Android"
+      }
     }
   },
   "intro": {

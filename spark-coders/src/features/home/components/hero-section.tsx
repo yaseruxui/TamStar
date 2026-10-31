@@ -37,16 +37,9 @@ export async function HeroSection() {
         </div>
         <HeroCodeStage
           copy={{
-            website: t('stage.website'),
-            app: t('stage.app'),
-            storeName: t('stage.storeName'),
             storeHeadline: t('stage.storeHeadline'),
-            storeCta: t('stage.storeCta'),
-            products: [t('stage.products.one'), t('stage.products.two'), t('stage.products.three')],
-            price: t('stage.price'),
-            checkoutTitle: t('stage.checkoutTitle'),
-            checkoutTotal: t('stage.checkoutTotal'),
-            checkoutPay: t('stage.checkoutPay'),
+            website: { title: t('stage.website.title'), detail: t('stage.website.detail') },
+            app: { title: t('stage.app.title'), detail: t('stage.app.detail') },
           }}
         />
       </div>
