@@ -108,6 +108,56 @@
   }
 }
 
+/*
+ * Brand font switch: Thmanyah Sans for every role, enabled by NEXT_PUBLIC_BRAND_FONT=thmanyah.
+ * The faces below are only fetched when text actually uses them, and the current stacks stay as
+ * fallbacks, so a deploy without the (uncommitted) files still renders correctly.
+ */
+@font-face {
+  font-family: 'Thmanyah Sans';
+  src: url('/fonts/thmanyah/thmanyah-sans-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Sans';
+  src: url('/fonts/thmanyah/thmanyah-sans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Sans';
+  src: url('/fonts/thmanyah/thmanyah-sans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Sans';
+  src: url('/fonts/thmanyah/thmanyah-sans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Sans';
+  src: url('/fonts/thmanyah/thmanyah-sans-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html[data-brand-font='thmanyah'] {
+  --font-sans:
+    'Thmanyah Sans', var(--font-plex-latin), var(--font-plex-arabic), system-ui, -apple-system, 'Segoe UI', Tahoma,
+    sans-serif;
+  --font-display:
+    'Thmanyah Sans', var(--font-alexandria-latin), var(--font-alexandria-arabic), var(--font-plex-arabic), system-ui,
+    sans-serif;
+}
+
 /* ---------- Utilities ---------- */
 @utility container-site {
   width: 100%;

@@ -17,10 +17,13 @@ npm run lint && npm run typecheck && npm run format:check
 
 Copy `.env.example` to `.env.local`:
 
-| Variable               | Purpose                                                                                       |
-| ---------------------- | --------------------------------------------------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical origin for metadata, sitemap and hreflang (default `https://skodr.com`).            |
-| `CONTACT_WEBHOOK_URL`  | HTTPS endpoint that receives contact/guide submissions as JSON. Unset → forms show the email. |
+| Variable                 | Purpose                                                                                       |
+| ------------------------ | --------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`   | Canonical origin for metadata, sitemap and hreflang (default `https://skodr.com`).            |
+| `SITE_PASSWORD`          | Four digits. With `SITE_GATE_SECRET`, the whole site sits behind `/unlock`; unset → public.   |
+| `SITE_GATE_SECRET`       | ≥ 32 random characters that sign the unlock cookie; changing it signs everyone out.           |
+| `NEXT_PUBLIC_BRAND_FONT` | `default` (Alexandria + IBM Plex) or `thmanyah` (see Brand font below).                       |
+| `CONTACT_WEBHOOK_URL`    | HTTPS endpoint that receives contact/guide submissions as JSON. Unset → forms show the email. |
 
 ## Architecture
 
@@ -97,3 +100,24 @@ matched to text weight, themed scrollbar/caret/selection.
 - Logo assets live in `public/brand/` (mark, 512 px icon, 3D texture) and `src/app/icon.png`;
   the lettering is vector in `src/components/common/skodr-wordmark.tsx` and the 3D outline in
   `src/features/home/lib/skodr-outline.ts` (both traced from the brand SVG).
+
+## Private mode
+
+`src/proxy.ts` gates every page and file (fonts and images in `public/` included) until the visitor
+enters `SITE_PASSWORD` on `/unlock`. The unlock cookie is httpOnly, lasts 30 days and is an HMAC under
+`SITE_GATE_SECRET`, so it cannot be forged; the contact and guide server actions check it too.
+Failed attempts are slowed down, but four digits are a privacy curtain, not strong security.
+Responses carry `X-Robots-Tag: noindex, nofollow` while the gate is on.
+
+## Brand font (Thmanyah Sans)
+
+Thmanyah's license forbids uploading or redistributing the font files, and this repository is
+public, so the files are git-ignored (`public/fonts/thmanyah/`). To switch the site over:
+
+1. Get written approval from Thmanyah (Ask@thmanyah.com) for web use on the site.
+2. Put `thmanyah-sans-{Light,Regular,Medium,Bold,Black}.woff2` in `public/fonts/thmanyah/`.
+3. Set `NEXT_PUBLIC_BRAND_FONT=thmanyah`.
+
+Deploys built from Git will not contain the files: either move the site to a private repository and
+commit them there, or deploy from a machine that has them (`vercel deploy --prod`). Without the
+files the page falls back to the current fonts.

@@ -9,7 +9,7 @@ import { SiteFooter } from '@/components/common/site-footer';
 import { SiteHeader } from '@/components/common/site-header';
 import { JsonLdScript } from '@/components/seo/json-ld';
 import { site } from '@/lib/config/site';
-import { siteUrl } from '@/lib/env';
+import { brandFont, siteUrl } from '@/lib/env';
 import { fontVariables } from '@/lib/fonts';
 import { localeDirection, routing } from '@/lib/i18n/routing';
 import { organizationJsonLd, websiteJsonLd } from '@/lib/seo/json-ld';
@@ -19,6 +19,12 @@ import '@/styles/globals.css';
 
 /** Namespaces read by client components (forms, error boundary). Everything else stays on the server. */
 const CLIENT_NAMESPACES = ['common', 'contact'] as const;
+
+/** The two Thmanyah weights above the fold (body text and display headings). */
+const BRAND_FONT_PRELOADS = [
+  '/fonts/thmanyah/thmanyah-sans-Regular.woff2',
+  '/fonts/thmanyah/thmanyah-sans-Black.woff2',
+];
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -65,8 +71,19 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
   const clientMessages = Object.fromEntries(CLIENT_NAMESPACES.map((ns) => [ns, messages[ns]]));
 
   return (
-    <html lang={locale} dir={localeDirection[locale]} className={cn(fontVariables)} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={localeDirection[locale]}
+      className={cn(fontVariables)}
+      data-brand-font={brandFont}
+      suppressHydrationWarning
+    >
       <head>
+        {brandFont === 'thmanyah'
+          ? BRAND_FONT_PRELOADS.map((href) => (
+              <link key={href} rel="preload" href={href} as="font" type="font/woff2" crossOrigin="" />
+            ))
+          : null}
         {/* Flags that JS runs before first paint, so entrance styles never hide content without it. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>

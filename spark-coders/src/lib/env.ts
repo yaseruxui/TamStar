@@ -10,10 +10,22 @@ const serverSchema = z.object({
       message: 'CONTACT_WEBHOOK_URL must use https',
     })
     .optional(),
+  /** Four digits that unlock the private site. Unset (with the secret) → the site is public. */
+  SITE_PASSWORD: z
+    .string()
+    .regex(/^\d{4}$/, { message: 'SITE_PASSWORD must be exactly four digits' })
+    .optional(),
+  /** Random string (≥ 32 chars) that signs the unlock cookie so it cannot be forged. */
+  SITE_GATE_SECRET: z.string().min(32).optional(),
 });
 
 const publicSchema = z.object({
   NEXT_PUBLIC_SITE_URL: z.url().default('https://skodr.com'),
+  /**
+   * `thmanyah` switches headings and text to Thmanyah Sans. Only enable it where the licensed files
+   * are installed in public/fonts/thmanyah/ and Thmanyah has approved web use.
+   */
+  NEXT_PUBLIC_BRAND_FONT: z.enum(['default', 'thmanyah']).default('default'),
 });
 
 const emptyToUndefined = (value: string | undefined): string | undefined =>
@@ -21,12 +33,17 @@ const emptyToUndefined = (value: string | undefined): string | undefined =>
 
 export const publicEnv = publicSchema.parse({
   NEXT_PUBLIC_SITE_URL: emptyToUndefined(process.env.NEXT_PUBLIC_SITE_URL),
+  NEXT_PUBLIC_BRAND_FONT: emptyToUndefined(process.env.NEXT_PUBLIC_BRAND_FONT),
 });
 
 export function getServerEnv(): z.infer<typeof serverSchema> {
   return serverSchema.parse({
     CONTACT_WEBHOOK_URL: emptyToUndefined(process.env.CONTACT_WEBHOOK_URL),
+    SITE_PASSWORD: emptyToUndefined(process.env.SITE_PASSWORD),
+    SITE_GATE_SECRET: emptyToUndefined(process.env.SITE_GATE_SECRET),
   });
 }
 
 export const siteUrl = publicEnv.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '');
+
+export const brandFont = publicEnv.NEXT_PUBLIC_BRAND_FONT;
