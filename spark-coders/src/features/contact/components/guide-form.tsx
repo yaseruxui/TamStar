@@ -33,15 +33,7 @@ export function GuideForm() {
             : null;
 
   return (
-    <form
-      ref={formRef}
-      action={action}
-      noValidate
-      className="relative mt-[clamp(40px,6vw,64px)] max-w-[640px] rounded-[30px] bg-ink/70 p-6 shadow-[0_24px_60px_-30px_rgb(7_5_26/0.9)]"
-    >
-      <p className="mb-4 text-muted">
-        {t.rich('guide.question', { b: (chunks) => <b className="text-text">{chunks}</b> })}
-      </p>
+    <form ref={formRef} action={action} noValidate className="relative">
       <div className="flex gap-2.5 max-sm:flex-col">
         <label className="sr-only" htmlFor="guide-email">
           {t('guide.emailLabel')}

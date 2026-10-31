@@ -1,13 +1,4 @@
-import type {
-  DelightStepKey,
-  HeroWordKey,
-  LeadTagKey,
-  Post,
-  Project,
-  Sector,
-  TeamMember,
-  TestimonialKey,
-} from '../types';
+import type { DelightStepKey, HeroWordKey, LeadTagKey, Post, Project, Sector, TeamMember, Testimonial } from '../types';
 
 export const heroWords: readonly HeroWordKey[] = ['ecommerce', 'education', 'clinics', 'startups', 'restaurants'];
 
@@ -66,7 +57,16 @@ export const sectors: readonly Sector[] = [
   { key: 'commerce', icon: 'cart' },
 ];
 
-export const testimonials: readonly TestimonialKey[] = ['one', 'two', 'three'];
+/**
+ * Client voices, in display order. Put a client's photo (shared with their permission) in
+ * /public/images/clients/ and set `image` to its path; until then the initial is shown.
+ */
+export const testimonials: readonly Testimonial[] = [
+  { key: 'one', initial: { ar: 'أ', en: 'A' }, image: null },
+  { key: 'two', initial: { ar: 'ن', en: 'N' }, image: null },
+  { key: 'three', initial: { ar: 'ف', en: 'F' }, image: null },
+  { key: 'four', initial: { ar: 'ل', en: 'L' }, image: null },
+];
 
 export const posts: readonly Post[] = [
   { key: 'content', accent: 1, href: '#', date: '2026-09-08', image: '/images/blog/content.webp' },

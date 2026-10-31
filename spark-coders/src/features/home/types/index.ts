@@ -63,11 +63,22 @@ export interface SectorPanel {
   title2: string;
   body: string;
   link: string;
-  book: string;
 }
 
+/** A client voice. `image` is the client's own photo (with their permission); null shows the initial. */
+export interface Testimonial {
+  key: TestimonialKey;
+  initial: { ar: string; en: string };
+  image: string | null;
+}
+
+/** Serializable testimonial handed to the client carousel. */
 export interface Quote {
   key: TestimonialKey;
   quote: string;
-  author: string;
+  name: string;
+  role: string;
+  initial: string;
+  image: string | null;
+  alt: string;
 }

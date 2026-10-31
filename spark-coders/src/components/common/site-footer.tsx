@@ -2,7 +2,6 @@ import { getTranslations } from 'next-intl/server';
 import { footerSections, navSections } from '@/lib/config/navigation';
 import { site } from '@/lib/config/site';
 import { BrandLogo } from './brand-logo';
-import { SkodrWordmark } from './skodr-wordmark';
 
 export async function SiteFooter() {
   const [t, tNav, tHome] = await Promise.all([
@@ -14,13 +13,8 @@ export async function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="overflow-hidden border-t border-line bg-ink-2 pt-[clamp(64px,10vw,120px)] pb-8">
+    <footer className="overflow-hidden border-t border-line bg-ink-2 pt-[clamp(56px,8vw,96px)] pb-8">
       <div className="container-site">
-        <SkodrWordmark
-          withSlogan
-          gradient
-          className="mx-auto mb-[clamp(40px,6vw,80px)] w-[min(100%,920px)] text-muted"
-        />
         <div className="grid grid-cols-2 gap-10 border-b border-line pb-10 lg:grid-cols-[2fr_1fr_1fr]">
           <div className="col-span-2 lg:col-span-1">
             <a href="#top" aria-label={site.wordmark} className="inline-flex">

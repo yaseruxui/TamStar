@@ -27,7 +27,10 @@
   "failed": "We couldn't send your message right now. Please try again shortly.",
   "unconfigured": "Direct sending isn't enabled yet. Email us at {email}.",
   "guide": {
-    "question": "Before you sign with any development agency, <b>know the right questions</b>. Leave your email and we'll send our free guide.",
+    "badge": "Free guide",
+    "title": "10 questions to ask before hiring any agency",
+    "question": "Know the right questions before you sign, so you pick the right partner and avoid surprises. Leave your email and we will send the guide for free.",
+    "cover": "10 questions before hiring any agency",
     "emailLabel": "Email",
     "placeholder": "Your email",
     "submit": "Send me the guide",

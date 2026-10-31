@@ -136,6 +136,8 @@
     }
   },
   "sectors": {
+    "title": "Solutions built for your industry",
+    "lead": "Pick your field and see how we help businesses like yours grow.",
     "aria": "Industries we serve",
     "tabsAria": "Industries",
     "items": {
@@ -144,24 +146,21 @@
         "title": "Websites that show",
         "title2": "how professional you are",
         "body": "We build a site that presents your services clearly, earns trust from the first visit and grows as your business grows.",
-        "link": "Our services for companies",
-        "book": "10 questions before hiring any agency"
+        "link": "Our services for companies"
       },
       "education": {
         "tab": "Education",
         "title": "Digital solutions",
         "title2": "for schools & universities",
         "body": "Websites and platforms that make enrolment easy for parents, keep content organised and reflect your institution's reputation.",
-        "link": "Our services for education",
-        "book": "What every school website needs"
+        "link": "Our services for education"
       },
       "commerce": {
         "tab": "E-commerce",
         "title": "A store that sells",
         "title2": "around the clock",
         "body": "Fast online stores with easy payments, shipping and inventory integrations, and reports that help you decide.",
-        "link": "Our services for stores",
-        "book": "Your first store launch guide"
+        "link": "Our services for stores"
       }
     }
   },
@@ -170,17 +169,28 @@
     "items": {
       "one": {
         "quote": "“A professional team from start to finish. They delivered on time, and the quality beat our expectations.”",
-        "author": "Client name — Title, Company"
+        "name": "Client name",
+        "role": "Title, Company"
       },
       "two": {
         "quote": "“After launching the new site, our enquiries clearly went up. Even better, the support continues after handover.”",
-        "author": "Client name — Title, Company"
+        "name": "Client name",
+        "role": "Title, Company"
       },
       "three": {
         "quote": "“We were looking for a partner we could trust, and we found one. Responsive, collaborative and detail-obsessed.”",
-        "author": "Client name — Title, Company"
+        "name": "Client name",
+        "role": "Title, Company"
+      },
+      "four": {
+        "quote": "“From the first meeting they understood our idea better than we did. The new site is faster, clearer, and customers reach us through it every day.”",
+        "name": "Client name",
+        "role": "Title, Company"
       }
-    }
+    },
+    "lead": "Real words from the business owners we have worked with.",
+    "photoAlt": "Photo of {name}",
+    "choose": "Choose a testimonial"
   },
   "blog": {
     "title": "Blog",
