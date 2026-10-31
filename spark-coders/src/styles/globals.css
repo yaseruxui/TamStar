@@ -294,6 +294,15 @@ html[data-brand-font='thmanyah'] {
   }
 
   /*
+   * SplitText masks clip their line; padding plus an equal negative margin gives Arabic marks
+   * (dots, shadda, the tails of ي and ع) room inside the mask without moving the layout.
+   */
+  [data-hero-line] > * {
+    padding-block: 0.18em;
+    margin-block: -0.18em;
+  }
+
+  /*
    * Scroll-scrubbed paragraphs: an inline span whose background runs through its lines in reading
    * order, so the text fills line by line from faint to bright as `--fill` goes 0 → 100%.
    */

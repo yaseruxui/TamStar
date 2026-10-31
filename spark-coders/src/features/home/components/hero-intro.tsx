@@ -37,6 +37,7 @@ export function HeroIntro({ intro, lines, rotator, actions }: HeroIntroProps) {
         SplitText.create(headline, {
           type: 'lines',
           mask: 'lines',
+          // Arabic dots, shaddas and descenders reach past the line box; globals.css gives each mask room for them.
           autoSplit: true,
           onSplit(self) {
             return gsap.from(self.lines, {
@@ -77,10 +78,7 @@ export function HeroIntro({ intro, lines, rotator, actions }: HeroIntroProps) {
 
   return (
     <div ref={rootRef}>
-      <p data-hero-reveal="" data-hero-soft="" className="mb-[clamp(24px,4vw,48px)] max-w-[28rem] text-muted">
-        {intro}
-      </p>
-      <h1 className="font-display text-[clamp(2.6rem,8.4vw,6.5rem)] leading-[1.12] font-extrabold tracking-[-0.015em] [text-wrap:wrap]">
+      <h1 className="font-display text-[clamp(2.6rem,8.4vw,6.5rem)] leading-[1.32] font-extrabold tracking-[-0.01em] [text-wrap:wrap]">
         <span data-hero-reveal="" data-hero-line="" className="block">
           {lines[0]}
         </span>
@@ -91,7 +89,14 @@ export function HeroIntro({ intro, lines, rotator, actions }: HeroIntroProps) {
           {rotator}
         </span>
       </h1>
-      <div data-hero-reveal="" data-hero-soft="" className="mt-[clamp(28px,4vw,48px)] flex flex-wrap gap-3">
+      <p
+        data-hero-reveal=""
+        data-hero-soft=""
+        className="mt-[clamp(20px,3vw,32px)] max-w-[36rem] text-lg leading-relaxed text-muted sm:text-xl"
+      >
+        {intro}
+      </p>
+      <div data-hero-reveal="" data-hero-soft="" className="mt-[clamp(24px,3vw,36px)] flex flex-wrap gap-3">
         {actions}
       </div>
     </div>

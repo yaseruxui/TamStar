@@ -30,7 +30,7 @@ export function HeroRotator({ words }: { words: readonly string[] }) {
   }, [words.length]);
 
   return (
-    <span className="relative block h-[1.2em] max-sm:text-[0.82em]">
+    <span className="relative block h-[1.32em] max-sm:text-[0.82em]">
       {words.map((word, index) => (
         <span
           key={word}
