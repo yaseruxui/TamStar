@@ -1,0 +1,17 @@
+{
+  "mainAria": "Main menu",
+  "homeAria": "skodr — home",
+  "items": {
+    "home": "Home",
+    "work": "Our work",
+    "services": "Services",
+    "team": "Team",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "menuNote": "We design and build websites and apps that help your business grow.",
+  "quickLinks": "Quick links",
+  "socialAria": "Our accounts",
+  "switchLocale": "العربية",
+  "switchLocaleAria": "View the site in Arabic"
+}

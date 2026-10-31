@@ -11,5 +11,5 @@ export default defineConfig([
       '@typescript-eslint/consistent-type-imports': 'error',
     },
   },
-  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
+  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts', 'spark-coders/**']),
 ]);

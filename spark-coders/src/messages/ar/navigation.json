@@ -1,0 +1,17 @@
+{
+  "mainAria": "القائمة الرئيسية",
+  "homeAria": "skodr — الصفحة الرئيسية",
+  "items": {
+    "home": "الرئيسية",
+    "work": "أعمالنا",
+    "services": "خدماتنا",
+    "team": "فريقنا",
+    "blog": "المدونة",
+    "contact": "تواصل معنا"
+  },
+  "menuNote": "نصمّم ونبرمج مواقع وتطبيقات تساعد مشروعك على النمو.",
+  "quickLinks": "روابط سريعة",
+  "socialAria": "حساباتنا",
+  "switchLocale": "English",
+  "switchLocaleAria": "عرض الموقع بالإنجليزية"
+}

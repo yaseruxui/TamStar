@@ -1,0 +1,239 @@
+@import 'tailwindcss';
+
+/*
+ * skodr — Spark Coders identity (dark theme).
+ * Palette taken from the logo mark: violet → plum → ocean → aqua on deep ink.
+ * Token names are shared by every component; change values here, not in markup.
+ */
+@theme {
+  --font-sans:
+    var(--font-plex-latin), var(--font-plex-arabic), system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
+  --font-display:
+    var(--font-alexandria-latin), var(--font-alexandria-arabic), var(--font-plex-arabic), system-ui, sans-serif;
+
+  --color-violet: #b26cff;
+  --color-plum: #6e29ac;
+  --color-ocean: #0c8ec7;
+  --color-aqua: #7feefa;
+  --color-lilac: #a497fa;
+
+  --color-ink: #07051a;
+  --color-ink-2: #0e0a26;
+  --color-ink-3: #17123a;
+
+  --color-text: #f5f2ff;
+  --color-muted: #aba5d3;
+  --color-faint: #716c9c;
+  --color-danger: #ff9db5;
+  --color-danger-line: #ff7a9c;
+
+  --color-line: rgb(178 108 255 / 0.16);
+  --color-line-strong: rgb(178 108 255 / 0.32);
+  --color-glass: rgb(255 255 255 / 0.045);
+
+  --radius-card: 18px;
+  --radius-panel: 24px;
+
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-rise: rise 1s var(--ease-brand) both;
+  --animate-drift: drift 18s ease-in-out infinite alternate;
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-ping-soft: ping-soft 1.8s infinite;
+  --animate-fade-up: fade-up 0.5s var(--ease-brand);
+
+  @keyframes rise {
+    from {
+      transform: translateY(105%);
+    }
+    to {
+      transform: none;
+    }
+  }
+  @keyframes drift {
+    to {
+      transform: translate3d(-3%, 4%, 0) scale(1.06);
+    }
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes ping-soft {
+    to {
+      box-shadow: 0 0 0 10px rgb(127 238 250 / 0);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+}
+
+:root {
+  color-scheme: dark;
+  --header-h: 72px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --grad: linear-gradient(115deg, #b26cff 0%, #6e29ac 34%, #0c8ec7 70%, #7feefa 100%);
+  --grad-text: linear-gradient(100deg, #c98eff 0%, #9a62f5 28%, #2ca6e2 66%, #7feefa 100%);
+  --grad-soft: linear-gradient(115deg, #6e29ac 0%, #0c8ec7 100%);
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-h: 64px;
+  }
+}
+
+/* ---------- Utilities ---------- */
+@utility container-site {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@utility text-gradient {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-grad {
+  background-image: var(--grad);
+}
+
+@utility bg-grad-soft {
+  background-image: var(--grad-soft);
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.75rem, 9vw, 8rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+@utility eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-muted);
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-h);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-ink);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--color-plum);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-aqua);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  input,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+/* ---------- Motion primitives shared by several components ---------- */
+@layer components {
+  /* Scroll reveal: hidden only once the client has hydrated, so content never disappears without JS. */
+  .js-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.9s var(--ease-brand),
+      transform 0.9s var(--ease-brand);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+  .js-ready [data-reveal][data-in] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /*
+   * Sticky scrub paragraphs: an inline span whose background runs through its lines in reading
+   * order, so the text fills line by line from faint to bright as `--fill` goes 0 → 100%.
+   */
+  .scrub-fill {
+    -webkit-box-decoration-break: slice;
+    box-decoration-break: slice;
+    background-image:
+      linear-gradient(var(--color-text), var(--color-text)), linear-gradient(var(--color-ink-3), var(--color-ink-3));
+    background-size:
+      var(--fill, 0%) 100%,
+      100% 100%;
+    background-repeat: no-repeat;
+    background-position: right, right;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [dir='ltr'] .scrub-fill {
+    background-position: left, left;
+  }
+  .scrub-fill .accent {
+    background: var(--grad-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  /* Hover-stagger: letters slide up and are replaced by a gradient copy (footer wordmark). */
+  .letter-stagger span {
+    display: inline-block;
+    transition: transform 0.5s var(--ease-brand);
+    transition-delay: calc(var(--i) * 35ms);
+  }
+  .letter-stagger:hover span {
+    transform: translateY(-0.08em) rotate(-2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

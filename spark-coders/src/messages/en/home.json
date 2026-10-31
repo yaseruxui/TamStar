@@ -1,0 +1,212 @@
+{
+  "loader": {
+    "label": "skodr"
+  },
+  "hero": {
+    "intro": "At <b>Spark Coders</b> we design and build fast, easy-to-use websites and apps that help your business reach more customers and grow with confidence.",
+    "line1": "Websites & apps",
+    "line2": "that grow your business in",
+    "words": {
+      "ecommerce": "E-commerce.",
+      "education": "Education.",
+      "clinics": "Clinics.",
+      "startups": "Startups.",
+      "restaurants": "Restaurants."
+    },
+    "ctaPrimary": "Book a free consultation",
+    "ctaSecondary": "See our work",
+    "stackLabel": "The tools we build with",
+    "stackAria": "Technologies we use"
+  },
+  "intro": {
+    "aria": "Why Spark Coders",
+    "p1": "If your website is slow, outdated or hard to use, you're losing customers every day without noticing.",
+    "p2": "The fix? Right here.",
+    "p3": "We turn your idea into a fast, polished website or app that brings in real customers.",
+    "p4": "Ready to start your project?",
+    "scrollHint": "Scroll down"
+  },
+  "work": {
+    "title": "Our work.",
+    "lead": "A selection of projects we've designed and built for clients across industries.",
+    "eyebrow": "Selected projects",
+    "details": "Project details",
+    "all": "All projects",
+    "items": {
+      "education": {
+        "title": "All-in-one learning platform",
+        "category": "Education",
+        "alt": "Students using a learning platform"
+      },
+      "ecommerce": {
+        "title": "Online store for a fashion label",
+        "category": "E-commerce",
+        "alt": "Online store for a fashion label"
+      },
+      "clinic": {
+        "title": "Clinic booking system",
+        "category": "Healthcare",
+        "alt": "Clinic appointment booking system"
+      },
+      "delivery": {
+        "title": "Delivery app",
+        "category": "Mobile apps",
+        "alt": "Delivery app on a phone"
+      },
+      "dashboard": {
+        "title": "Logistics dashboard",
+        "category": "Business systems",
+        "alt": "Dashboard with reports and charts"
+      },
+      "restaurant": {
+        "title": "Restaurant website & menu",
+        "category": "Restaurants",
+        "alt": "Digital restaurant menu"
+      }
+    }
+  },
+  "leads": {
+    "eyebrow": "Your website sells for you",
+    "title": "More visitors.",
+    "titleAccent": "More customers.",
+    "body": "A great website isn't just a pretty face — it's a salesperson that works 24/7. We shape every page and every button so visitors become customers who contact you and buy.",
+    "tap": "Tap here",
+    "canvasAria": "Interactive area: tap to add new leads",
+    "tags": {
+      "client": "New client",
+      "quote": "Quote request",
+      "booking": "Booking",
+      "whatsapp": "WhatsApp message",
+      "call": "Phone call",
+      "order": "New order",
+      "signup": "New signup",
+      "inquiry": "Inquiry"
+    }
+  },
+  "delight": {
+    "eyebrow": "A comfortable experience",
+    "title": "Easy to use",
+    "titleAccent": "from the first visit.",
+    "body": "We organise information clearly so visitors find what they need fast, and we test every page before launch so the next step is always obvious.",
+    "tap": "Tap to celebrate",
+    "steps": {
+      "discover": "Understand your needs",
+      "plan": "Plan the pages",
+      "design": "Design",
+      "build": "Build & test",
+      "launch": "Launch"
+    }
+  },
+  "edit": {
+    "eyebrow": "A simple dashboard",
+    "title": "Edit your site",
+    "titleAccent": "yourself.",
+    "body": "No waiting on a developer, no complexity. Change text, images and prices from a simple dashboard — as easily as editing this text.",
+    "tag": "Click here and edit ✎",
+    "sample": "Try it: type anything here and see how easy it is.",
+    "sampleAria": "Editable sample text",
+    "cursor": "Edit!"
+  },
+  "team": {
+    "title": "Our team",
+    "body": "A specialist team that brings you clear solutions instead of problems, saves your time and works with you step by step until your project is ready.",
+    "linkedin": "LinkedIn",
+    "members": {
+      "founder": {
+        "name": "Team member name",
+        "role": "Founder & CTO",
+        "bio": "Oversees the technical side of every project and makes sure each site is fast, secure and scalable."
+      },
+      "pm": {
+        "name": "Team member name",
+        "role": "Project manager",
+        "bio": "Keeps you updated through every stage and makes sure deadlines are met."
+      },
+      "designer": {
+        "name": "Team member name",
+        "role": "UI/UX designer",
+        "bio": "Designs clean, easy-to-use interfaces that reflect your brand."
+      },
+      "developer": {
+        "name": "Team member name",
+        "role": "App developer",
+        "bio": "Turns designs into apps that run smoothly on phones and desktops."
+      },
+      "marketer": {
+        "name": "Team member name",
+        "role": "Digital marketer",
+        "bio": "Helps you reach the right audience and measures your campaigns in numbers."
+      }
+    }
+  },
+  "sectors": {
+    "aria": "Industries we serve",
+    "tabsAria": "Industries",
+    "items": {
+      "business": {
+        "tab": "Companies",
+        "title": "Websites that show",
+        "title2": "how professional you are",
+        "body": "We build a site that presents your services clearly, earns trust from the first visit and grows as your business grows.",
+        "link": "Our services for companies",
+        "book": "10 questions before hiring any agency"
+      },
+      "education": {
+        "tab": "Education",
+        "title": "Digital solutions",
+        "title2": "for schools & universities",
+        "body": "Websites and platforms that make enrolment easy for parents, keep content organised and reflect your institution's reputation.",
+        "link": "Our services for education",
+        "book": "What every school website needs"
+      },
+      "commerce": {
+        "tab": "E-commerce",
+        "title": "A store that sells",
+        "title2": "around the clock",
+        "body": "Fast online stores with easy payments, shipping and inventory integrations, and reports that help you decide.",
+        "link": "Our services for stores",
+        "book": "Your first store launch guide"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "What our clients say",
+    "items": {
+      "one": {
+        "quote": "“A professional team from start to finish. They delivered on time, and the quality beat our expectations.”",
+        "author": "Client name — Title, Company"
+      },
+      "two": {
+        "quote": "“After launching the new site, our enquiries clearly went up. Even better, the support continues after handover.”",
+        "author": "Client name — Title, Company"
+      },
+      "three": {
+        "quote": "“We were looking for a partner we could trust, and we found one. Responsive, collaborative and detail-obsessed.”",
+        "author": "Client name — Title, Company"
+      }
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "all": "All articles",
+    "category": "Tips",
+    "items": {
+      "content": {
+        "title": "Should your website content be ready before design starts?",
+        "alt": "Person writing website copy on a laptop"
+      },
+      "team": {
+        "title": "Who should be on your website project team?",
+        "alt": "Team meeting around a table"
+      },
+      "brief": {
+        "title": "How to write a clear project brief before contacting an agency",
+        "alt": "Project plan sketched on paper"
+      }
+    }
+  },
+  "outro": {
+    "eyebrow": "Where to next?",
+    "note": "Fast, clear websites and apps that bring you more customers."
+  }
+}
