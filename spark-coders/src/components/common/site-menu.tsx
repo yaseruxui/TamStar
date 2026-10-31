@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { ArrowIcon } from '@/components/ui/icons';
+import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
 
 export interface MenuLink {
@@ -12,7 +14,8 @@ export interface MenuLink {
 interface SiteMenuProps {
   items: readonly MenuLink[];
   socials: readonly MenuLink[];
-  labels: { open: string; close: string; nav: string; followUs: string; note: string };
+  labels: { open: string; close: string; nav: string; followUs: string; note: string; ctaTitle: string; cta: string };
+  email: string;
 }
 
 const CLOSE_MS = 350;
@@ -21,7 +24,7 @@ const CLOSE_MS = 350;
  * Full-screen menu: toggle button + overlay. The overlay is portalled to <body> so the frosted
  * header (which creates a containing block via backdrop-filter) stays above it. Escape closes it.
  */
-export function SiteMenu({ items, socials, labels }: SiteMenuProps) {
+export function SiteMenu({ items, socials, labels, email }: SiteMenuProps) {
   /** `rendered` keeps the overlay in the DOM during its fade-out; `open` drives the fade itself. */
   const [rendered, setRendered] = useState(false);
   const [open, setOpen] = useState(false);
@@ -99,15 +102,15 @@ export function SiteMenu({ items, socials, labels }: SiteMenuProps) {
                 open ? 'opacity-100' : 'opacity-0',
               )}
             >
-              <div className="container-site grid flex-1 content-center items-end gap-[clamp(20px,4vh,48px)] lg:grid-cols-[2fr_1fr]">
-                <ol>
+              <div className="container-site grid flex-1 content-center items-center gap-[clamp(16px,4vh,56px)] lg:grid-cols-[1.35fr_1fr] lg:gap-[clamp(48px,7vw,120px)]">
+                <ol className="border-t border-line">
                   {items.map((item, index) => (
                     <li
                       key={item.href}
                       // Links rise in one after another as the menu opens.
                       style={{ transitionDelay: open ? `${80 + index * 45}ms` : '0ms' }}
                       className={cn(
-                        'transition-[opacity,translate] duration-500 ease-brand motion-reduce:translate-y-0',
+                        'border-b border-line transition-[opacity,translate] duration-500 ease-brand motion-reduce:translate-y-0',
                         open ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0',
                       )}
                     >
@@ -115,25 +118,60 @@ export function SiteMenu({ items, socials, labels }: SiteMenuProps) {
                         ref={index === 0 ? firstLinkRef : undefined}
                         href={item.href}
                         onClick={() => hide()}
-                        className="flex items-baseline font-display text-[clamp(1.75rem,min(5.5vw,7svh),3.75rem)] leading-[1.3] font-extrabold transition-colors duration-250 hover:text-aqua"
+                        className="group/link flex items-center gap-[clamp(12px,2vw,24px)] py-[clamp(3px,1.2svh,14px)]"
                       >
-                        {item.label}
+                        <span className="w-7 font-display text-sm text-faint tabular-nums transition-colors duration-300 group-hover/link:text-aqua">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span className="font-display text-[clamp(1.45rem,min(4.4vw,5.6svh),3.25rem)] leading-[1.3] font-extrabold transition-[color,translate] duration-400 ease-brand group-hover/link:-translate-x-2 group-hover/link:text-aqua ltr:group-hover/link:translate-x-2">
+                          {item.label}
+                        </span>
+                        <ArrowIcon className="ms-auto size-7 text-aqua opacity-0 transition-[opacity,translate] duration-400 ease-brand group-hover/link:opacity-100 max-sm:hidden" />
                       </a>
                     </li>
                   ))}
                 </ol>
-                <div>
-                  <p className="label-sm">{labels.followUs}</p>
-                  <ul className="mt-3 mb-5 grid gap-1.5">
-                    {socials.map((social) => (
-                      <li key={social.label}>
-                        <a href={social.href} rel="noopener" className="text-lg text-muted hover:text-text">
-                          {social.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="text-[0.9375rem] text-faint">{labels.note}</p>
+
+                <div
+                  style={{ transitionDelay: open ? '220ms' : '0ms' }}
+                  className={cn(
+                    'rounded-panel bg-white/[0.04] p-[clamp(16px,3vw,36px)] shadow-[inset_0_0_0_1px_var(--color-line-strong)] backdrop-blur-sm transition-[opacity,translate] duration-500 ease-brand motion-reduce:translate-y-0',
+                    open ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0',
+                  )}
+                >
+                  <p className="font-display text-[clamp(1.4rem,2.4vw,2rem)] leading-[1.35] font-extrabold">
+                    {labels.ctaTitle}
+                  </p>
+                  <p className="mt-2 text-muted max-sm:hidden">{labels.note}</p>
+                  <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3 sm:mt-5">
+                    <a href="#contact" onClick={() => hide()} className={buttonVariants({ size: 'md' })}>
+                      {labels.cta}
+                      <ArrowIcon />
+                    </a>
+                    <a
+                      href={`mailto:${email}`}
+                      dir="ltr"
+                      className="text-[0.9375rem] text-muted underline-offset-4 transition-colors hover:text-aqua hover:underline"
+                    >
+                      {email}
+                    </a>
+                  </div>
+                  <div className="mt-4 border-t border-line pt-4 sm:mt-6 sm:pt-5">
+                    <p className="label-sm max-sm:sr-only">{labels.followUs}</p>
+                    <ul className="flex flex-wrap gap-2 sm:mt-3">
+                      {socials.map((social) => (
+                        <li key={social.label}>
+                          <a
+                            href={social.href}
+                            rel="noopener"
+                            className="inline-flex min-h-9 items-center rounded-full px-3.5 text-sm sm:min-h-10 sm:px-4 sm:text-[0.9375rem] text-muted shadow-[inset_0_0_0_1px_var(--color-line-strong)] transition-[color,box-shadow,background-color] duration-300 hover:bg-white/5 hover:text-text hover:shadow-[inset_0_0_0_1px_rgb(127_238_250/0.5)]"
+                          >
+                            {social.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </nav>,

@@ -44,7 +44,10 @@ export async function SiteHeader() {
                 nav: tNav('mainAria'),
                 followUs: t('followUs'),
                 note: tNav('menuNote'),
+                ctaTitle: tNav('menuCtaTitle'),
+                cta: t('startProject'),
               }}
+              email={site.email}
             />
           </div>
         </div>
