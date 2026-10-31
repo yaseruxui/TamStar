@@ -27,16 +27,16 @@ export const techStack: readonly string[] = [
 ];
 
 /**
- * Showcase projects. Drop a photo into /public/images/projects/<key>.webp and set `image`
- * to its path; until then each card renders its brand-gradient artwork.
+ * Showcase projects. Each image is an interface screenshot (1600×1200) in /public/images/projects/;
+ * set `image` to null to fall back to the brand-gradient artwork.
  */
 export const projects: readonly Project[] = [
-  { key: 'education', accent: 1, href: '#', image: null },
-  { key: 'ecommerce', accent: 2, href: '#', image: null },
-  { key: 'clinic', accent: 3, href: '#', image: null },
-  { key: 'delivery', accent: 4, href: '#', image: null },
-  { key: 'dashboard', accent: 5, href: '#', image: null },
-  { key: 'restaurant', accent: 6, href: '#', image: null },
+  { key: 'education', accent: 1, href: '#', image: '/images/projects/education.webp' },
+  { key: 'ecommerce', accent: 2, href: '#', image: '/images/projects/ecommerce.webp' },
+  { key: 'clinic', accent: 3, href: '#', image: '/images/projects/clinic.webp' },
+  { key: 'delivery', accent: 4, href: '#', image: '/images/projects/delivery.webp' },
+  { key: 'dashboard', accent: 5, href: '#', image: '/images/projects/dashboard.webp' },
+  { key: 'restaurant', accent: 6, href: '#', image: '/images/projects/restaurant.webp' },
 ];
 
 export const leadTags: readonly LeadTagKey[] = [

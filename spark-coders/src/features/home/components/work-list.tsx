@@ -59,14 +59,14 @@ export function WorkList({ rows, detailsLabel }: WorkListProps) {
             <a
               href={row.href}
               onPointerEnter={() => setHovered(row)}
-              className="group/row grid grid-cols-[1fr_auto_auto] items-center gap-x-6 gap-y-4 border-b border-line-strong py-[22px] transition-[padding] duration-400 ease-brand hover:px-4 focus-visible:px-4 max-sm:grid-cols-[88px_1fr] max-sm:grid-rows-[auto_auto] max-sm:gap-y-1.5"
+              className="group/row grid grid-cols-[136px_1fr_auto_auto] items-center gap-x-6 gap-y-4 border-b border-line-strong py-5 transition-[padding] duration-400 ease-brand hover:px-4 focus-visible:px-4 max-sm:grid-cols-[96px_1fr] max-sm:grid-rows-[auto_auto] max-sm:gap-x-4 max-sm:gap-y-1.5"
             >
               <ProjectArt
                 accent={row.accent}
                 image={row.image}
                 alt={row.alt}
-                sizes="88px"
-                className="hidden size-[88px] rounded-xl max-sm:row-span-2 max-sm:block"
+                sizes="(max-width: 640px) 96px, 136px"
+                className="aspect-[4/3] w-full rounded-xl transition-transform duration-500 ease-brand group-hover/row:scale-[1.04] max-sm:row-span-2"
               />
               <h3 className="font-display text-[clamp(1.25rem,2.6vw,2rem)] leading-[1.35] font-semibold transition-colors duration-300 group-hover/row:text-aqua">
                 {row.title}
@@ -84,7 +84,7 @@ export function WorkList({ rows, detailsLabel }: WorkListProps) {
         <div ref={previewRef} aria-hidden="true" className="pointer-events-none fixed top-0 left-0 z-30">
           <div
             className={cn(
-              'relative aspect-[4/3] w-[300px] -translate-1/2 overflow-hidden rounded-card shadow-[0_30px_60px_-20px_rgb(0_0_0/0.7)] transition-[opacity,scale] duration-[300ms,400ms] ease-brand',
+              'relative aspect-[4/3] w-[440px] -translate-1/2 overflow-hidden rounded-card shadow-[0_30px_60px_-20px_rgb(0_0_0/0.7)] transition-[opacity,scale] duration-[300ms,400ms] ease-brand',
               hovered ? 'scale-100 opacity-100' : 'scale-[0.85] opacity-0',
             )}
           >
@@ -93,7 +93,7 @@ export function WorkList({ rows, detailsLabel }: WorkListProps) {
                 accent={hovered.accent}
                 image={hovered.image}
                 alt=""
-                sizes="300px"
+                sizes="440px"
                 className="absolute inset-0"
               />
             ) : null}
