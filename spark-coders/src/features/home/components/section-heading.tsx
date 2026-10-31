@@ -1,4 +1,5 @@
 import { cn } from '@/utils/cn';
+import { Kashida } from '@/components/ui/kashida';
 
 interface SectionHeadingProps {
   title: string;
@@ -13,9 +14,11 @@ export function SectionHeading({ title, accent, body, align = 'start', className
   return (
     <div className={cn(align === 'center' && 'mx-auto text-center', className)}>
       <h3 className="mb-6 font-display text-[clamp(2.4rem,6vw,5.25rem)] leading-[1.12] font-extrabold tracking-[-0.01em]">
-        {title}
+        <Kashida text={title} />
         <br />
-        <span className="text-violet">{accent}</span>
+        <span className="text-violet">
+          <Kashida text={accent} />
+        </span>
       </h3>
       <p className={cn('max-w-[34rem] text-lg text-muted', align === 'center' && 'mx-auto')}>{body}</p>
     </div>

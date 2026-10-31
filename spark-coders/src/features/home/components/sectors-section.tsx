@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { GuideCard } from '@/features/contact/components/guide-card';
 import { sectors } from '../data/content';
 import { SectorTabs } from './sector-tabs';
+import { Kashida } from '@/components/ui/kashida';
 
 export async function SectorsSection() {
   const t = await getTranslations('home.sectors');
@@ -22,7 +23,9 @@ export async function SectorsSection() {
     >
       <div className="container-site">
         <div className="mb-10 max-w-2xl">
-          <h2 className="display-xl">{t('title')}</h2>
+          <h2 className="display-xl">
+            <Kashida text={t('title')} />
+          </h2>
           <p className="mt-4 text-lg text-text/85">{t('lead')}</p>
         </div>
         <SectorTabs panels={panels} tabsLabel={t('tabsAria')} />

@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { site } from '@/lib/config/site';
 import { ContactForm } from './contact-form';
+import { Kashida } from '@/components/ui/kashida';
 
 export async function ContactSection() {
   const t = await getTranslations('contact');
@@ -15,7 +16,9 @@ export async function ContactSection() {
           <h2 className="font-display text-[clamp(2.4rem,5vw,4.25rem)] leading-[1.08] font-extrabold tracking-[-0.01em]">
             {t('title')}
             <br />
-            <span className="text-violet">{t('titleAccent')}</span>
+            <span className="text-violet">
+              <Kashida text={t('titleAccent')} />
+            </span>
           </h2>
           <p className="mt-5 text-muted">{t('lead')}</p>
           <ul className="mt-8 grid gap-3">

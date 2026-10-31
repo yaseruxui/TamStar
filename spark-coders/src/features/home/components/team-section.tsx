@@ -4,6 +4,7 @@ import { LinkArrow } from '@/components/ui/link-arrow';
 import { Reveal } from '@/components/ui/reveal';
 import { cn } from '@/utils/cn';
 import { team } from '../data/content';
+import { Kashida } from '@/components/ui/kashida';
 
 export async function TeamSection() {
   const [t, locale] = await Promise.all([getTranslations('home.team'), getLocale()]);
@@ -12,7 +13,9 @@ export async function TeamSection() {
     <section id="team" className="border-t border-line py-[clamp(80px,12vw,160px)]">
       <div className="container-site grid gap-[clamp(32px,5vw,72px)] lg:grid-cols-[1fr_2.2fr]">
         <div className="self-start lg:sticky lg:top-[calc(var(--header-h)+24px)]">
-          <h2 className="display-xl">{t('title')}</h2>
+          <h2 className="display-xl">
+            <Kashida text={t('title')} />
+          </h2>
           <p className="mt-5 text-muted">{t('body')}</p>
         </div>
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] sm:gap-5">

@@ -1,6 +1,7 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { testimonials } from '../data/content';
 import { TestimonialsOrbit } from './testimonials-orbit';
+import { Kashida } from '@/components/ui/kashida';
 
 export async function TestimonialsSection() {
   const [t, locale] = await Promise.all([getTranslations('home.testimonials'), getLocale()]);
@@ -26,7 +27,7 @@ export async function TestimonialsSection() {
       <div className="container-site">
         <div className="mx-auto max-w-2xl text-center">
           <h2 id="testimonials-title" className="display-xl">
-            {t('title')}
+            <Kashida text={t('title')} />
           </h2>
           <p className="mt-5 text-lg text-muted">{t('lead')}</p>
         </div>
