@@ -1,20 +1,28 @@
+import type { TechIconKey } from '../lib/tech-icons';
 import type { DelightStepKey, HeroWordKey, LeadTagKey, Post, Project, Sector, TeamMember, Testimonial } from '../types';
 
 export const heroWords: readonly HeroWordKey[] = ['ecommerce', 'education', 'clinics', 'startups', 'restaurants'];
 
-export const techStack: readonly string[] = [
-  'Next.js',
-  'React',
-  'Flutter',
-  'Laravel',
-  'Node.js',
-  'TypeScript',
-  'Figma',
-  'PostgreSQL',
-  'AWS',
-  'OpenAI',
-  'Shopify',
-  'WordPress',
+/** A technology in the hero strip. `icon` is a Simple Icons slug-key; null draws a neutral glyph. */
+export interface Tech {
+  name: string;
+  icon: TechIconKey | null;
+}
+
+export const techStack: readonly Tech[] = [
+  { name: 'Next.js', icon: 'siNextdotjs' },
+  { name: 'React', icon: 'siReact' },
+  { name: 'Flutter', icon: 'siFlutter' },
+  { name: 'Laravel', icon: 'siLaravel' },
+  { name: 'Node.js', icon: 'siNodedotjs' },
+  { name: 'TypeScript', icon: 'siTypescript' },
+  { name: 'Figma', icon: 'siFigma' },
+  { name: 'PostgreSQL', icon: 'siPostgresql' },
+  // Amazon's logo is not distributed by Simple Icons (trademark policy); a neutral cloud stands in.
+  { name: 'AWS', icon: null },
+  { name: 'OpenAI', icon: 'siOpenai' },
+  { name: 'Shopify', icon: 'siShopify' },
+  { name: 'WordPress', icon: 'siWordpress' },
 ];
 
 /**
