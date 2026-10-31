@@ -68,21 +68,28 @@ export function SiteMenu({ items, socials, labels, localeSwitch }: SiteMenuProps
         type="button"
         aria-expanded={open}
         aria-controls="site-menu"
+        aria-label={open ? labels.close : labels.open}
         onClick={() => (open ? hide() : show())}
-        className="relative inline-flex min-h-11 cursor-pointer items-center gap-3 px-1 font-display text-lg font-extrabold"
+        className="group/menu relative grid size-11 cursor-pointer place-items-center rounded-full bg-white/5 shadow-[inset_0_0_0_1px_var(--color-line-strong)] transition-[background-color,box-shadow,scale] duration-300 ease-brand hover:bg-white/10 hover:shadow-[inset_0_0_0_1px_rgb(127_238_250/0.5)] active:scale-[0.94]"
       >
-        <span>{open ? labels.close : labels.open}</span>
-        <span aria-hidden="true" className="grid w-[26px] gap-1.5">
+        {/* Three lines of different lengths: on hover they even out, when open they fold into an ×. */}
+        <span aria-hidden="true" className="relative block h-3.5 w-5">
           <i
             className={cn(
-              'block h-0.5 rounded-xs bg-current transition-transform duration-350 ease-brand',
-              open && 'translate-y-1 rotate-45',
+              'absolute start-0 top-0 block h-0.5 rounded-full bg-current transition-[translate,rotate,width] duration-400 ease-brand',
+              open ? 'w-5 translate-y-1.5 rotate-45' : 'w-5',
             )}
           />
           <i
             className={cn(
-              'block h-0.5 rounded-xs bg-current transition-transform duration-350 ease-brand',
-              open && '-translate-y-1 -rotate-45',
+              'absolute start-0 top-1.5 block h-0.5 rounded-full bg-aqua transition-[width,opacity,translate] duration-300 ease-brand',
+              open ? 'w-0 opacity-0' : 'w-3 group-hover/menu:w-5',
+            )}
+          />
+          <i
+            className={cn(
+              'absolute start-0 top-3 block h-0.5 rounded-full bg-current transition-[translate,rotate,width] duration-400 ease-brand',
+              open ? 'w-5 -translate-y-1.5 -rotate-45' : 'w-4 group-hover/menu:w-5',
             )}
           />
         </span>

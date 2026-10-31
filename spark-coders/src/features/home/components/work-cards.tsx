@@ -12,7 +12,7 @@ interface WorkCardsProps {
 /** Project cards: the interface shot on top, then the category and title; the whole card is the link. */
 export function WorkCards({ rows, detailsLabel }: WorkCardsProps) {
   return (
-    <ul className="mb-12 grid gap-[clamp(16px,2vw,28px)] sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid gap-[clamp(16px,2vw,28px)] sm:grid-cols-2 lg:grid-cols-3">
       {rows.map((row, index) => (
         <Reveal as="li" key={row.key} index={index} className="flex">
           <a

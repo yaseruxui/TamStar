@@ -7,12 +7,19 @@ import { cn } from '@/utils/cn';
 import type { Quote } from '../types';
 import { ArabAvatar } from './arab-avatar';
 
-/** Where each client photo sits around the quote card on wide screens (inline-start / top, in %). */
-const ORBIT: readonly { x: string; y: string; size: 'lg' | 'md' }[] = [
-  { x: '1%', y: '6%', size: 'lg' },
-  { x: '86%', y: '0%', size: 'md' },
-  { x: '88%', y: '62%', size: 'lg' },
-  { x: '4%', y: '70%', size: 'md' },
+/**
+ * Where each client photo sits on wide screens (inline-start / top, in % of the stage) and how big
+ * it is. Sizes are mixed and the photos keep to the outer edges, clear of the quote card.
+ */
+const ORBIT: readonly { x: string; y: string; size: string }[] = [
+  { x: '1%', y: '4%', size: 'lg:size-24' },
+  { x: '91%', y: '2%', size: 'lg:size-20' },
+  { x: '90%', y: '58%', size: 'lg:size-24' },
+  { x: '0%', y: '58%', size: 'lg:size-20' },
+  { x: '10%', y: '32%', size: 'lg:size-14' },
+  { x: '86%', y: '32%', size: 'lg:size-16' },
+  { x: '9%', y: '88%', size: 'lg:size-12' },
+  { x: '85%', y: '90%', size: 'lg:size-14' },
 ];
 
 const AVATAR_BG = [
@@ -21,14 +28,6 @@ const AVATAR_BG = [
   'bg-[linear-gradient(160deg,#e6ecff,#a9b9ff)]',
   'bg-[linear-gradient(160deg,#f6e6ff,#d6b4f5)]',
 ] as const;
-
-/** Extra faces in the gaps around the card (AI-generated portraits, not real clients). */
-const CROWD: readonly { src: string; x: string; y: string; size: string; delay: string }[] = [
-  { src: '/images/clients/crowd-1.webp', x: '13%', y: '36%', size: 'size-14', delay: '-2s' },
-  { src: '/images/clients/crowd-2.webp', x: '91%', y: '34%', size: 'size-20', delay: '-4s' },
-  { src: '/images/clients/crowd-3.webp', x: '15%', y: '96%', size: 'size-11', delay: '-1s' },
-  { src: '/images/clients/crowd-4.webp', x: '80%', y: '94%', size: 'size-16', delay: '-3s' },
-];
 
 interface TestimonialsOrbitProps {
   quotes: readonly Quote[];
@@ -59,7 +58,11 @@ export function TestimonialsOrbit({ quotes, chooseLabel }: TestimonialsOrbitProp
       onPointerEnter={() => setPaused(true)}
       onPointerLeave={() => setPaused(false)}
     >
-      <div role="tablist" aria-label={chooseLabel} className="mb-8 flex justify-center gap-4 lg:contents">
+      <div
+        role="tablist"
+        aria-label={chooseLabel}
+        className="mb-8 flex flex-wrap justify-center gap-2.5 sm:gap-4 lg:contents"
+      >
         {quotes.map((quote, index) => {
           const spot = ORBIT[index % ORBIT.length] ?? ORBIT[0];
           const selected = index === active;
@@ -75,8 +78,8 @@ export function TestimonialsOrbit({ quotes, chooseLabel }: TestimonialsOrbitProp
               style={{ '--x': spot?.x, '--y': spot?.y, '--float-delay': `${index * -1.6}s` }}
               className={cn(
                 'group/avatar relative grid shrink-0 cursor-pointer place-items-center rounded-full transition-[scale,opacity] duration-400 ease-brand active:scale-[0.96]',
-                'size-16 lg:absolute lg:start-[var(--x)] lg:top-[var(--y)] motion-safe:lg:animate-[float_6s_ease-in-out_infinite] motion-safe:lg:[animation-delay:var(--float-delay)]',
-                spot?.size === 'lg' ? 'lg:size-32' : 'lg:size-24',
+                'size-10 sm:size-14 lg:absolute lg:start-[var(--x)] lg:top-[var(--y)] motion-safe:lg:animate-[float_6s_ease-in-out_infinite] motion-safe:lg:[animation-delay:var(--float-delay)]',
+                spot?.size,
                 selected ? 'scale-100 opacity-100' : 'opacity-55 hover:opacity-90',
               )}
             >
@@ -87,7 +90,7 @@ export function TestimonialsOrbit({ quotes, chooseLabel }: TestimonialsOrbitProp
                 )}
               >
                 {quote.image ? (
-                  <Image src={quote.image} alt={quote.alt} fill sizes="128px" className="object-cover" />
+                  <Image src={quote.image} alt={quote.alt} fill sizes="96px" className="object-cover" />
                 ) : (
                   <ArabAvatar variant={quote.avatar} />
                 )}
@@ -195,21 +198,6 @@ export function TestimonialsOrbit({ quotes, chooseLabel }: TestimonialsOrbitProp
           );
         })}
       </div>
-
-      {/* More client faces around the quote, in mixed sizes (decorative, wide screens only). */}
-      {CROWD.map((face) => (
-        <span
-          key={face.src}
-          aria-hidden="true"
-          style={{ '--x': face.x, '--y': face.y, '--float-delay': face.delay }}
-          className={cn(
-            'pointer-events-none absolute start-[var(--x)] top-[var(--y)] hidden overflow-hidden rounded-full opacity-70 shadow-[0_16px_30px_-16px_rgb(0_0_0/0.8),0_0_0_3px_rgb(255_255_255/0.1)] lg:block motion-safe:animate-[float_7s_ease-in-out_infinite] motion-safe:[animation-delay:var(--float-delay)]',
-            face.size,
-          )}
-        >
-          <Image src={face.src} alt="" fill sizes="80px" className="object-cover" />
-        </span>
-      ))}
     </div>
   );
 }

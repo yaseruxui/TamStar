@@ -81,6 +81,10 @@ export const testimonials: readonly Testimonial[] = [
   { key: 'two', avatar: 'hijab', image: '/images/clients/client-two.webp' },
   { key: 'three', avatar: 'ghutra', image: '/images/clients/client-three.webp' },
   { key: 'four', avatar: 'hijabLight', image: '/images/clients/client-four.webp' },
+  { key: 'five', avatar: 'ghutra', image: '/images/clients/client-five.webp' },
+  { key: 'six', avatar: 'hijab', image: '/images/clients/client-six.webp' },
+  { key: 'seven', avatar: 'shemagh', image: '/images/clients/client-seven.webp' },
+  { key: 'eight', avatar: 'hijabLight', image: '/images/clients/client-eight.webp' },
 ];
 
 export const posts: readonly Post[] = [

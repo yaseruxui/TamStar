@@ -19,7 +19,28 @@ export async function SiteHeader() {
         <a href="#top" aria-label={tNav('homeAria')} className="inline-flex">
           <BrandLogo />
         </a>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <a
+            href={getPathname({ href: '/', locale: otherLocale })}
+            hrefLang={otherLocale}
+            lang={otherLocale}
+            aria-label={tNav('switchLocaleAria')}
+            className="group/lang inline-flex h-11 items-center gap-1.5 rounded-full bg-white/5 px-3.5 font-display text-sm font-bold shadow-[inset_0_0_0_1px_var(--color-line-strong)] transition-[background-color,box-shadow,scale] duration-300 ease-brand hover:bg-white/10 hover:shadow-[inset_0_0_0_1px_rgb(127_238_250/0.5)] active:scale-[0.94]"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              className="size-[18px] text-aqua transition-[rotate] duration-700 ease-brand group-hover/lang:rotate-180"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z" />
+            </svg>
+            {tNav('switchLocaleShort')}
+          </a>
           <ButtonLink href="#contact" size="sm" className="max-sm:hidden">
             {t('startProject')}
             <ArrowIcon />

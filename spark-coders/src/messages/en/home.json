@@ -42,7 +42,7 @@
     "title": "Our work.",
     "lead": "A selection of projects we've designed and built for clients across industries.",
     "details": "Project details",
-    "all": "All projects",
+    "all": "All work",
     "items": {
       "education": {
         "title": "All-in-one learning platform",
@@ -195,6 +195,26 @@
       },
       "four": {
         "quote": "“From the first meeting they understood our idea better than we did. The new site is faster, clearer, and customers reach us through it every day.”",
+        "name": "Client name",
+        "role": "Title, Company"
+      },
+      "five": {
+        "quote": "“The booking system they built saves us hours of manual work every week.”",
+        "name": "Client name",
+        "role": "Title, Company"
+      },
+      "six": {
+        "quote": "“The design came out better than we imagined, and the app is far easier for our customers.”",
+        "name": "Client name",
+        "role": "Title, Company"
+      },
+      "seven": {
+        "quote": "“Full transparency at every stage — we always knew exactly where the project stood.”",
+        "name": "Client name",
+        "role": "Title, Company"
+      },
+      "eight": {
+        "quote": "“Our new store is fast and simple, and mobile sales doubled after launch.”",
         "name": "Client name",
         "role": "Title, Company"
       }
