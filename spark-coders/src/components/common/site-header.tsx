@@ -17,7 +17,7 @@ export async function SiteHeader() {
     <HeaderFrame>
       <div className="container-site">
         {/* Floating glass bar; firmer once the page scrolls or the menu is open. */}
-        <div className="flex h-14 items-center justify-between gap-4 rounded-full bg-ink/45 px-4 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08),0_18px_40px_-24px_rgb(0_0_0/0.9)] backdrop-blur-[14px] transition-[background-color,box-shadow] duration-400 ease-brand group-data-scrolled/header:bg-ink/75 group-data-scrolled/header:shadow-[inset_0_0_0_1px_var(--color-line-strong),0_24px_50px_-24px_rgb(0_0_0/0.95)] group-has-[[aria-expanded=true]]/header:bg-ink/85 sm:h-[60px] sm:px-7 lg:px-9">
+        <div className="flex h-14 items-center justify-between gap-4 rounded-full bg-ink/45 ps-4 pe-2 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08),0_18px_40px_-24px_rgb(0_0_0/0.9)] backdrop-blur-[14px] transition-[background-color,box-shadow] duration-400 ease-brand group-data-scrolled/header:bg-ink/75 group-data-scrolled/header:shadow-[inset_0_0_0_1px_var(--color-line-strong),0_24px_50px_-24px_rgb(0_0_0/0.95)] group-has-[[aria-expanded=true]]/header:bg-ink/85 sm:h-[60px] sm:ps-7 sm:pe-3 lg:ps-9 lg:pe-4">
           <a href="#top" aria-label={tNav('homeAria')} className="inline-flex">
             <BrandLogo />
           </a>
