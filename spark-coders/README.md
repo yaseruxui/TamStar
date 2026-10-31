@@ -44,7 +44,7 @@ src/
 │   └── seo/                   # JSON-LD script
 ├── features/
 │   ├── home/
-│   │   ├── components/        # hero, 3D scrub intro, work cards, leads physics, confetti, team, services, testimonials, blog
+│   │   ├── components/        # hero, 3D scrub intro, work cards, leads physics, process, team, services, testimonials, blog
 │   │   ├── data/content.ts    # ordered keys, images, links (copy lives in messages)
 │   │   ├── lib/               # 3D geometry of the logo mark, accent gradients
 │   │   └── types/             # keys derived from the message dictionaries
@@ -69,7 +69,6 @@ src/
 | --------------- | ------------------- | ------------------------------------------------------------------------------------------- |
 | 3D logo intro   | three (bundled)     | Loaded with `next/dynamic` + skeleton; pauses off-screen; WebGL errors fall back to a glow. |
 | Leads physics   | matter-js (bundled) | Imported on mount; tap to add pills; mouse users can drag them.                             |
-| Confetti        | none (canvas 2D)    | Bursts on click and once on first view.                                                     |
 | Cursor & loader | none                | Mouse devices only; the intro plays once per session.                                       |
 
 | Hero entrance | gsap + SplitText | Headline lines rise out of their masks; content stays visible without JS. |

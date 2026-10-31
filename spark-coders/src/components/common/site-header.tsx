@@ -15,53 +15,56 @@ export async function SiteHeader() {
 
   return (
     <HeaderFrame>
-      <div className="container-site flex items-center justify-between gap-4">
-        <a href="#top" aria-label={tNav('homeAria')} className="inline-flex">
-          <BrandLogo />
-        </a>
-        <div className="flex items-center gap-2 sm:gap-3">
-          <a
-            href={getPathname({ href: '/', locale: otherLocale })}
-            hrefLang={otherLocale}
-            lang={otherLocale}
-            aria-label={tNav('switchLocaleAria')}
-            className="group/lang inline-flex h-11 items-center gap-1.5 rounded-full bg-white/5 px-3.5 font-display text-sm font-bold shadow-[inset_0_0_0_1px_var(--color-line-strong)] transition-[background-color,box-shadow,scale] duration-300 ease-brand hover:bg-white/10 hover:shadow-[inset_0_0_0_1px_rgb(127_238_250/0.5)] active:scale-[0.94]"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              className="size-[18px] text-aqua transition-[rotate] duration-700 ease-brand group-hover/lang:rotate-180"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-            >
-              <circle cx="12" cy="12" r="9" />
-              <path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z" />
-            </svg>
-            {tNav('switchLocaleShort')}
+      <div className="container-site">
+        {/* Floating glass bar; firmer once the page scrolls or the menu is open. */}
+        <div className="flex h-14 items-center justify-between gap-4 rounded-full bg-ink/45 ps-4 pe-1.5 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08),0_18px_40px_-24px_rgb(0_0_0/0.9)] backdrop-blur-[14px] transition-[background-color,box-shadow] duration-400 ease-brand group-data-scrolled/header:bg-ink/75 group-data-scrolled/header:shadow-[inset_0_0_0_1px_var(--color-line-strong),0_24px_50px_-24px_rgb(0_0_0/0.95)] group-has-[[aria-expanded=true]]/header:bg-ink/85 sm:h-[60px] sm:ps-5 sm:pe-2">
+          <a href="#top" aria-label={tNav('homeAria')} className="inline-flex">
+            <BrandLogo />
           </a>
-          <ButtonLink href="#contact" size="sm" className="max-sm:hidden">
-            {t('startProject')}
-            <ArrowIcon />
-          </ButtonLink>
-          <SiteMenu
-            items={navSections.map((section) => ({ href: section.href, label: tNav(`items.${section.key}`) }))}
-            socials={site.socials.map((social) => ({ href: social.href, label: t(`socials.${social.key}`) }))}
-            labels={{
-              open: t('menu'),
-              close: t('close'),
-              nav: tNav('mainAria'),
-              followUs: t('followUs'),
-              note: tNav('menuNote'),
-            }}
-            localeSwitch={{
-              href: getPathname({ href: '/', locale: otherLocale }),
-              hrefLang: otherLocale,
-              label: tNav('switchLocale'),
-              ariaLabel: tNav('switchLocaleAria'),
-            }}
-          />
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a
+              href={getPathname({ href: '/', locale: otherLocale })}
+              hrefLang={otherLocale}
+              lang={otherLocale}
+              aria-label={tNav('switchLocaleAria')}
+              className="group/lang inline-flex h-11 items-center gap-1.5 rounded-full bg-white/5 px-3.5 font-display text-sm font-bold shadow-[inset_0_0_0_1px_var(--color-line-strong)] transition-[background-color,box-shadow,scale] duration-300 ease-brand hover:bg-white/10 hover:shadow-[inset_0_0_0_1px_rgb(127_238_250/0.5)] active:scale-[0.94]"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="size-[18px] text-aqua transition-[rotate] duration-700 ease-brand group-hover/lang:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z" />
+              </svg>
+              {tNav('switchLocaleShort')}
+            </a>
+            <ButtonLink href="#contact" size="sm" className="max-sm:hidden">
+              {t('startProject')}
+              <ArrowIcon />
+            </ButtonLink>
+            <SiteMenu
+              items={navSections.map((section) => ({ href: section.href, label: tNav(`items.${section.key}`) }))}
+              socials={site.socials.map((social) => ({ href: social.href, label: t(`socials.${social.key}`) }))}
+              labels={{
+                open: t('menu'),
+                close: t('close'),
+                nav: tNav('mainAria'),
+                followUs: t('followUs'),
+                note: tNav('menuNote'),
+              }}
+              localeSwitch={{
+                href: getPathname({ href: '/', locale: otherLocale }),
+                hrefLang: otherLocale,
+                label: tNav('switchLocale'),
+                ariaLabel: tNav('switchLocaleAria'),
+              }}
+            />
+          </div>
         </div>
       </div>
     </HeaderFrame>

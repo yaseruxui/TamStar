@@ -94,16 +94,30 @@
     }
   },
   "delight": {
-    "title": "Easy to use",
-    "titleAccent": "from the first visit.",
-    "body": "We organise information clearly so visitors find what they need fast, and we test every page before launch so the next step is always obvious.",
-    "tap": "Tap to celebrate",
+    "title": "From idea",
+    "titleAccent": "to launch.",
+    "body": "Five clear steps we take with you, so at every stage you know what's done and what's next.",
     "steps": {
-      "discover": "Understand your needs",
-      "plan": "Plan the pages",
-      "design": "Design",
-      "build": "Build & test",
-      "launch": "Launch"
+      "discover": {
+        "title": "We understand your needs",
+        "body": "A session to hear your idea, your goals and who your audience is."
+      },
+      "plan": {
+        "title": "We plan the pages",
+        "body": "A sitemap and the content of every page before any design."
+      },
+      "design": {
+        "title": "We design",
+        "body": "Screens you can see and change before we start building."
+      },
+      "build": {
+        "title": "We build and test",
+        "body": "We build the site and test it on phones, computers and every browser."
+      },
+      "launch": {
+        "title": "We launch your site",
+        "body": "We publish it on your domain and stay with you for support."
+      }
     }
   },
   "team": {
