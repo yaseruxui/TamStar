@@ -4,6 +4,8 @@ import dynamic from 'next/dynamic';
 import { useRef } from 'react';
 import { CanvasSkeleton } from '@/components/feedback/canvas-skeleton';
 import { ErrorBoundary } from '@/components/feedback/error-boundary';
+import { ButtonLink } from '@/components/ui/button';
+import { ArrowIcon } from '@/components/ui/icons';
 import { gsap, motionQueries, useGSAP } from '@/lib/gsap';
 import { cn } from '@/utils/cn';
 
@@ -17,6 +19,8 @@ interface ScrubIntroProps {
   /** Sentences; wrap a standout word in [[double brackets]] to give it the blue gradient. */
   paragraphs: readonly string[];
   scrollHint: string;
+  /** Call to action that appears once the last sentence has resolved. */
+  cta: { label: string; href: string };
 }
 
 /** Scroll distance per sentence, in viewport heights. */
@@ -24,6 +28,13 @@ const SCREENS_PER_SENTENCE = 1;
 
 /** Share of a sentence's scroll segment spent revealing its words (the rest holds, then hands over). */
 const REVEAL_SHARE = 0.72;
+
+/**
+ * Word wave, as in the Sekka "words" effect: each word slides in from 4rem along the reading
+ * direction (0.85 units, expo-like ease) while it fades out of a 10px blur (0.75 units, linear),
+ * successive words starting 0.075 units apart so many are in motion at once.
+ */
+const WAVE = { slide: 0.85, fade: 0.75, stagger: 0.075 } as const;
 
 interface Word {
   text: string;
@@ -54,12 +65,13 @@ function plainText(sentence: string): string {
 
 /**
  * The page's authored moment: the section pins, the 3D mark turns with the scroll, and each
- * sentence resolves word by word out of a blur before handing over to the next. A scrubbed GSAP
+ * sentence arrives as a wave of words that slide in and sharpen out of a blur, then hands over to
+ * the next; after the last one a call to action appears. A scrubbed GSAP
  * timeline drives everything (`scrub: 1` catches up smoothly) and its progress feeds the 3D scene.
  * A dark scrim sits between the mark and the text so the words stay readable over it.
  * Reduced motion: no pin; all sentences are shown, sharp, one under another.
  */
-export function ScrubIntro({ ariaLabel, paragraphs, scrollHint }: ScrubIntroProps) {
+export function ScrubIntro({ ariaLabel, paragraphs, scrollHint, cta }: ScrubIntroProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const progressRef = useRef(0);
 
@@ -75,10 +87,16 @@ export function ScrubIntro({ ariaLabel, paragraphs, scrollHint }: ScrubIntroProp
         const scrim = section.querySelector('[data-scrim]');
         const wordsOf = (sentence: HTMLElement) => gsap.utils.toArray<HTMLElement>('[data-word]', sentence);
 
+        const cta = section.querySelector('[data-intro-cta]');
+        const rtl = getComputedStyle(section).direction === 'rtl';
+        // Words travel along the reading direction: from the right in Arabic, from the left in English.
+        const offset = rtl ? '4rem' : '-4rem';
+
         gsap.set(sentences, { autoAlpha: 0, y: 24 });
         gsap.set(sentences[0] ?? [], { autoAlpha: 1, y: 0 });
-        gsap.set(section.querySelectorAll('[data-word]'), { filter: 'blur(12px)', opacity: 0.16 });
+        gsap.set(section.querySelectorAll('[data-word]'), { x: offset, autoAlpha: 0, filter: 'blur(10px)' });
         if (scrim) gsap.set(scrim, { opacity: 0.55 });
+        if (cta) gsap.set(cta, { autoAlpha: 0, y: 24 });
 
         const timeline = gsap.timeline({
           defaults: { ease: 'none' },
@@ -100,16 +118,27 @@ export function ScrubIntro({ ariaLabel, paragraphs, scrollHint }: ScrubIntroProp
 
         sentences.forEach((sentence, index) => {
           const words = wordsOf(sentence);
-          const each = REVEAL_SHARE / Math.max(words.length, 1);
-          timeline.to(words, {
-            filter: 'blur(0px)',
-            opacity: 1,
-            duration: Math.max(each * 2.2, 0.12),
-            stagger: each,
-            ease: 'power1.out',
-          });
+          // Scale the wave so it fits the sentence's share of the scroll, whatever its length.
+          const unit = REVEAL_SHARE / (WAVE.slide + WAVE.stagger * Math.max(words.length - 1, 0));
+          const label = `sentence-${index}`;
+          timeline
+            // Later sentences start their wave as they fade in, so the handover never leaves a blank screen.
+            .addLabel(label, index === 0 ? '>' : '<')
+            .to(words, { x: 0, duration: WAVE.slide * unit, stagger: WAVE.stagger * unit, ease: 'expo.out' }, label)
+            .to(
+              words,
+              {
+                autoAlpha: 1,
+                filter: 'blur(0px)',
+                duration: WAVE.fade * unit,
+                stagger: WAVE.stagger * unit,
+                ease: 'none',
+              },
+              label,
+            );
           const next = sentences[index + 1];
           if (!next) {
+            if (cta) timeline.to(cta, { autoAlpha: 1, y: 0, duration: 0.18, ease: 'power3.out' }, '>-0.05');
             timeline.to({}, { duration: 0.3 });
             return;
           }
@@ -168,6 +197,12 @@ export function ScrubIntro({ ariaLabel, paragraphs, scrollHint }: ScrubIntroProp
               </span>
             </p>
           ))}
+          <div data-intro-cta="" className="col-start-1 row-start-2 mt-[clamp(24px,4vh,44px)] flex justify-center">
+            <ButtonLink href={cta.href}>
+              {cta.label}
+              <ArrowIcon />
+            </ButtonLink>
+          </div>
         </div>
       </div>
       <p data-scroll-hint="" className="label-sm absolute bottom-6 left-1/2 -translate-x-1/2 motion-reduce:hidden">

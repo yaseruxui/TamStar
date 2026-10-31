@@ -24,6 +24,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
         ariaLabel={t('aria')}
         paragraphs={[t('p1'), t('p2'), t('p3'), t('p4')]}
         scrollHint={t('scrollHint')}
+        cta={{ label: t('cta'), href: '#contact' }}
       />
       <WorkSection />
       <section id="services" aria-label={t('aria')}>

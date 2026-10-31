@@ -35,7 +35,8 @@
     "p2": "The fix? [[Right here.]]",
     "p3": "We turn your idea into a fast, polished website or app that brings in [[real customers.]]",
     "p4": "Ready to start [[your project?]]",
-    "scrollHint": "Scroll down"
+    "scrollHint": "Scroll down",
+    "cta": "Start your project"
   },
   "work": {
     "title": "Our work.",
