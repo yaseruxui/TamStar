@@ -1,4 +1,4 @@
-# skodr — Spark Coders website
+# SPARKODERS — Spark Coders website
 
 One-page company site in Arabic (RTL, default) and English (LTR), dark theme, built with
 Next.js 16 (App Router, React Server Components), TypeScript (strict), Tailwind CSS v4 and next-intl 4.
@@ -97,9 +97,11 @@ matched to text weight, themed scrollbar/caret/selection.
 - Project, blog and team photos: put files in `public/images/…` and set `image` in
   `src/features/home/data/content.ts` (until then each card shows its brand-gradient artwork).
 - Team names, testimonial authors, social links and phone number (`src/messages/*`, `src/lib/config/site.ts`).
-- Logo assets live in `public/brand/` (mark, 512 px icon, 3D texture) and `src/app/icon.png`;
-  the lettering is vector in `src/components/common/skodr-wordmark.tsx` and the 3D outline in
-  `src/features/home/lib/skodr-outline.ts` (both traced from the brand SVG).
+- Logo: the source file is `brand-source/sparkoders-logo.svg`. The S mark is inline vector
+  (`src/components/common/spark-mark.tsx`); SPARKODERS and the slogan are outlined paths
+  (`src/components/common/wordmark.tsx`, Chakra Petch, OFL), so no font is fetched. Raster copies
+  for icons, the share image and the 3D texture are in `public/brand/` and `src/app/`; the 3D outline
+  is `src/features/home/lib/mark-outline.ts`.
 
 ## Private mode
 

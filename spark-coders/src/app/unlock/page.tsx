@@ -1,4 +1,5 @@
-import { SkodrWordmark } from '@/components/common/skodr-wordmark';
+import { SparkMark } from '@/components/common/spark-mark';
+import { Wordmark } from '@/components/common/wordmark';
 import { site } from '@/lib/config/site';
 import { safeNextPath } from '@/lib/site-gate';
 import { UnlockForm } from './unlock-form';
@@ -10,9 +11,8 @@ export default async function UnlockPage({ searchParams }: PageProps<'/unlock'>)
     <main className="grid min-h-svh place-items-center bg-[radial-gradient(45%_45%_at_80%_20%,rgb(178_108_255/0.25),transparent_70%),radial-gradient(40%_40%_at_15%_85%,rgb(12_142_199/0.2),transparent_70%)] px-(--gutter)">
       <div className="grid w-full max-w-sm justify-items-center gap-8 text-center">
         <div dir="ltr" className="flex items-center gap-3">
-          {/* eslint-disable-next-line @next/next/no-img-element -- the image optimizer is behind the gate */}
-          <img src={site.mark.src} alt="" width={70} height={48} />
-          <SkodrWordmark withSlogan title="SKODR" className="w-[150px] text-text" />
+          <SparkMark id="unlock-mark" className="w-[64px]" />
+          <Wordmark withSlogan title={site.wordmark} className="w-[220px] text-text" />
         </div>
         <div className="grid gap-2">
           <h1 className="font-display text-2xl font-extrabold">الموقع خاص حاليًا</h1>

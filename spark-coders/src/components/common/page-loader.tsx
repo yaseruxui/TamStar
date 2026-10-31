@@ -1,11 +1,10 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
-import { site } from '@/lib/config/site';
 import { cn } from '@/utils/cn';
-import { SkodrWordmark } from './skodr-wordmark';
+import { SparkMark } from './spark-mark';
+import { Wordmark } from './wordmark';
 
 const SEEN_KEY = 'skodr:intro-seen';
 const DURATION_MS = 1500;
@@ -67,16 +66,12 @@ export function PageLoader({ label }: { label: string }) {
       )}
     >
       <div dir="ltr" className="flex items-center gap-5">
-        <Image
-          src={site.mark.src}
-          alt=""
-          width={116}
-          height={80}
-          priority
-          className="animate-[mark-in_0.9s_var(--ease-brand)_both]"
+        <SparkMark
+          id="loader-mark"
+          className="w-[110px] animate-[mark-in_0.9s_var(--ease-brand)_both] max-sm:w-[80px]"
         />
         <span className="block animate-[wipe-in_0.8s_var(--ease-brand)_0.35s_both]">
-          <SkodrWordmark withSlogan title={label} className="w-[220px] text-text" />
+          <Wordmark withSlogan title={label} className="w-[280px] text-text max-sm:w-[210px]" />
         </span>
       </div>
     </div>

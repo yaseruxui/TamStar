@@ -6,7 +6,7 @@ import { cn } from '@/utils/cn';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
-  title: 'SKODR',
+  title: 'SPARKODERS',
   robots: { index: false, follow: false },
 };
 

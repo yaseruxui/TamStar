@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { SkodrWordmark } from '@/components/common/skodr-wordmark';
+import { Wordmark } from '@/components/common/wordmark';
 import { TiltCard } from '@/components/ui/tilt-card';
 import { GuideForm } from './guide-form';
 
@@ -17,7 +17,7 @@ export async function GuideCard() {
           aria-hidden="true"
           className="flex aspect-[3/4] flex-col justify-between bg-[radial-gradient(80%_60%_at_80%_10%,rgb(178_108_255/0.6),transparent_60%),radial-gradient(70%_60%_at_10%_100%,rgb(12_142_199/0.6),transparent_60%)] bg-ink p-6"
         >
-          <SkodrWordmark className="w-20 self-end text-aqua" />
+          <Wordmark className="w-28 self-end text-aqua" />
           <b className="font-display text-[1.6rem] leading-[1.35] font-extrabold">{t('cover')}</b>
         </div>
       </TiltCard>

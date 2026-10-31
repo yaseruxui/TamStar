@@ -1,5 +1,5 @@
 import { ExtrudeGeometry, Shape, Vector2, type BufferGeometry, type UVGenerator } from 'three';
-import { MARK_HEIGHT, MARK_WIDTH, markPieces } from './skodr-outline';
+import { MARK_HEIGHT, MARK_WIDTH, markPieces } from './mark-outline';
 
 /**
  * Maps every vertex to the texture by its (x, y) position in mark space, for caps and side walls

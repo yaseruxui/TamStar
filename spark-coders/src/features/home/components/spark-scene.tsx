@@ -29,7 +29,7 @@ interface SparkSceneProps {
 const MARK_SIZE = 3.2;
 
 /**
- * The SKODR "S" as a lit 3D object wearing the logo's own gradient. It turns as the visitor
+ * The Sparkoders "S" as a lit 3D object wearing the logo's own gradient. It turns as the visitor
  * scrolls through the intro, tilts toward the pointer and floats gently. Rendering pauses
  * whenever it is off-screen.
  */

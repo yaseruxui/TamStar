@@ -3,7 +3,7 @@ import { site } from '@/lib/config/site';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'SKODR — Spark Coders',
+    name: 'SPARKODERS — Spark Coders',
     short_name: site.wordmark,
     start_url: '/ar',
     display: 'standalone',
