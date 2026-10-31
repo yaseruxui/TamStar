@@ -174,6 +174,14 @@ html[data-brand-font='thmanyah'] {
   color: transparent;
 }
 
+/* Accent words in the scroll intro: the brand gradient, weighted toward blue. */
+@utility text-gradient-blue {
+  background: linear-gradient(100deg, #7feefa 0%, #38bdf8 30%, #0c8ec7 62%, #5b7cfa 88%, #9a62f5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 @utility bg-grad {
   background-image: var(--grad);
 }
@@ -302,32 +310,7 @@ html[data-brand-font='thmanyah'] {
     margin-block: -0.18em;
   }
 
-  /*
-   * Scroll-scrubbed paragraphs: an inline span whose background runs through its lines in reading
-   * order, so the text fills line by line from faint to bright as `--fill` goes 0 → 100%.
-   */
-  .scrub-fill {
-    -webkit-box-decoration-break: slice;
-    box-decoration-break: slice;
-    background-image:
-      linear-gradient(var(--color-text), var(--color-text)),
-      linear-gradient(rgb(171 165 211 / 0.34), rgb(171 165 211 / 0.34));
-    background-size:
-      var(--fill, 0%) 100%,
-      100% 100%;
-    background-repeat: no-repeat;
-    background-position: right, right;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  [dir='ltr'] .scrub-fill {
-    background-position: left, left;
-  }
-  /* Without JS the intro is a plain filled sentence; the timeline takes over when it runs. */
-  html:not(.js) [data-sentence] {
-    --fill: 100%;
-  }
+  /* Without JS the intro shows only its first sentence; the timeline takes over when it runs. */
   html:not(.js) [data-sentence]:not(:first-child) {
     display: none;
   }

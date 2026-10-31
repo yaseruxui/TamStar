@@ -31,10 +31,10 @@
   },
   "intro": {
     "aria": "Why Spark Coders",
-    "p1": "If your website is slow, outdated or hard to use, you're losing customers every day without noticing.",
-    "p2": "The fix? Right here.",
-    "p3": "We turn your idea into a fast, polished website or app that brings in real customers.",
-    "p4": "Ready to start your project?",
+    "p1": "If your website is slow, outdated or hard to use, you're losing [[customers]] every day without noticing.",
+    "p2": "The fix? [[Right here.]]",
+    "p3": "We turn your idea into a fast, polished website or app that brings in [[real customers.]]",
+    "p4": "Ready to start [[your project?]]",
     "scrollHint": "Scroll down"
   },
   "work": {
