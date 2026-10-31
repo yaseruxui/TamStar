@@ -71,24 +71,18 @@ export function SiteMenu({ items, socials, labels }: SiteMenuProps) {
         onClick={() => (open ? hide() : show())}
         className="group/menu relative grid size-11 cursor-pointer place-items-center transition-[scale] duration-300 ease-brand active:scale-[0.94]"
       >
-        {/* Three lines of different lengths: on hover they even out, when open they fold into an ×. */}
-        <span aria-hidden="true" className="relative block h-4 w-6">
+        {/* Two lines, the lower one shorter: on hover they even out, when open they fold into an ×. */}
+        <span aria-hidden="true" className="relative block h-3 w-6">
           <i
             className={cn(
-              'absolute start-0 top-0 block h-0.5 rounded-full bg-current transition-[translate,rotate,width] duration-400 ease-brand',
-              open ? 'w-6 translate-y-[7px] rotate-45' : 'w-6',
+              'absolute start-0 top-0 block h-0.5 w-6 rounded-full bg-current transition-[translate,rotate] duration-400 ease-brand',
+              open && 'translate-y-[5px] rotate-45',
             )}
           />
           <i
             className={cn(
-              'absolute start-0 top-[7px] block h-0.5 rounded-full bg-aqua transition-[width,opacity,translate] duration-300 ease-brand',
-              open ? 'w-0 opacity-0' : 'w-4 group-hover/menu:w-6',
-            )}
-          />
-          <i
-            className={cn(
-              'absolute start-0 top-[14px] block h-0.5 rounded-full bg-current transition-[translate,rotate,width] duration-400 ease-brand',
-              open ? 'w-6 -translate-y-[7px] -rotate-45' : 'w-5 group-hover/menu:w-6',
+              'absolute start-0 top-[10px] block h-0.5 rounded-full bg-current transition-[translate,rotate,width] duration-400 ease-brand',
+              open ? 'w-6 -translate-y-[5px] -rotate-45' : 'w-4 group-hover/menu:w-6',
             )}
           />
         </span>

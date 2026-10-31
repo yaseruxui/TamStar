@@ -17,7 +17,7 @@ export async function SiteHeader() {
     <HeaderFrame>
       <div className="container-site">
         {/* Floating glass bar; firmer once the page scrolls or the menu is open. */}
-        <div className="flex h-14 items-center justify-between gap-4 rounded-full bg-ink/45 ps-4 pe-1.5 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08),0_18px_40px_-24px_rgb(0_0_0/0.9)] backdrop-blur-[14px] transition-[background-color,box-shadow] duration-400 ease-brand group-data-scrolled/header:bg-ink/75 group-data-scrolled/header:shadow-[inset_0_0_0_1px_var(--color-line-strong),0_24px_50px_-24px_rgb(0_0_0/0.95)] group-has-[[aria-expanded=true]]/header:bg-ink/85 sm:h-[60px] sm:ps-5 sm:pe-2">
+        <div className="flex h-14 items-center justify-between gap-4 rounded-full bg-ink/45 px-4 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08),0_18px_40px_-24px_rgb(0_0_0/0.9)] backdrop-blur-[14px] transition-[background-color,box-shadow] duration-400 ease-brand group-data-scrolled/header:bg-ink/75 group-data-scrolled/header:shadow-[inset_0_0_0_1px_var(--color-line-strong),0_24px_50px_-24px_rgb(0_0_0/0.95)] group-has-[[aria-expanded=true]]/header:bg-ink/85 sm:h-[60px] sm:px-7 lg:px-9">
           <a href="#top" aria-label={tNav('homeAria')} className="inline-flex">
             <BrandLogo />
           </a>
@@ -27,7 +27,7 @@ export async function SiteHeader() {
               hrefLang={otherLocale}
               lang={otherLocale}
               aria-label={tNav('switchLocaleAria')}
-              className="grid size-11 place-items-center rounded-full font-display text-sm font-bold shadow-[inset_0_0_0_1px_var(--color-line-strong)] transition-[background-color,box-shadow,scale] duration-300 ease-brand hover:bg-white/10 hover:shadow-[inset_0_0_0_1px_rgb(127_238_250/0.6)] active:scale-[0.94]"
+              className="grid size-11 place-items-center font-display text-sm font-bold transition-[color,scale] duration-300 ease-brand hover:text-aqua active:scale-[0.94]"
             >
               {tNav('switchLocaleShort')}
             </a>
