@@ -230,7 +230,7 @@ export function HeroCodeStage({ copy }: { copy: CodeStageCopy }) {
       ref={rootRef}
       data-hero-reveal=""
       aria-hidden="true"
-      className="pointer-events-none relative mx-auto mt-12 mb-6 w-full max-w-[520px] select-none py-12 lg:absolute lg:end-(--gutter) lg:top-[calc(var(--header-h)+clamp(24px,5vw,56px))] lg:mt-0 lg:mb-0 lg:w-[44%] lg:max-w-[580px]"
+      className="pointer-events-none relative mx-auto mt-12 mb-6 w-full max-w-[520px] select-none py-12 lg:m-0 lg:max-w-[580px] lg:justify-self-end"
     >
       <div
         data-editor=""
