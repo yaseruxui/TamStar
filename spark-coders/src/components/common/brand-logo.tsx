@@ -15,9 +15,9 @@ interface BrandLogoProps {
 export function BrandLogo({ size = 'md', className }: BrandLogoProps) {
   if (size === 'lg') {
     return (
-      <span dir="ltr" className={cn('inline-flex items-center gap-3.5', className)}>
-        <SparkMark id="footer-mark" className="w-[78px]" />
-        <Wordmark withSlogan className="w-[290px] text-text" />
+      <span dir="ltr" className={cn('inline-flex items-center gap-3', className)}>
+        <SparkMark id="footer-mark" className="w-[54px]" />
+        <Wordmark withSlogan className="w-[210px] text-text" />
       </span>
     );
   }

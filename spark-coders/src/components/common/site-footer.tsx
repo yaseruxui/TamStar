@@ -20,7 +20,7 @@ export async function SiteFooter() {
             <a href="#top" aria-label={site.wordmark} className="inline-flex">
               <BrandLogo size="lg" />
             </a>
-            <p className="mt-4 text-muted">{tHome('note')}</p>
+            <p className="mt-5 max-w-[34rem] leading-relaxed text-muted">{tHome('note')}</p>
           </div>
           <nav aria-label={tNav('quickLinks')}>
             <p className="label-sm">{tNav('quickLinks')}</p>
