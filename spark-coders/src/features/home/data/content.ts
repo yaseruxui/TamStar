@@ -61,11 +61,11 @@ export const leadTags: readonly LeadTagKey[] = [
 export const delightSteps: readonly DelightStepKey[] = ['discover', 'plan', 'design', 'build', 'launch'];
 
 export const team: readonly TeamMember[] = [
-  { key: 'founder', initial: { ar: 'س', en: 'S' }, href: '#', image: null },
-  { key: 'pm', initial: { ar: 'م', en: 'M' }, href: '#', image: null },
-  { key: 'designer', initial: { ar: 'ت', en: 'D' }, href: '#', image: null },
-  { key: 'developer', initial: { ar: 'ب', en: 'A' }, href: '#', image: null },
-  { key: 'marketer', initial: { ar: 'ت', en: 'M' }, href: '#', image: null },
+  { key: 'founder', image: '/images/team/founder.webp' },
+  { key: 'pm', image: '/images/team/pm.webp' },
+  { key: 'designer', image: '/images/team/designer.webp' },
+  { key: 'developer', image: '/images/team/developer.webp' },
+  { key: 'marketer', image: '/images/team/marketer.webp' },
 ];
 
 /** Services, in display order (copy in messages `home.services`). */

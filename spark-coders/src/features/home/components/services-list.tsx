@@ -17,39 +17,70 @@ export interface ServiceRow {
   alt: string;
 }
 
-/** Line icons (24px grid, 1.8 stroke) drawn inline so nothing is fetched. */
+/**
+ * Duotone line icons on a 48px grid: a soft filled shape (`.duo`) under a crisp stroke, with one
+ * aqua accent each. Drawn inline so nothing is fetched.
+ */
 const ICONS: Record<ServiceKey, ReactNode> = {
   website: (
     <>
-      <rect x="3" y="4" width="18" height="16" rx="3" />
-      <path d="M3 9h18M7 6.5h.01M10 6.5h.01M8 14l-2 1.5L8 17M16 14l2 1.5-2 1.5M13 13l-2 5" />
+      <rect className="duo" x="5" y="8" width="38" height="30" rx="5" />
+      <rect x="5" y="8" width="38" height="30" rx="5" />
+      <path d="M5 16h38" />
+      <path className="accent" d="M10.5 12h.01M14.5 12h.01M18.5 12h.01" />
+      <path className="accent" d="m19 23-4.5 4 4.5 4M29 23l4.5 4-4.5 4M26 21.5l-4 11" />
+      <path d="M17 43h14" />
     </>
   ),
-  store: <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2M10 21h.01M17 21h.01" />,
+  store: (
+    <>
+      <path className="duo" d="M11 16h32l-3.6 15.2a3 3 0 0 1-2.9 2.3H17.3a3 3 0 0 1-2.9-2.4Z" />
+      <path d="M4 7h4.2a2 2 0 0 1 2 1.6L14.4 31a3 3 0 0 0 2.9 2.5h19.2a3 3 0 0 0 2.9-2.3L43 16H11.3" />
+      <circle cx="19" cy="40.5" r="2.5" />
+      <circle cx="35" cy="40.5" r="2.5" />
+      <path className="accent" d="m22 23.5 3 3 6-6" />
+    </>
+  ),
   app: (
     <>
-      <rect x="6" y="2.5" width="12" height="19" rx="3" />
-      <path d="M10.5 18.5h3" />
+      <rect className="duo" x="12" y="4" width="24" height="40" rx="6" />
+      <rect x="12" y="4" width="24" height="40" rx="6" />
+      <path d="M21 8.5h6M21.5 39h5" />
+      <rect className="accent" x="17" y="15" width="6" height="6" rx="1.8" />
+      <rect className="accent" x="25" y="15" width="6" height="6" rx="1.8" />
+      <rect className="accent" x="17" y="23" width="6" height="6" rx="1.8" />
+      <rect x="25" y="23" width="6" height="6" rx="1.8" />
     </>
   ),
   systems: (
     <>
-      <rect x="3" y="3" width="7.5" height="9" rx="2" />
-      <rect x="13.5" y="3" width="7.5" height="5" rx="2" />
-      <rect x="13.5" y="11" width="7.5" height="10" rx="2" />
-      <rect x="3" y="15" width="7.5" height="6" rx="2" />
+      <rect className="duo" x="5" y="6" width="38" height="36" rx="5" />
+      <rect x="5" y="6" width="38" height="36" rx="5" />
+      <path d="M17 6v36M17 15h26" />
+      <path d="M9.5 11h3M9.5 20h3M9.5 26h3" />
+      <path className="accent" d="m22 34 5-6 4 3 7-8" />
     </>
   ),
   branding: (
     <>
-      <path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.9 1.2-1.8-.5-1.2.3-2.2 1.5-2.2H17a4 4 0 0 0 4-4c0-5.5-4-10-9-10Z" />
-      <path d="M7.5 11h.01M10 7h.01M15 7.5h.01" />
+      <path
+        className="duo"
+        d="M24 5C13.5 5 5 13 5 23s8.5 19 18.5 19c2.4 0 3.6-2 2.7-4-1.2-2.6.6-5 3.3-5H35a8 8 0 0 0 8-8C43 13.7 34.5 5 24 5Z"
+      />
+      <path d="M24 5C13.5 5 5 13 5 23s8.5 19 18.5 19c2.4 0 3.6-2 2.7-4-1.2-2.6.6-5 3.3-5H35a8 8 0 0 0 8-8C43 13.7 34.5 5 24 5Z" />
+      <circle className="accent" cx="14.5" cy="22" r="2.6" />
+      <circle cx="19.5" cy="13.5" r="2.6" />
+      <circle className="accent" cx="29.5" cy="13" r="2.6" />
+      <circle cx="35.5" cy="20.5" r="2.6" />
     </>
   ),
   seo: (
     <>
-      <circle cx="11" cy="11" r="7" />
-      <path d="m20 20-4-4M8 12.5l2-2 1.5 1.5L14 9" />
+      <circle className="duo" cx="21" cy="21" r="15" />
+      <circle cx="21" cy="21" r="15" />
+      <path d="m32 32 11 11" />
+      <path className="accent" d="m13.5 25.5 5-5 4 4 6.5-7" />
+      <path className="accent" d="M25 17.5h4v4" />
     </>
   ),
 };
@@ -105,21 +136,14 @@ export function ServicesList({ rows, ctaLabel }: ServicesListProps) {
               onPointerEnter={() => setHovered(row)}
               className="group/row grid grid-cols-[auto_1fr_auto] items-center gap-x-[clamp(16px,3vw,40px)] gap-y-1 border-b border-white/30 py-[clamp(18px,2.4vw,28px)] transition-[padding,background-color] duration-400 ease-brand hover:bg-ink/20 hover:px-5 focus-visible:px-5 max-sm:grid-cols-[auto_1fr]"
             >
-              <span
-                className={cn(
-                  'grid size-[clamp(60px,6vw,78px)] place-items-center rounded-[18px] shadow-[0_14px_30px_-12px_rgb(7_5_26/0.9),inset_0_1px_0_rgb(255_255_255/0.35)] transition-[scale,rotate] duration-500 ease-brand group-hover/row:scale-[1.08] group-hover/row:-rotate-6 max-sm:row-span-2 max-sm:self-start',
-                  index % 2
-                    ? 'bg-[linear-gradient(135deg,var(--color-aqua),var(--color-ocean))] text-ink'
-                    : 'bg-[linear-gradient(135deg,var(--color-violet),var(--color-plum))] text-white',
-                )}
-              >
+              <span className="service-icon grid size-[clamp(52px,5.6vw,72px)] place-items-center text-white transition-[scale,rotate,color] duration-500 ease-brand group-hover/row:scale-[1.1] group-hover/row:-rotate-6 group-hover/row:text-aqua max-sm:row-span-2 max-sm:self-start">
                 <svg
-                  viewBox="0 0 24 24"
+                  viewBox="0 0 48 48"
                   aria-hidden="true"
-                  className="size-[52%]"
+                  className="size-full overflow-visible drop-shadow-[0_8px_18px_rgb(7_5_26/0.45)]"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2"
+                  strokeWidth="2.4"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >

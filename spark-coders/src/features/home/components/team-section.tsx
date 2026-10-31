@@ -1,13 +1,12 @@
 import Image from 'next/image';
-import { getLocale, getTranslations } from 'next-intl/server';
-import { LinkArrow } from '@/components/ui/link-arrow';
+import { getTranslations } from 'next-intl/server';
 import { Reveal } from '@/components/ui/reveal';
 import { cn } from '@/utils/cn';
 import { team } from '../data/content';
 import { Kashida } from '@/components/ui/kashida';
 
 export async function TeamSection() {
-  const [t, locale] = await Promise.all([getTranslations('home.team'), getLocale()]);
+  const t = await getTranslations('home.team');
 
   return (
     <section id="team" className="border-t border-line py-[clamp(80px,12vw,160px)]">
@@ -24,37 +23,28 @@ export async function TeamSection() {
               as="li"
               key={member.key}
               index={index}
-              className="flex flex-col gap-1.5 rounded-card border border-line bg-glass p-3.5 transition-[border-color,translate] duration-500 ease-brand hover:-translate-y-1 hover:border-line-strong sm:p-5"
+              className="group/member flex flex-col gap-1.5 rounded-card border border-line bg-glass p-3.5 transition-[border-color,translate] duration-500 ease-brand hover:-translate-y-1 hover:border-line-strong sm:p-5"
             >
               <div
                 aria-hidden="true"
                 className={cn(
-                  'relative mb-3 grid aspect-square place-items-center overflow-hidden rounded-[999px_999px_24px_24px]',
+                  'relative mb-3 aspect-square overflow-hidden rounded-[999px_999px_24px_24px]',
                   index % 2
                     ? 'bg-[radial-gradient(70%_70%_at_70%_20%,rgb(178_108_255/0.5),transparent_60%),linear-gradient(135deg,var(--color-ink-3),var(--color-ocean))]'
                     : 'bg-[radial-gradient(70%_70%_at_30%_20%,rgb(127_238_250/0.35),transparent_60%),var(--grad-soft)]',
                 )}
               >
-                {member.image ? (
-                  <Image
-                    src={member.image}
-                    alt=""
-                    fill
-                    sizes="(max-width: 640px) 45vw, 240px"
-                    className="object-cover"
-                  />
-                ) : (
-                  <span className="font-display text-[2.5rem] font-extrabold text-white/85 sm:text-[4rem]">
-                    {member.initial[locale]}
-                  </span>
-                )}
+                <Image
+                  src={member.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 640px) 45vw, 240px"
+                  className="object-cover transition-[scale] duration-700 ease-brand group-hover/member:scale-[1.05]"
+                />
               </div>
               <h3 className="font-display text-xl font-semibold">{t(`members.${member.key}.name`)}</h3>
               <p className="text-[0.9375rem] text-aqua">{t(`members.${member.key}.role`)}</p>
-              <p className="mb-2 text-[0.9375rem] text-muted max-sm:hidden">{t(`members.${member.key}.bio`)}</p>
-              <LinkArrow href={member.href} className="mt-auto">
-                {t('linkedin')}
-              </LinkArrow>
+              <p className="text-[0.9375rem] text-muted max-sm:hidden">{t(`members.${member.key}.bio`)}</p>
             </Reveal>
           ))}
         </ul>

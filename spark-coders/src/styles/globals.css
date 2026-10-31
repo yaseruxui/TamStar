@@ -342,6 +342,25 @@ html[data-brand-font='thmanyah'] {
     rotate: -8deg;
   }
 
+  /* Service icons: soft fill under the stroke, one aqua accent that turns white on hover. */
+  .service-icon .duo {
+    fill: currentColor;
+    fill-opacity: 0.14;
+    stroke: none;
+  }
+  .service-icon .accent {
+    stroke: var(--color-aqua);
+    transition: stroke var(--duration-fast) var(--ease-brand);
+  }
+  .service-icon rect.accent,
+  .service-icon circle.accent {
+    fill: var(--color-aqua);
+    fill-opacity: 0.25;
+  }
+  .group\/row:hover .service-icon .accent {
+    stroke: #fff;
+  }
+
   /* transitions.dev "text swap soft": changing values cross-blur in place. */
   .swap-in {
     animation: swap-in var(--duration-fast) var(--ease-brand);

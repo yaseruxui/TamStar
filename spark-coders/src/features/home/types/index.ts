@@ -34,10 +34,8 @@ export interface Post {
 
 export interface TeamMember {
   key: TeamMemberKey;
-  /** One letter shown in the avatar until a photo is supplied. */
-  initial: { ar: string; en: string };
-  href: string;
-  image: string | null;
+  /** Portrait in /public/images/team/ (currently AI-generated; replace with the team's own photos). */
+  image: string;
 }
 
 /** Serializable copy handed from server components to client islands. */

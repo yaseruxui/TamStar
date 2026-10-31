@@ -38,7 +38,7 @@ src/
 │   ├── icon.svg · manifest.ts · robots.ts · sitemap.ts
 ├── assets/fonts/              # Alexandria + IBM Plex Sans Arabic (SIL OFL), loaded with next/font/local
 ├── components/
-│   ├── ui/                    # button (cva), pill, field, link-arrow, icons, reveal, kashida
+│   ├── ui/                    # button (cva), pill, field, icons, reveal, kashida
 │   ├── common/                # header, menu, footer, brand logo, custom cursor, page loader
 │   ├── feedback/              # error boundary, canvas skeleton
 │   └── seo/                   # JSON-LD script
