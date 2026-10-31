@@ -69,7 +69,7 @@ export const sectors: readonly Sector[] = [
 export const testimonials: readonly TestimonialKey[] = ['one', 'two', 'three'];
 
 export const posts: readonly Post[] = [
-  { key: 'content', accent: 1, href: '#', date: '2026-09-08', image: null },
-  { key: 'team', accent: 2, href: '#', date: '2026-09-01', image: null },
-  { key: 'brief', accent: 3, href: '#', date: '2026-08-25', image: null },
+  { key: 'content', accent: 1, href: '#', date: '2026-09-08', image: '/images/blog/content.webp' },
+  { key: 'team', accent: 2, href: '#', date: '2026-09-01', image: '/images/blog/team.webp' },
+  { key: 'brief', accent: 3, href: '#', date: '2026-08-25', image: '/images/blog/brief.webp' },
 ];
