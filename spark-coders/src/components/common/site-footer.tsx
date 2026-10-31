@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { footerSections, navSections } from '@/lib/config/navigation';
 import { site } from '@/lib/config/site';
 import { BrandLogo } from './brand-logo';
+import { SkodrWordmark } from './skodr-wordmark';
 
 export async function SiteFooter() {
   const [t, tNav, tHome] = await Promise.all([
@@ -16,17 +17,11 @@ export async function SiteFooter() {
     <footer className="overflow-hidden border-t border-line bg-ink-2 pt-[clamp(64px,10vw,120px)] pb-8">
       <div className="container-site">
         <p className="eyebrow mb-4">{tHome('eyebrow')}</p>
-        <p
-          aria-hidden="true"
-          dir="ltr"
-          className="letter-stagger mb-[clamp(40px,6vw,80px)] text-center font-display text-[clamp(3rem,11.5vw,9.5rem)] leading-[1.1] font-extrabold tracking-[-0.03em]"
-        >
-          {Array.from(site.wordmark).map((letter, i) => (
-            <span key={i} className="text-gradient" style={{ '--i': i }}>
-              {letter}
-            </span>
-          ))}
-        </p>
+        <SkodrWordmark
+          withSlogan
+          gradient
+          className="mx-auto mb-[clamp(40px,6vw,80px)] w-[min(100%,920px)] text-muted"
+        />
         <div className="grid grid-cols-2 gap-10 border-b border-line pb-10 lg:grid-cols-[2fr_1fr_1fr]">
           <div className="col-span-2 lg:col-span-1">
             <a href="#top" aria-label={site.wordmark} className="inline-flex">

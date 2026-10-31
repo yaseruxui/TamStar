@@ -84,5 +84,6 @@ All motion respects `prefers-reduced-motion`.
 - Project, blog and team photos: put files in `public/images/…` and set `image` in
   `src/features/home/data/content.ts` (until then each card shows its brand-gradient artwork).
 - Team names, testimonial authors, social links and phone number (`src/messages/*`, `src/lib/config/site.ts`).
-- The final logo: replace `public/brand/logo-mark.svg` and `src/app/icon.svg`; the 3D shapes are in
-  `src/features/home/lib/spark-geometry.ts`.
+- Logo assets live in `public/brand/` (mark, 512 px icon, 3D texture) and `src/app/icon.png`;
+  the lettering is vector in `src/components/common/skodr-wordmark.tsx` and the 3D outline in
+  `src/features/home/lib/skodr-outline.ts` (both traced from the brand SVG).

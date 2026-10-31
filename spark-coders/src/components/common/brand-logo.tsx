@@ -1,27 +1,28 @@
 import Image from 'next/image';
 import { site } from '@/lib/config/site';
 import { cn } from '@/utils/cn';
+import { SkodrWordmark } from './skodr-wordmark';
 
 interface BrandLogoProps {
   size?: 'md' | 'lg';
   className?: string;
 }
 
-/** Logo mark + "skodr" wordmark. The wordmark is Latin and always reads left-to-right. */
+/** The S mark + SKODR lettering. The lettering is Latin and always reads left-to-right. */
 export function BrandLogo({ size = 'md', className }: BrandLogoProps) {
-  const px = size === 'lg' ? 48 : 40;
+  const markHeight = size === 'lg' ? 44 : 34;
+  const markWidth = Math.round((markHeight * site.mark.width) / site.mark.height);
   return (
-    <span className={cn('inline-flex items-center gap-3', className)}>
-      <Image src={site.logo} alt="" width={px} height={px} unoptimized priority={size === 'md'} />
-      <span
-        dir="ltr"
-        className={cn(
-          'text-gradient pb-[0.08em] font-display leading-none font-extrabold tracking-[-0.02em]',
-          size === 'lg' ? 'text-[2rem]' : 'text-[1.625rem]',
-        )}
-      >
-        {site.wordmark}
-      </span>
+    <span dir="ltr" className={cn('inline-flex items-center gap-2.5', className)}>
+      <Image
+        src={site.mark.src}
+        alt=""
+        width={markWidth}
+        height={markHeight}
+        priority={size === 'md'}
+        sizes={`${markWidth}px`}
+      />
+      <SkodrWordmark className={cn('text-text', size === 'lg' ? 'w-[132px]' : 'w-[100px]')} />
     </span>
   );
 }

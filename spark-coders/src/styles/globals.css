@@ -205,16 +205,6 @@
     -webkit-background-clip: text;
     background-clip: text;
   }
-
-  /* Hover-stagger: letters slide up and are replaced by a gradient copy (footer wordmark). */
-  .letter-stagger span {
-    display: inline-block;
-    transition: transform 0.5s var(--ease-brand);
-    transition-delay: calc(var(--i) * 35ms);
-  }
-  .letter-stagger:hover span {
-    transform: translateY(-0.08em) rotate(-2deg);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -232,8 +222,21 @@
   }
 }
 
-@keyframes draw {
+@keyframes mark-in {
+  from {
+    opacity: 0;
+    transform: perspective(600px) rotateY(-70deg) scale(0.7);
+    filter: blur(6px);
+  }
+}
+
+@keyframes wipe-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
   to {
-    stroke-dashoffset: 0;
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
   }
 }

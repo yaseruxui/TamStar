@@ -2,6 +2,7 @@
 
 import { useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { CapIcon, CartIcon, RocketIcon } from '@/components/ui/icons';
+import { SkodrWordmark } from '@/components/common/skodr-wordmark';
 import { LinkArrow } from '@/components/ui/link-arrow';
 import { cn } from '@/utils/cn';
 import type { SectorPanel } from '../types';
@@ -97,9 +98,7 @@ export function SectorTabs({ panels, tabsLabel }: SectorTabsProps) {
               aria-hidden="true"
               className="flex aspect-[3/4] w-[min(100%,320px)] -rotate-5 flex-col justify-between justify-self-center rounded-[6px_20px_20px_6px] bg-[radial-gradient(80%_60%_at_80%_10%,rgb(178_108_255/0.55),transparent_60%),radial-gradient(70%_60%_at_10%_100%,rgb(12_142_199/0.55),transparent_60%)] bg-ink p-7 shadow-[-14px_0_0_-6px_rgb(7_5_26/0.5),0_40px_70px_-24px_rgb(0_0_0/0.7)] transition-transform duration-600 ease-brand hover:-translate-y-2 hover:-rotate-1"
             >
-              <span dir="ltr" className="text-end font-display text-sm font-extrabold tracking-[0.08em] text-aqua">
-                skodr
-              </span>
+              <SkodrWordmark className="w-24 self-end text-aqua" />
               <b className="font-display text-[2rem] leading-[1.3] font-extrabold">{panel.book}</b>
             </div>
           </div>

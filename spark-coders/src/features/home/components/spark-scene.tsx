@@ -12,23 +12,26 @@ import {
   PointLight,
   Scene,
   SRGBColorSpace,
+  TextureLoader,
   WebGLRenderer,
-  type ExtrudeGeometry,
 } from 'three';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
+import { site } from '@/lib/config/site';
 import { lerp } from '@/utils/math';
-import { buildPieceGeometry, sparkPieces } from '../lib/spark-geometry';
+import { buildMarkGeometries, MARK_HEIGHT, MARK_WIDTH } from '../lib/mark-geometry';
 
 interface SparkSceneProps {
   /** 0 → 1 scroll progress of the surrounding sticky section, written by the parent each frame. */
   progressRef: RefObject<number>;
 }
 
-const LOGO_SIZE = 1024;
+/** World-space width of the mark. */
+const MARK_SIZE = 3.2;
 
 /**
- * The skodr mark as a lit 3D object. It turns as the visitor scrolls through the intro,
- * tilts toward the pointer and floats gently. Rendering pauses whenever it is off-screen.
+ * The SKODR "S" as a lit 3D object wearing the logo's own gradient. It turns as the visitor
+ * scrolls through the intro, tilts toward the pointer and floats gently. Rendering pauses
+ * whenever it is off-screen.
  */
 export default function SparkScene({ progressRef }: SparkSceneProps) {
   const hostRef = useRef<HTMLDivElement>(null);
@@ -56,40 +59,41 @@ export default function SparkScene({ progressRef }: SparkSceneProps) {
     const camera = new PerspectiveCamera(32, 1, 0.1, 100);
     camera.position.set(0, 0, 7.2);
 
-    scene.add(new AmbientLight(0xffffff, 0.55));
-    const key = new DirectionalLight(0xffffff, 2.2);
+    scene.add(new AmbientLight(0xffffff, 1.1));
+    const key = new DirectionalLight(0xffffff, 1.8);
     key.position.set(3, 4, 6);
     scene.add(key);
-    const violet = new PointLight(0xb26cff, 40, 30);
+    const violet = new PointLight(0xb26cff, 30, 30);
     violet.position.set(-4, -1.5, 3);
     scene.add(violet);
-    const aqua = new PointLight(0x7feefa, 32, 30);
+    const aqua = new PointLight(0x7feefa, 24, 30);
     aqua.position.set(4, -3, 2.5);
     scene.add(aqua);
 
+    const texture = new TextureLoader().load(site.markTexture, () => requestRender());
+    texture.colorSpace = SRGBColorSpace;
+    texture.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+
     const material = new MeshPhysicalMaterial({
-      vertexColors: true,
-      metalness: 0.15,
-      roughness: 0.28,
+      map: texture,
+      metalness: 0.1,
+      roughness: 0.3,
       clearcoat: 1,
-      clearcoatRoughness: 0.18,
-      // The mark is mirrored on y (SVG space), which flips face winding; render both sides.
+      clearcoatRoughness: 0.15,
+      // The mark is mirrored on y (image space), which flips face winding; render both sides.
       side: DoubleSide,
     });
 
-    // Logo space is 1024 units with y pointing down; scale to ~3 world units and centre it.
+    const scale = MARK_SIZE / MARK_WIDTH;
     const mark = new Group();
-    const geometries: ExtrudeGeometry[] = [];
-    const scale = 3 / LOGO_SIZE;
-    for (const piece of sparkPieces) {
-      const geometry = buildPieceGeometry(piece);
-      geometries.push(geometry);
-      const mesh = new Mesh(geometry, material);
+    const pieces = buildMarkGeometries();
+    for (const piece of pieces) {
+      const mesh = new Mesh(piece.geometry, material);
       mesh.position.z = piece.depth;
       mark.add(mesh);
     }
     mark.scale.set(scale, -scale, scale);
-    mark.position.set(-LOGO_SIZE * scale * 0.5, LOGO_SIZE * scale * 0.5, -0.4);
+    mark.position.set(-MARK_WIDTH * scale * 0.5, MARK_HEIGHT * scale * 0.5, -0.2);
     const pivot = new Group();
     pivot.add(mark);
     scene.add(pivot);
@@ -101,11 +105,11 @@ export default function SparkScene({ progressRef }: SparkSceneProps) {
       renderer.domElement.style.width = `${width}px`;
       renderer.domElement.style.height = `${height}px`;
       camera.aspect = width / height;
+      // Keep the whole mark in frame on narrow (portrait) canvases.
+      camera.position.z = camera.aspect < 1 ? 7.2 / Math.max(camera.aspect, 0.55) : 7.2;
       camera.updateProjectionMatrix();
+      requestRender();
     };
-    resize();
-    const resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(host);
 
     let pointerX = 0;
     let pointerY = 0;
@@ -121,32 +125,39 @@ export default function SparkScene({ progressRef }: SparkSceneProps) {
     let frame = 0;
     const start = performance.now();
 
-    const render = () => {
+    function render() {
       frame = 0;
       const progress = progressRef.current ?? 0;
       const time = reduced ? 0 : (performance.now() - start) / 1000;
       tiltX = lerp(tiltX, pointerY * 0.25, 0.06);
       tiltY = lerp(tiltY, pointerX * 0.35, 0.06);
 
-      pivot.rotation.y = progress * Math.PI * 1.5 + Math.sin(time * 0.6) * 0.12 + tiltY;
+      pivot.rotation.y = progress * Math.PI * 2 + Math.sin(time * 0.6) * 0.14 + tiltY;
       pivot.rotation.x = Math.sin(progress * Math.PI) * 0.35 + tiltX;
-      pivot.rotation.z = -0.08 + progress * 0.2;
+      pivot.rotation.z = Math.sin(progress * Math.PI * 2) * 0.08;
       pivot.position.y = Math.sin(time * 1.1) * 0.06;
-      const zoom = 1 + Math.sin(progress * Math.PI) * 0.18;
-      pivot.scale.setScalar(zoom);
+      pivot.scale.setScalar(1 + Math.sin(progress * Math.PI) * 0.15);
 
       renderer.render(scene, camera);
       if (visible && !reduced) frame = requestAnimationFrame(render);
-    };
+    }
+
+    function requestRender() {
+      if (visible && !frame) frame = requestAnimationFrame(render);
+    }
+
+    resize();
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(host);
 
     const onScroll = () => {
-      if (visible && reduced && !frame) frame = requestAnimationFrame(render);
+      if (reduced) requestRender();
     };
     window.addEventListener('scroll', onScroll, { passive: true });
 
     const io = new IntersectionObserver(([entry]) => {
       visible = Boolean(entry?.isIntersecting);
-      if (visible && !frame) frame = requestAnimationFrame(render);
+      requestRender();
     });
     io.observe(host);
 
@@ -156,7 +167,8 @@ export default function SparkScene({ progressRef }: SparkSceneProps) {
       resizeObserver.disconnect();
       window.removeEventListener('pointermove', onPointer);
       window.removeEventListener('scroll', onScroll);
-      geometries.forEach((geometry) => geometry.dispose());
+      pieces.forEach((piece) => piece.geometry.dispose());
+      texture.dispose();
       material.dispose();
       renderer.dispose();
       renderer.domElement.remove();

@@ -1,8 +1,11 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
+import { site } from '@/lib/config/site';
 import { cn } from '@/utils/cn';
+import { SkodrWordmark } from './skodr-wordmark';
 
 const SEEN_KEY = 'skodr:intro-seen';
 const DURATION_MS = 1500;
@@ -24,7 +27,7 @@ function markIntroSeen(): void {
 }
 
 /**
- * First-visit intro: the logo's four strokes draw themselves, then the curtain lifts.
+ * First-visit intro: the S mark swings in, the lettering wipes in beside it, then the curtain lifts.
  * Plays once per browser session and is skipped entirely for reduced-motion users.
  */
 export function PageLoader({ label }: { label: string }) {
@@ -55,40 +58,17 @@ export function PageLoader({ label }: { label: string }) {
         phase === 'leave' && '[clip-path:inset(0_0_100%_0)]',
       )}
     >
-      <div className="flex flex-col items-center gap-6">
-        <svg viewBox="0 0 1024 1024" className="size-28 overflow-visible">
-          <defs>
-            <linearGradient id="ld-o" x1="1" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#0C8EC7" />
-              <stop offset="1" stopColor="#6EDDF0" />
-            </linearGradient>
-            <linearGradient id="ld-a" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#88EFFA" />
-              <stop offset="1" stopColor="#A497FA" />
-            </linearGradient>
-          </defs>
-          {[
-            { d: 'M52 30 60 720', stroke: '#B26CFF', width: 54, delay: 0 },
-            { d: 'M52 705 540 32', stroke: '#6E29AC', width: 76, delay: 120 },
-            { d: 'M565 50 42 958', stroke: 'url(#ld-o)', width: 92, delay: 240 },
-            { d: 'M52 972 494 516 1000 972', stroke: 'url(#ld-a)', width: 88, delay: 360 },
-          ].map((path) => (
-            <path
-              key={path.d}
-              d={path.d}
-              fill="none"
-              stroke={path.stroke}
-              strokeWidth={path.width}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              pathLength={1}
-              className="[stroke-dasharray:1] [stroke-dashoffset:1] motion-safe:animate-[draw_0.9s_var(--ease-brand)_forwards]"
-              style={{ animationDelay: `${path.delay}ms` }}
-            />
-          ))}
-        </svg>
-        <span dir="ltr" className="text-gradient font-display text-3xl font-extrabold tracking-[-0.02em]">
-          {label}
+      <div dir="ltr" className="flex items-center gap-5">
+        <Image
+          src={site.mark.src}
+          alt=""
+          width={116}
+          height={80}
+          priority
+          className="animate-[mark-in_0.9s_var(--ease-brand)_both]"
+        />
+        <span className="block animate-[wipe-in_0.8s_var(--ease-brand)_0.35s_both]">
+          <SkodrWordmark withSlogan title={label} className="w-[220px] text-text" />
         </span>
       </div>
     </div>

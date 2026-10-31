@@ -3,12 +3,12 @@ import { site } from '@/lib/config/site';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'skodr — Spark Coders',
+    name: 'SKODR — Spark Coders',
     short_name: site.wordmark,
     start_url: '/ar',
     display: 'standalone',
     background_color: site.themeColor,
     theme_color: site.themeColor,
-    icons: [{ src: site.logo, sizes: 'any', type: 'image/svg+xml' }],
+    icons: [{ src: site.logo, sizes: '512x512', type: 'image/png', purpose: 'any' }],
   };
 }
