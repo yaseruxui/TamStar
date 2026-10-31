@@ -60,7 +60,7 @@ interface ServicesListProps {
 }
 
 /**
- * Service rows as dark glass panels. On mouse devices a picture of the hovered service follows the
+ * Service rows separated by dividers. On mouse devices a picture of the hovered service follows the
  * pointer (the same preview the project list used); touch devices just get the rows.
  */
 export function ServicesList({ rows, ctaLabel }: ServicesListProps) {
@@ -93,13 +93,17 @@ export function ServicesList({ rows, ctaLabel }: ServicesListProps) {
 
   return (
     <>
-      <ul className="grid gap-3" onPointerMove={fine ? onMove : undefined} onPointerLeave={() => setHovered(null)}>
+      <ul
+        className="border-t border-white/30"
+        onPointerMove={fine ? onMove : undefined}
+        onPointerLeave={() => setHovered(null)}
+      >
         {rows.map((row, index) => (
           <Reveal as="li" key={row.key} index={index}>
             <a
               href="#contact"
               onPointerEnter={() => setHovered(row)}
-              className="group/row grid grid-cols-[auto_1fr_auto] items-center gap-x-[clamp(16px,3vw,40px)] gap-y-1 rounded-[22px] bg-ink/45 px-[clamp(14px,2vw,24px)] py-[clamp(14px,1.8vw,20px)] shadow-[inset_0_0_0_1px_rgb(255_255_255/0.12),0_20px_40px_-30px_rgb(7_5_26/0.9)] backdrop-blur-md transition-[background-color,box-shadow,padding] duration-400 ease-brand hover:bg-ink/70 hover:px-[clamp(20px,2.6vw,32px)] hover:shadow-[inset_0_0_0_1px_rgb(127_238_250/0.35),0_30px_50px_-30px_rgb(7_5_26/0.95)] focus-visible:bg-ink/70 max-sm:grid-cols-[auto_1fr]"
+              className="group/row grid grid-cols-[auto_1fr_auto] items-center gap-x-[clamp(16px,3vw,40px)] gap-y-1 border-b border-white/30 py-[clamp(18px,2.4vw,28px)] transition-[padding,background-color] duration-400 ease-brand hover:bg-ink/20 hover:px-5 focus-visible:px-5 max-sm:grid-cols-[auto_1fr]"
             >
               <span
                 className={cn(

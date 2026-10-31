@@ -4,7 +4,7 @@ import { services } from '../data/content';
 import { ServicesList } from './services-list';
 
 /**
- * What we do: one glass row per service on the brand gradient; hovering a row shows its picture
+ * What we do: one row per service on the brand gradient; hovering a row shows its picture
  * beside the pointer. Each row leads to the contact form.
  */
 export async function ServicesSection() {

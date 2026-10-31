@@ -1,13 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { cn } from '@/utils/cn';
 import type { Quote } from '../types';
 import { ArabAvatar } from './arab-avatar';
-
-const AUTOPLAY_MS = 7000;
 
 /** Where each client photo sits around the quote card on wide screens (inline-start / top, in %). */
 const ORBIT: readonly { x: string; y: string; size: 'lg' | 'md' }[] = [
@@ -23,6 +21,14 @@ const AVATAR_BG = [
   'bg-[linear-gradient(160deg,#e6ecff,#a9b9ff)]',
   'bg-[linear-gradient(160deg,#f6e6ff,#d6b4f5)]',
 ] as const;
+
+/** Extra faces in the gaps around the card (AI-generated portraits, not real clients). */
+const CROWD: readonly { src: string; x: string; y: string; size: string; delay: string }[] = [
+  { src: '/images/clients/crowd-1.webp', x: '13%', y: '36%', size: 'size-14', delay: '-2s' },
+  { src: '/images/clients/crowd-2.webp', x: '91%', y: '34%', size: 'size-20', delay: '-4s' },
+  { src: '/images/clients/crowd-3.webp', x: '15%', y: '96%', size: 'size-11', delay: '-1s' },
+  { src: '/images/clients/crowd-4.webp', x: '80%', y: '94%', size: 'size-16', delay: '-3s' },
+];
 
 interface TestimonialsOrbitProps {
   quotes: readonly Quote[];
@@ -43,12 +49,6 @@ export function TestimonialsOrbit({ quotes, chooseLabel }: TestimonialsOrbitProp
     setActive(index);
     setCycle((value) => value + 1);
   }, []);
-
-  useEffect(() => {
-    if (reduced || paused || quotes.length < 2) return;
-    const id = window.setTimeout(() => select((active + 1) % quotes.length), AUTOPLAY_MS);
-    return () => window.clearTimeout(id);
-  }, [active, cycle, paused, reduced, quotes.length, select]);
 
   const current = quotes[active];
   if (!current) return null;
@@ -111,7 +111,8 @@ export function TestimonialsOrbit({ quotes, chooseLabel }: TestimonialsOrbitProp
                     pathLength={100}
                     className={cn(
                       '[stroke-dasharray:100]',
-                      reduced || paused ? '[stroke-dashoffset:0]' : 'animate-[ring-progress_7s_linear_forwards]',
+                      reduced ? '[stroke-dashoffset:0]' : 'animate-[ring-progress_7s_linear_forwards]',
+                      paused && '[animation-play-state:paused]',
                     )}
                   />
                 </svg>
@@ -153,11 +154,62 @@ export function TestimonialsOrbit({ quotes, chooseLabel }: TestimonialsOrbitProp
             <span className="block font-semibold">{current.name}</span>
             <span className="block text-[0.9375rem] text-muted">{current.role}</span>
           </span>
-          <span dir="ltr" className="ms-auto font-display text-sm text-faint tabular-nums">
-            {active + 1} / {quotes.length}
-          </span>
         </figcaption>
       </figure>
+
+      {/* Indicators under the quote: the active one fills over the autoplay interval. */}
+      <div className="relative mt-8 flex justify-center gap-2.5">
+        {quotes.map((quote, index) => {
+          const selected = index === active;
+          return (
+            <button
+              key={quote.key}
+              type="button"
+              aria-label={`${index + 1} / ${quotes.length}`}
+              aria-current={selected ? 'true' : undefined}
+              onClick={() => select(index)}
+              className="group/dot grid h-6 cursor-pointer place-items-center"
+            >
+              <span
+                className={cn(
+                  'relative block h-1.5 overflow-hidden rounded-full bg-white/15 transition-[width,background-color] duration-400 ease-brand group-hover/dot:bg-white/30',
+                  selected ? 'w-12' : 'w-1.5',
+                )}
+              >
+                {selected ? (
+                  <span
+                    key={cycle}
+                    className={cn(
+                      'absolute inset-y-0 start-0 rounded-full bg-[linear-gradient(90deg,var(--color-aqua),var(--color-violet))]',
+                      reduced ? 'w-full' : 'w-0 animate-[dot-progress_7s_linear_forwards]',
+                      paused && '[animation-play-state:paused]',
+                    )}
+                    // Autoplay advances when the bar fills, so hovering (which pauses it) never desyncs.
+                    onAnimationEnd={() => {
+                      if (quotes.length > 1) select((active + 1) % quotes.length);
+                    }}
+                  />
+                ) : null}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* More client faces around the quote, in mixed sizes (decorative, wide screens only). */}
+      {CROWD.map((face) => (
+        <span
+          key={face.src}
+          aria-hidden="true"
+          style={{ '--x': face.x, '--y': face.y, '--float-delay': face.delay }}
+          className={cn(
+            'pointer-events-none absolute start-[var(--x)] top-[var(--y)] hidden overflow-hidden rounded-full opacity-70 shadow-[0_16px_30px_-16px_rgb(0_0_0/0.8),0_0_0_3px_rgb(255_255_255/0.1)] lg:block motion-safe:animate-[float_7s_ease-in-out_infinite] motion-safe:[animation-delay:var(--float-delay)]',
+            face.size,
+          )}
+        >
+          <Image src={face.src} alt="" fill sizes="80px" className="object-cover" />
+        </span>
+      ))}
     </div>
   );
 }

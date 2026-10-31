@@ -419,3 +419,9 @@ html[data-brand-font='thmanyah'] {
     stroke-dashoffset: 0;
   }
 }
+
+@keyframes dot-progress {
+  to {
+    width: 100%;
+  }
+}
