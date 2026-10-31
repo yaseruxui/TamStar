@@ -138,32 +138,35 @@
       }
     }
   },
-  "sectors": {
-    "title": "Solutions built for your industry",
-    "lead": "Pick your field and see how we help.",
-    "aria": "Industries we serve",
-    "tabsAria": "Industries",
+  "services": {
+    "title": "Our services",
+    "lead": "Everything your project needs online, from the idea to launch and beyond.",
+    "aria": "Our services",
+    "cta": "Request this",
     "items": {
-      "business": {
-        "tab": "Companies",
-        "title": "Websites that show",
-        "title2": "how professional you are",
-        "body": "A site that presents your services clearly and earns trust from the first visit.",
-        "link": "Our services for companies"
+      "website": {
+        "title": "Website design & development",
+        "body": "Fast, elegant sites that present your business and earn trust on the first visit."
       },
-      "education": {
-        "tab": "Education",
-        "title": "Digital solutions",
-        "title2": "for schools & universities",
-        "body": "Platforms that simplify enrolment and organise content for your institution.",
-        "link": "Our services for education"
+      "store": {
+        "title": "E-commerce stores",
+        "body": "A store ready to sell, with easy online payment and shipping and inventory integration."
       },
-      "commerce": {
-        "tab": "E-commerce",
-        "title": "A store that sells",
-        "title2": "around the clock",
-        "body": "A fast store with easy online payment and direct shipping integration.",
-        "link": "Our services for stores"
+      "app": {
+        "title": "Mobile apps",
+        "body": "iOS and Android apps with a smooth experience, from design to store release."
+      },
+      "systems": {
+        "title": "Systems & dashboards",
+        "body": "Management, booking and reporting systems built around how you work."
+      },
+      "branding": {
+        "title": "Branding & UX",
+        "body": "A visual identity and clear interfaces that make your product easy and distinctive."
+      },
+      "seo": {
+        "title": "Search visibility (SEO)",
+        "body": "Speed and content improvements so your customers find you on Google."
       }
     }
   },

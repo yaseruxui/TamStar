@@ -44,7 +44,7 @@ src/
 │   └── seo/                   # JSON-LD script
 ├── features/
 │   ├── home/
-│   │   ├── components/        # hero, 3D scrub intro, work list, leads physics, confetti, team, sectors, testimonials, blog
+│   │   ├── components/        # hero, 3D scrub intro, work cards, leads physics, confetti, team, services, testimonials, blog
 │   │   ├── data/content.ts    # ordered keys, images, links (copy lives in messages)
 │   │   ├── lib/               # 3D geometry of the logo mark, accent gradients
 │   │   └── types/             # keys derived from the message dictionaries
@@ -74,7 +74,7 @@ src/
 
 | Hero entrance | gsap + SplitText | Headline lines rise out of their masks; content stays visible without JS. |
 | Pinned intro | gsap ScrollTrigger | `pin` + `scrub: 1`; the timeline's progress also drives the 3D scene. |
-| Tabs, links, forms | CSS (transitions.dev patterns) | Sliding tab pill, learn-more arrow, error shake, soft text swap. |
+| Links, forms, cards | CSS (transitions.dev patterns) | Card lift, learn-more arrow, error shake, soft text swap. |
 
 All motion respects `prefers-reduced-motion`: loops stop, nothing pins, and state changes keep their
 opacity cue without travel or blur.

@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { ButtonLink } from '@/components/ui/button';
 import { ArrowIcon } from '@/components/ui/icons';
 import { projects } from '../data/content';
-import { WorkList } from './work-list';
+import { WorkCards } from './work-cards';
 import { Kashida } from '@/components/ui/kashida';
 
 export async function WorkSection() {
@@ -23,7 +23,7 @@ export async function WorkSection() {
           </h2>
           <p className="max-w-[26rem] text-muted">{t('lead')}</p>
         </div>
-        <WorkList rows={rows} detailsLabel={t('details')} />
+        <WorkCards rows={rows} detailsLabel={t('details')} />
         <div className="flex justify-center">
           <ButtonLink href="#" variant="ghost">
             {t('all')}

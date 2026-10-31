@@ -1,5 +1,14 @@
 import type { TechIconKey } from '../lib/tech-icons';
-import type { DelightStepKey, HeroWordKey, LeadTagKey, Post, Project, Sector, TeamMember, Testimonial } from '../types';
+import type {
+  DelightStepKey,
+  HeroWordKey,
+  LeadTagKey,
+  Post,
+  Project,
+  ServiceKey,
+  TeamMember,
+  Testimonial,
+} from '../types';
 
 export const heroWords: readonly HeroWordKey[] = ['ecommerce', 'education', 'clinics', 'startups', 'restaurants'];
 
@@ -59,11 +68,8 @@ export const team: readonly TeamMember[] = [
   { key: 'marketer', initial: { ar: 'ت', en: 'M' }, href: '#', image: null },
 ];
 
-export const sectors: readonly Sector[] = [
-  { key: 'business', icon: 'rocket' },
-  { key: 'education', icon: 'cap' },
-  { key: 'commerce', icon: 'cart' },
-];
+/** Services, in display order (copy in messages `home.services`). */
+export const services: readonly ServiceKey[] = ['website', 'store', 'app', 'systems', 'branding', 'seo'];
 
 /**
  * Client voices, in display order. The current photos are AI-generated portraits (Figma AI), not

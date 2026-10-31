@@ -8,7 +8,7 @@ export type ProjectKey = keyof Home['work']['items'];
 export type LeadTagKey = keyof Home['leads']['tags'];
 export type DelightStepKey = keyof Home['delight']['steps'];
 export type TeamMemberKey = keyof Home['team']['members'];
-export type SectorKey = keyof Home['sectors']['items'];
+export type ServiceKey = keyof Home['services']['items'];
 export type TestimonialKey = keyof Home['testimonials']['items'];
 export type PostKey = keyof Home['blog']['items'];
 
@@ -40,11 +40,6 @@ export interface TeamMember {
   image: string | null;
 }
 
-export interface Sector {
-  key: SectorKey;
-  icon: 'rocket' | 'cap' | 'cart';
-}
-
 /** Serializable copy handed from server components to client islands. */
 export interface ProjectRow {
   key: ProjectKey;
@@ -54,16 +49,6 @@ export interface ProjectRow {
   title: string;
   category: string;
   alt: string;
-}
-
-export interface SectorPanel {
-  key: SectorKey;
-  icon: Sector['icon'];
-  tab: string;
-  title: string;
-  title2: string;
-  body: string;
-  link: string;
 }
 
 /** A client voice. `image` is the client's own photo (with their permission); null shows the illustrated avatar. */

@@ -5,7 +5,7 @@ import { DelightSection } from '@/features/home/components/delight-section';
 import { HeroSection } from '@/features/home/components/hero-section';
 import { LeadsSection } from '@/features/home/components/leads-section';
 import { ScrubIntro } from '@/features/home/components/scrub-intro';
-import { SectorsSection } from '@/features/home/components/sectors-section';
+import { ServicesSection } from '@/features/home/components/services-section';
 import { TeamSection } from '@/features/home/components/team-section';
 import { TestimonialsSection } from '@/features/home/components/testimonials-section';
 import { WorkSection } from '@/features/home/components/work-section';
@@ -26,12 +26,10 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
         cta={{ label: t('cta'), href: '#contact' }}
       />
       <WorkSection />
-      <section id="services" aria-label={t('aria')}>
-        <LeadsSection />
-        <DelightSection />
-      </section>
+      <LeadsSection />
+      <DelightSection />
       <TeamSection />
-      <SectorsSection />
+      <ServicesSection />
       <TestimonialsSection />
       <BlogSection />
       <ContactSection />
