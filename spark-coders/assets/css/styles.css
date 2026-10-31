@@ -295,6 +295,73 @@ ol {
   width: 40px;
   height: 40px;
 }
+.wordmark {
+  font-family: 'Alexandria', var(--f-display);
+  font-weight: 800;
+  font-size: 1.625rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  direction: ltr;
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.08em;
+}
+.footer-grid .wordmark {
+  font-size: 2rem;
+}
+.footer-giant {
+  direction: ltr;
+  text-align: center;
+  letter-spacing: -0.03em;
+}
+.section-lead {
+  max-width: 420px;
+  color: var(--muted);
+}
+
+/* صور المشاريع والمدونة — خلفية متدرجة تظهر إن لم تتوفر الصورة */
+.work-thumb,
+.post-art {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+.work-thumb img,
+.post-art img,
+.wp-inner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.no-img > img {
+  display: none;
+}
+.g1 {
+  background: linear-gradient(135deg, var(--violet), var(--ocean));
+}
+.g2 {
+  background: linear-gradient(135deg, var(--ocean), var(--aqua));
+}
+.g3 {
+  background: linear-gradient(135deg, var(--plum), var(--violet));
+}
+.g4 {
+  background: linear-gradient(135deg, var(--violet), var(--aqua));
+}
+.g5 {
+  background: linear-gradient(135deg, var(--ink-3), var(--ocean));
+}
+.g6 {
+  background: linear-gradient(135deg, var(--aqua), var(--lilac));
+}
+.work-thumb {
+  display: none;
+}
+
 .brand-text {
   display: flex;
   flex-direction: column;
@@ -674,6 +741,10 @@ ol {
   position: absolute;
   inset: 0;
   background: var(--grad);
+}
+.wp-inner.has-img::before,
+.wp-inner.has-img::after {
+  display: none;
 }
 .wp-inner::before,
 .wp-inner::after {
@@ -1507,7 +1578,19 @@ textarea {
     display: none;
   }
   .work-row a {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 88px 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 6px;
+  }
+  .work-thumb {
+    display: block;
+    grid-row: 1 / 3;
+    width: 88px;
+    aspect-ratio: 1;
+    border-radius: 12px;
+  }
+  .work-row .pill {
+    justify-self: start;
   }
   .work-more {
     display: none;

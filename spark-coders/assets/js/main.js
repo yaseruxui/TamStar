@@ -13,6 +13,15 @@
     return Array.prototype.slice.call((root || document).querySelectorAll(sel));
   }
 
+  /* ---------- الصور: إن لم يتوفر الملف تظهر الخلفية المتدرجة ---------- */
+  $$('.work-thumb img, .post-art img').forEach(function (img) {
+    var fail = function () {
+      img.parentNode.classList.add('no-img');
+    };
+    if (img.complete && img.naturalWidth === 0) fail();
+    else img.addEventListener('error', fail);
+  });
+
   /* ---------- الترويسة عند التمرير ---------- */
   var header = $('[data-header]');
   function onScroll() {
@@ -192,6 +201,12 @@
   var preview = $('[data-work-preview]');
   var list = $('[data-work-list]');
   if (preview && list && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var wpErr = $('[data-wp-img]', preview);
+    if (wpErr)
+      wpErr.addEventListener('error', function () {
+        wpErr.hidden = true;
+        wpErr.parentNode.classList.remove('has-img');
+      });
     var px = 0,
       py = 0,
       tx = 0,
@@ -216,6 +231,15 @@
           py = ty = e.clientY;
         }
         preview.setAttribute('data-v', a.getAttribute('data-preview'));
+        var wpImg = $('[data-wp-img]', preview);
+        var src = a.getAttribute('data-img');
+        var thumb = $('.work-thumb', a);
+        var ok = src && !(thumb && thumb.classList.contains('no-img'));
+        if (wpImg) {
+          if (ok) wpImg.src = src;
+          wpImg.hidden = !ok;
+          wpImg.parentNode.classList.toggle('has-img', !!ok);
+        }
         preview.classList.add('is-on');
       });
     });
