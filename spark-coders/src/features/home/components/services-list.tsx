@@ -1,0 +1,166 @@
+'use client';
+
+import Image from 'next/image';
+import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react';
+import { ArrowIcon } from '@/components/ui/icons';
+import { Reveal } from '@/components/ui/reveal';
+import { useFinePointer } from '@/hooks/use-fine-pointer';
+import { gsap } from '@/lib/gsap';
+import { cn } from '@/utils/cn';
+import type { ServiceKey } from '../types';
+
+export interface ServiceRow {
+  key: ServiceKey;
+  title: string;
+  body: string;
+  image: string;
+  alt: string;
+}
+
+/** Line icons (24px grid, 1.8 stroke) drawn inline so nothing is fetched. */
+const ICONS: Record<ServiceKey, ReactNode> = {
+  website: (
+    <>
+      <rect x="3" y="4" width="18" height="16" rx="3" />
+      <path d="M3 9h18M7 6.5h.01M10 6.5h.01M8 14l-2 1.5L8 17M16 14l2 1.5-2 1.5M13 13l-2 5" />
+    </>
+  ),
+  store: <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2M10 21h.01M17 21h.01" />,
+  app: (
+    <>
+      <rect x="6" y="2.5" width="12" height="19" rx="3" />
+      <path d="M10.5 18.5h3" />
+    </>
+  ),
+  systems: (
+    <>
+      <rect x="3" y="3" width="7.5" height="9" rx="2" />
+      <rect x="13.5" y="3" width="7.5" height="5" rx="2" />
+      <rect x="13.5" y="11" width="7.5" height="10" rx="2" />
+      <rect x="3" y="15" width="7.5" height="6" rx="2" />
+    </>
+  ),
+  branding: (
+    <>
+      <path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.9 1.2-1.8-.5-1.2.3-2.2 1.5-2.2H17a4 4 0 0 0 4-4c0-5.5-4-10-9-10Z" />
+      <path d="M7.5 11h.01M10 7h.01M15 7.5h.01" />
+    </>
+  ),
+  seo: (
+    <>
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-4-4M8 12.5l2-2 1.5 1.5L14 9" />
+    </>
+  ),
+};
+
+interface ServicesListProps {
+  rows: readonly ServiceRow[];
+  ctaLabel: string;
+}
+
+/**
+ * Service rows as dark glass panels. On mouse devices a picture of the hovered service follows the
+ * pointer (the same preview the project list used); touch devices just get the rows.
+ */
+export function ServicesList({ rows, ctaLabel }: ServicesListProps) {
+  const fine = useFinePointer();
+  const previewRef = useRef<HTMLDivElement>(null);
+  const movers = useRef<{ x: gsap.QuickToFunc; y: gsap.QuickToFunc } | null>(null);
+  const [hovered, setHovered] = useState<ServiceRow | null>(null);
+
+  useEffect(() => {
+    const node = previewRef.current;
+    if (!fine || !node) return;
+    movers.current = {
+      x: gsap.quickTo(node, 'x', { duration: 0.45, ease: 'power3.out' }),
+      y: gsap.quickTo(node, 'y', { duration: 0.45, ease: 'power3.out' }),
+    };
+    return () => {
+      movers.current = null;
+      gsap.killTweensOf(node);
+    };
+  }, [fine]);
+
+  const onMove = (event: ReactPointerEvent) => {
+    const move = movers.current;
+    if (!move) return;
+    // Jump straight to the pointer when the picture first appears, then glide.
+    if (!hovered && previewRef.current) gsap.set(previewRef.current, { x: event.clientX, y: event.clientY });
+    move.x(event.clientX);
+    move.y(event.clientY);
+  };
+
+  return (
+    <>
+      <ul className="grid gap-3" onPointerMove={fine ? onMove : undefined} onPointerLeave={() => setHovered(null)}>
+        {rows.map((row, index) => (
+          <Reveal as="li" key={row.key} index={index}>
+            <a
+              href="#contact"
+              onPointerEnter={() => setHovered(row)}
+              className="group/row grid grid-cols-[auto_1fr_auto] items-center gap-x-[clamp(16px,3vw,40px)] gap-y-1 rounded-[22px] bg-ink/45 px-[clamp(14px,2vw,24px)] py-[clamp(14px,1.8vw,20px)] shadow-[inset_0_0_0_1px_rgb(255_255_255/0.12),0_20px_40px_-30px_rgb(7_5_26/0.9)] backdrop-blur-md transition-[background-color,box-shadow,padding] duration-400 ease-brand hover:bg-ink/70 hover:px-[clamp(20px,2.6vw,32px)] hover:shadow-[inset_0_0_0_1px_rgb(127_238_250/0.35),0_30px_50px_-30px_rgb(7_5_26/0.95)] focus-visible:bg-ink/70 max-sm:grid-cols-[auto_1fr]"
+            >
+              <span
+                className={cn(
+                  'grid size-[clamp(60px,6vw,78px)] place-items-center rounded-[18px] shadow-[0_14px_30px_-12px_rgb(7_5_26/0.9),inset_0_1px_0_rgb(255_255_255/0.35)] transition-[scale,rotate] duration-500 ease-brand group-hover/row:scale-[1.08] group-hover/row:-rotate-6 max-sm:row-span-2 max-sm:self-start',
+                  index % 2
+                    ? 'bg-[linear-gradient(135deg,var(--color-aqua),var(--color-ocean))] text-ink'
+                    : 'bg-[linear-gradient(135deg,var(--color-violet),var(--color-plum))] text-white',
+                )}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="size-[52%]"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {ICONS[row.key]}
+                </svg>
+              </span>
+              <span className="grid gap-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center lg:gap-10">
+                <h3 className="font-display text-[clamp(1.25rem,2.4vw,1.9rem)] leading-[1.35] font-semibold transition-colors duration-300 group-hover/row:text-aqua">
+                  {row.title}
+                </h3>
+                <span className="text-[0.9375rem] text-text/80 sm:text-base">{row.body}</span>
+              </span>
+              <span className="inline-flex translate-x-3 items-center gap-2 text-sm font-semibold text-aqua opacity-0 transition-[opacity,translate] duration-[300ms,400ms] ease-brand group-hover/row:translate-x-0 group-hover/row:opacity-100 group-focus-visible/row:translate-x-0 group-focus-visible/row:opacity-100 max-sm:hidden ltr:-translate-x-3">
+                {ctaLabel}
+                <ArrowIcon />
+              </span>
+            </a>
+          </Reveal>
+        ))}
+      </ul>
+      {fine ? (
+        <div ref={previewRef} aria-hidden="true" className="pointer-events-none fixed top-0 left-0 z-30">
+          <div
+            className={cn(
+              'relative aspect-[4/3] w-[400px] -translate-1/2 overflow-hidden rounded-card shadow-[0_30px_60px_-20px_rgb(0_0_0/0.7)] outline outline-1 -outline-offset-1 outline-white/15 transition-[opacity,scale] duration-[300ms,400ms] ease-brand',
+              hovered ? 'scale-100 opacity-100' : 'scale-[0.85] opacity-0',
+            )}
+          >
+            {/* Every picture stays mounted so switching rows never waits on a fetch. */}
+            {rows.map((row) => (
+              <Image
+                key={row.key}
+                src={row.image}
+                alt=""
+                fill
+                sizes="400px"
+                className={cn(
+                  'object-cover transition-opacity duration-300',
+                  hovered?.key === row.key ? 'opacity-100' : 'opacity-0',
+                )}
+              />
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </>
+  );
+}

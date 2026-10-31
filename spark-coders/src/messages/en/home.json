@@ -146,27 +146,33 @@
     "items": {
       "website": {
         "title": "Website design & development",
-        "body": "Fast, elegant sites that present your business and earn trust on the first visit."
+        "body": "Fast, elegant sites that present your business and earn trust on the first visit.",
+        "alt": "Laptop showing a modern website design"
       },
       "store": {
         "title": "E-commerce stores",
-        "body": "A store ready to sell, with easy online payment and shipping and inventory integration."
+        "body": "A store ready to sell, with easy online payment and shipping and inventory integration.",
+        "alt": "Phone showing a product page in an online store"
       },
       "app": {
         "title": "Mobile apps",
-        "body": "iOS and Android apps with a smooth experience, from design to store release."
+        "body": "iOS and Android apps with a smooth experience, from design to store release.",
+        "alt": "Two phones showing app screens"
       },
       "systems": {
         "title": "Systems & dashboards",
-        "body": "Management, booking and reporting systems built around how you work."
+        "body": "Management, booking and reporting systems built around how you work.",
+        "alt": "Monitor showing a dashboard with reports and charts"
       },
       "branding": {
         "title": "Branding & UX",
-        "body": "A visual identity and clear interfaces that make your product easy and distinctive."
+        "body": "A visual identity and clear interfaces that make your product easy and distinctive.",
+        "alt": "Cards, colour swatches and logo sketches for a brand identity"
       },
       "seo": {
         "title": "Search visibility (SEO)",
-        "body": "Speed and content improvements so your customers find you on Google."
+        "body": "Speed and content improvements so your customers find you on Google.",
+        "alt": "Laptop showing search results and a rising chart"
       }
     }
   },
