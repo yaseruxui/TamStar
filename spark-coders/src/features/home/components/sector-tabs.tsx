@@ -117,7 +117,7 @@ export function SectorTabs({ panels, tabsLabel }: SectorTabsProps) {
           className="mt-[clamp(32px,5vw,56px)]"
         >
           <div key={selected} className="swap-in grid items-end gap-6 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
-            <h3 className="font-display text-[clamp(2.2rem,5.5vw,4.5rem)] leading-[1.2] font-extrabold">
+            <h3 className="font-display text-[clamp(1.9rem,4vw,3.25rem)] leading-[1.2] font-extrabold">
               {panel.title}
               <br />
               {panel.title2}

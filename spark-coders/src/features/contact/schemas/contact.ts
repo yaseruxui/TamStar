@@ -19,13 +19,6 @@ export const contactSchema = z.object({
 
 export type ContactPayload = z.infer<typeof contactSchema>;
 
-export const guideSchema = z.object({
-  email: z.email().max(200),
-  website: z.literal('').optional(),
-});
-
-export type GuidePayload = z.infer<typeof guideSchema>;
-
 /** Reads a FormData into the plain object shape the schemas expect. */
 export function contactFormToObject(form: FormData): Record<string, unknown> {
   const text = (key: string) => {

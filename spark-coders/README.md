@@ -17,13 +17,13 @@ npm run lint && npm run typecheck && npm run format:check
 
 Copy `.env.example` to `.env.local`:
 
-| Variable                 | Purpose                                                                                       |
-| ------------------------ | --------------------------------------------------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL`   | Canonical origin for metadata, sitemap and hreflang (default `https://skodr.com`).            |
-| `SITE_PASSWORD`          | Four digits. With `SITE_GATE_SECRET`, the whole site sits behind `/unlock`; unset → public.   |
-| `SITE_GATE_SECRET`       | ≥ 32 random characters that sign the unlock cookie; changing it signs everyone out.           |
-| `NEXT_PUBLIC_BRAND_FONT` | `default` (Alexandria + IBM Plex) or `thmanyah` (see Brand font below).                       |
-| `CONTACT_WEBHOOK_URL`    | HTTPS endpoint that receives contact/guide submissions as JSON. Unset → forms show the email. |
+| Variable                 | Purpose                                                                                     |
+| ------------------------ | ------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`   | Canonical origin for metadata, sitemap and hreflang (default `https://skodr.com`).          |
+| `SITE_PASSWORD`          | Four digits. With `SITE_GATE_SECRET`, the whole site sits behind `/unlock`; unset → public. |
+| `SITE_GATE_SECRET`       | ≥ 32 random characters that sign the unlock cookie; changing it signs everyone out.         |
+| `NEXT_PUBLIC_BRAND_FONT` | `default` (Alexandria + IBM Plex) or `thmanyah` (see Brand font below).                     |
+| `CONTACT_WEBHOOK_URL`    | HTTPS endpoint that receives contact submissions as JSON. Unset → forms show the email.     |
 
 ## Architecture
 
@@ -38,18 +38,18 @@ src/
 │   ├── icon.svg · manifest.ts · robots.ts · sitemap.ts
 ├── assets/fonts/              # Alexandria + IBM Plex Sans Arabic (SIL OFL), loaded with next/font/local
 ├── components/
-│   ├── ui/                    # button (cva), pill, field, link-arrow, icons, reveal
+│   ├── ui/                    # button (cva), pill, field, link-arrow, icons, reveal, kashida
 │   ├── common/                # header, menu, footer, brand logo, custom cursor, page loader
 │   ├── feedback/              # error boundary, canvas skeleton
 │   └── seo/                   # JSON-LD script
 ├── features/
 │   ├── home/
-│   │   ├── components/        # hero, 3D scrub intro, work list, leads physics, confetti, edit, team, sectors, testimonials, blog
+│   │   ├── components/        # hero, 3D scrub intro, work list, leads physics, confetti, team, sectors, testimonials, blog
 │   │   ├── data/content.ts    # ordered keys, images, links (copy lives in messages)
 │   │   ├── lib/               # 3D geometry of the logo mark, accent gradients
 │   │   └── types/             # keys derived from the message dictionaries
 │   └── contact/
-│       ├── components/        # contact form, guide form, contact section
+│       ├── components/        # contact form, contact section
 │       ├── schemas/           # Zod validation
 │       ├── services/actions.ts# server actions
 │       └── types/
@@ -74,7 +74,7 @@ src/
 
 | Hero entrance | gsap + SplitText | Headline lines rise out of their masks; content stays visible without JS. |
 | Pinned intro | gsap ScrollTrigger | `pin` + `scrub: 1`; the timeline's progress also drives the 3D scene. |
-| Tabs, links, forms | CSS (transitions.dev patterns) | Sliding tab pill, learn-more arrow, error shake, soft text swap, card tilt. |
+| Tabs, links, forms | CSS (transitions.dev patterns) | Sliding tab pill, learn-more arrow, error shake, soft text swap. |
 
 All motion respects `prefers-reduced-motion`: loops stop, nothing pins, and state changes keep their
 opacity cue without travel or blur.
@@ -107,7 +107,7 @@ matched to text weight, themed scrollbar/caret/selection.
 
 `src/proxy.ts` gates every page and file (fonts and images in `public/` included) until the visitor
 enters `SITE_PASSWORD` on `/unlock`. The unlock cookie is httpOnly, lasts 30 days and is an HMAC under
-`SITE_GATE_SECRET`, so it cannot be forged; the contact and guide server actions check it too.
+`SITE_GATE_SECRET`, so it cannot be forged; the contact server action checks it too.
 Failed attempts are slowed down, but four digits are a privacy curtain, not strong security.
 Responses carry `X-Robots-Tag: noindex, nofollow` while the gate is on.
 

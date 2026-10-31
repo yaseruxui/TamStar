@@ -4,7 +4,7 @@ import { getServerEnv } from '@/lib/env';
 export type DeliveryResult = 'delivered' | 'unconfigured' | 'failed';
 
 /** POSTs a JSON envelope to the configured webhook. Never throws. */
-export async function deliverToWebhook(kind: 'contact' | 'guide', payload: object): Promise<DeliveryResult> {
+export async function deliverToWebhook(kind: 'contact', payload: object): Promise<DeliveryResult> {
   const { CONTACT_WEBHOOK_URL } = getServerEnv();
   if (!CONTACT_WEBHOOK_URL) return 'unconfigured';
 

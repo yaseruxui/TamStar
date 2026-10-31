@@ -2,7 +2,6 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ContactSection } from '@/features/contact/components/contact-section';
 import { BlogSection } from '@/features/home/components/blog-section';
 import { DelightSection } from '@/features/home/components/delight-section';
-import { EditSection } from '@/features/home/components/edit-section';
 import { HeroSection } from '@/features/home/components/hero-section';
 import { LeadsSection } from '@/features/home/components/leads-section';
 import { ScrubIntro } from '@/features/home/components/scrub-intro';
@@ -30,7 +29,6 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
       <section id="services" aria-label={t('aria')}>
         <LeadsSection />
         <DelightSection />
-        <EditSection />
       </section>
       <TeamSection />
       <SectorsSection />

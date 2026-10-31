@@ -1,5 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { GuideCard } from '@/features/contact/components/guide-card';
 import { sectors } from '../data/content';
 import { SectorTabs } from './sector-tabs';
 import { Kashida } from '@/components/ui/kashida';
@@ -29,7 +28,6 @@ export async function SectorsSection() {
           <p className="mt-4 text-lg text-text/85">{t('lead')}</p>
         </div>
         <SectorTabs panels={panels} tabsLabel={t('tabsAria')} />
-        <GuideCard />
       </div>
     </section>
   );

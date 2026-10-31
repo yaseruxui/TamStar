@@ -25,15 +25,5 @@
   "success": "Thank you! We got your message and will reply within one business day.",
   "invalid": "Please complete the required fields with valid details.",
   "failed": "We couldn't send your message right now. Please try again shortly.",
-  "unconfigured": "Direct sending isn't enabled yet. Email us at {email}.",
-  "guide": {
-    "badge": "Free guide",
-    "title": "10 questions to ask before hiring any agency",
-    "question": "Know the right questions before you sign, so you pick the right partner and avoid surprises. Leave your email and we will send the guide for free.",
-    "cover": "10 questions before hiring any agency",
-    "emailLabel": "Email",
-    "placeholder": "Your email",
-    "submit": "Send me the guide",
-    "success": "Done! The guide is on its way to your inbox."
-  }
+  "unconfigured": "Direct sending isn't enabled yet. Email us at {email}."
 }
