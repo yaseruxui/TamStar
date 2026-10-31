@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { cn } from '@/utils/cn';
 import type { Quote } from '../types';
+import { ArabAvatar } from './arab-avatar';
 
 const AUTOPLAY_MS = 7000;
 
@@ -17,10 +18,10 @@ const ORBIT: readonly { x: string; y: string; size: 'lg' | 'md' }[] = [
 ];
 
 const AVATAR_BG = [
-  'bg-[linear-gradient(135deg,var(--color-violet),var(--color-plum))]',
-  'bg-[linear-gradient(135deg,var(--color-aqua),var(--color-ocean))]',
-  'bg-[linear-gradient(135deg,var(--color-lilac),var(--color-ocean))]',
-  'bg-[linear-gradient(135deg,var(--color-plum),var(--color-ocean))]',
+  'bg-[linear-gradient(160deg,#efe4ff,#c9b2ff)]',
+  'bg-[linear-gradient(160deg,#dcfbff,#9fe3f2)]',
+  'bg-[linear-gradient(160deg,#e6ecff,#a9b9ff)]',
+  'bg-[linear-gradient(160deg,#f6e6ff,#d6b4f5)]',
 ] as const;
 
 interface TestimonialsOrbitProps {
@@ -81,14 +82,14 @@ export function TestimonialsOrbit({ quotes, chooseLabel }: TestimonialsOrbitProp
             >
               <span
                 className={cn(
-                  'relative grid size-full place-items-center overflow-hidden rounded-full font-display text-xl font-extrabold text-white shadow-[0_20px_40px_-20px_rgb(0_0_0/0.8)] lg:text-3xl',
+                  'relative grid size-full place-items-center overflow-hidden rounded-full shadow-[0_20px_40px_-20px_rgb(0_0_0/0.8),0_0_0_4px_rgb(255_255_255/0.14)]',
                   AVATAR_BG[index % AVATAR_BG.length],
                 )}
               >
                 {quote.image ? (
                   <Image src={quote.image} alt={quote.alt} fill sizes="128px" className="object-cover" />
                 ) : (
-                  quote.initial
+                  <ArabAvatar variant={quote.avatar} />
                 )}
               </span>
               {selected ? (
@@ -137,7 +138,7 @@ export function TestimonialsOrbit({ quotes, chooseLabel }: TestimonialsOrbitProp
         <figcaption key={`${current.key}-who`} className="swap-in mt-8 flex items-center gap-4">
           <span
             className={cn(
-              'relative grid size-12 shrink-0 place-items-center overflow-hidden rounded-full font-display font-extrabold text-white',
+              'relative grid size-12 shrink-0 place-items-center overflow-hidden rounded-full',
               AVATAR_BG[active % AVATAR_BG.length],
             )}
             aria-hidden="true"
@@ -145,7 +146,7 @@ export function TestimonialsOrbit({ quotes, chooseLabel }: TestimonialsOrbitProp
             {current.image ? (
               <Image src={current.image} alt="" fill sizes="48px" className="object-cover" />
             ) : (
-              current.initial
+              <ArabAvatar variant={current.avatar} />
             )}
           </span>
           <span>

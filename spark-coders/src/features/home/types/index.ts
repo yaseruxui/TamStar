@@ -1,3 +1,4 @@
+import type { AvatarVariant } from '../components/arab-avatar';
 import type { Messages } from '@/messages';
 
 type Home = Messages['home'];
@@ -65,10 +66,11 @@ export interface SectorPanel {
   link: string;
 }
 
-/** A client voice. `image` is the client's own photo (with their permission); null shows the initial. */
+/** A client voice. `image` is the client's own photo (with their permission); null shows the illustrated avatar. */
 export interface Testimonial {
   key: TestimonialKey;
-  initial: { ar: string; en: string };
+  /** Illustrated portrait drawn inline; replaced by `image` once a real client photo exists. */
+  avatar: AvatarVariant;
   image: string | null;
 }
 
@@ -78,7 +80,7 @@ export interface Quote {
   quote: string;
   name: string;
   role: string;
-  initial: string;
+  avatar: AvatarVariant;
   image: string | null;
   alt: string;
 }

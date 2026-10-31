@@ -1,10 +1,10 @@
-import { getLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { testimonials } from '../data/content';
 import { TestimonialsOrbit } from './testimonials-orbit';
 import { Kashida } from '@/components/ui/kashida';
 
 export async function TestimonialsSection() {
-  const [t, locale] = await Promise.all([getTranslations('home.testimonials'), getLocale()]);
+  const t = await getTranslations('home.testimonials');
   const quotes = testimonials.map((item) => {
     const name = t(`items.${item.key}.name`);
     return {
@@ -13,7 +13,7 @@ export async function TestimonialsSection() {
       quote: t(`items.${item.key}.quote`).replace(/^[«“"]\s*|\s*[»”"]$/g, ''),
       name,
       role: t(`items.${item.key}.role`),
-      initial: item.initial[locale],
+      avatar: item.avatar,
       image: item.image,
       alt: t('photoAlt', { name }),
     };

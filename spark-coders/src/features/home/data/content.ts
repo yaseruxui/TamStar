@@ -67,13 +67,13 @@ export const sectors: readonly Sector[] = [
 
 /**
  * Client voices, in display order. Put a client's photo (shared with their permission) in
- * /public/images/clients/ and set `image` to its path; until then the initial is shown.
+ * /public/images/clients/ and set `image` to its path; until then the illustrated avatar is shown.
  */
 export const testimonials: readonly Testimonial[] = [
-  { key: 'one', initial: { ar: 'أ', en: 'A' }, image: null },
-  { key: 'two', initial: { ar: 'ن', en: 'N' }, image: null },
-  { key: 'three', initial: { ar: 'ف', en: 'F' }, image: null },
-  { key: 'four', initial: { ar: 'ل', en: 'L' }, image: null },
+  { key: 'one', avatar: 'shemagh', image: null },
+  { key: 'two', avatar: 'hijab', image: null },
+  { key: 'three', avatar: 'ghutra', image: null },
+  { key: 'four', avatar: 'hijabLight', image: null },
 ];
 
 export const posts: readonly Post[] = [
