@@ -4,7 +4,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 
 /**
  * Fixed header shell. It only tracks whether the page has scrolled (`data-scrolled`); the floating
- * bar inside reads that state to firm up its glass and collapse the logo to its mark.
+ * bar inside reads that state to firm up its glass.
  */
 export function HeaderFrame({ children }: { children: ReactNode }) {
   const [scrolled, setScrolled] = useState(false);
