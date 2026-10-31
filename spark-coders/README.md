@@ -111,13 +111,12 @@ Responses carry `X-Robots-Tag: noindex, nofollow` while the gate is on.
 
 ## Brand font (Thmanyah Sans)
 
-Thmanyah's license forbids uploading or redistributing the font files, and this repository is
-public, so the files are git-ignored (`public/fonts/thmanyah/`). To switch the site over:
+Thmanyah's license forbids publishing the font files and this repository is public, so Git holds
+them only as AES-256-GCM ciphertext in `assets-encrypted/thmanyah/`. Before every build,
+`scripts/brand-fonts.mjs decrypt` (the `prebuild` script) writes the real files to
+`public/fonts/thmanyah/` (git-ignored) using `FONT_ASSETS_KEY`, which lives only in Vercel.
+`NEXT_PUBLIC_BRAND_FONT=thmanyah` then switches every role to Thmanyah Sans. Without the key the
+build keeps the default fonts.
 
-1. Get written approval from Thmanyah (Ask@thmanyah.com) for web use on the site.
-2. Put `thmanyah-sans-{Light,Regular,Medium,Bold,Black}.woff2` in `public/fonts/thmanyah/`.
-3. Set `NEXT_PUBLIC_BRAND_FONT=thmanyah`.
-
-Deploys built from Git will not contain the files: either move the site to a private repository and
-commit them there, or deploy from a machine that has them (`vercel deploy --prod`). Without the
-files the page falls back to the current fonts.
+To replace the files: put the new `.woff2` files in `public/fonts/thmanyah/` and run
+`FONT_ASSETS_KEY=… node scripts/brand-fonts.mjs encrypt`.
