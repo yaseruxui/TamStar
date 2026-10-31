@@ -43,7 +43,10 @@ const ICONS: Record<ServiceKey, ReactNode> = {
   ),
 };
 
-/** What we do: six service cards, each leading to the contact form. */
+/**
+ * What we do: one row per service in the style of a project list, on the brand gradient. Hovering
+ * a row opens it up, lights the title and slides in the call to action; each row leads to the form.
+ */
 export async function ServicesSection() {
   const t = await getTranslations('home.services');
 
@@ -51,37 +54,27 @@ export async function ServicesSection() {
     <section
       id="services"
       aria-label={t('aria')}
-      className="relative overflow-hidden border-t border-line py-[clamp(80px,12vw,160px)] bg-[radial-gradient(50%_60%_at_100%_0%,rgb(110_41_172/0.28),transparent_70%),radial-gradient(45%_55%_at_0%_100%,rgb(12_142_199/0.18),transparent_70%)]"
+      className="relative overflow-hidden bg-[radial-gradient(60%_80%_at_100%_0%,rgb(178_108_255/0.35),transparent_60%),radial-gradient(60%_80%_at_0%_100%,rgb(127_238_250/0.2),transparent_60%),var(--grad-soft)] py-[clamp(80px,12vw,160px)]"
     >
       <div className="container-site">
         <div className="mb-[clamp(32px,5vw,56px)] flex flex-wrap items-end justify-between gap-6">
           <h2 className="display-xl">
             <Kashida text={t('title')} />
           </h2>
-          <p className="max-w-[26rem] text-muted">{t('lead')}</p>
+          <p className="max-w-[26rem] text-text/85">{t('lead')}</p>
         </div>
-        <ul className="grid gap-[clamp(14px,1.6vw,22px)] sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="border-t border-white/30">
           {services.map((key, index) => (
-            <Reveal as="li" key={key} index={index} className="flex">
+            <Reveal as="li" key={key} index={index}>
               <a
                 href="#contact"
-                className="group/service relative flex w-full flex-col overflow-hidden rounded-panel bg-ink-2/80 p-[clamp(22px,2.4vw,32px)] shadow-[inset_0_0_0_1px_var(--color-line)] transition-[translate,box-shadow] duration-400 ease-brand hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_1px_var(--color-line-strong),0_30px_60px_-30px_rgb(178_108_255/0.45)] focus-visible:-translate-y-1.5"
+                className="group/row grid grid-cols-[auto_1fr_auto] items-center gap-x-[clamp(16px,3vw,40px)] gap-y-1 border-b border-white/30 py-[clamp(18px,2.4vw,28px)] transition-[padding,background-color] duration-400 ease-brand hover:bg-ink/20 hover:px-5 focus-visible:px-5 max-sm:grid-cols-[auto_1fr]"
               >
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -end-16 -top-16 size-44 rounded-full bg-[radial-gradient(closest-side,rgb(178_108_255/0.35),transparent)] opacity-0 transition-opacity duration-500 group-hover/service:opacity-100"
-                />
-                <span
-                  className={
-                    index % 2
-                      ? 'mb-6 grid size-14 place-items-center rounded-2xl bg-[linear-gradient(135deg,var(--color-aqua),var(--color-ocean))] text-ink'
-                      : 'mb-6 grid size-14 place-items-center rounded-2xl bg-[linear-gradient(135deg,var(--color-violet),var(--color-plum))] text-white'
-                  }
-                >
+                <span className="grid size-[clamp(52px,5vw,68px)] place-items-center rounded-2xl bg-ink/45 text-aqua shadow-[inset_0_0_0_1px_rgb(255_255_255/0.18)] transition-[scale,background-color,color] duration-500 ease-brand group-hover/row:scale-[1.06] group-hover/row:bg-ink group-hover/row:text-white max-sm:row-span-2 max-sm:self-start">
                   <svg
                     viewBox="0 0 24 24"
                     aria-hidden="true"
-                    className="size-7"
+                    className="size-[55%]"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.8"
@@ -91,11 +84,13 @@ export async function ServicesSection() {
                     {ICONS[key]}
                   </svg>
                 </span>
-                <h3 className="font-display text-[clamp(1.25rem,1.8vw,1.5rem)] leading-[1.4] font-bold">
-                  {t(`items.${key}.title`)}
-                </h3>
-                <p className="mt-2 mb-6 text-muted">{t(`items.${key}.body`)}</p>
-                <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-aqua">
+                <span className="grid gap-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center lg:gap-10">
+                  <h3 className="font-display text-[clamp(1.25rem,2.6vw,2rem)] leading-[1.35] font-semibold transition-colors duration-300 group-hover/row:text-aqua">
+                    {t(`items.${key}.title`)}
+                  </h3>
+                  <span className="text-[0.9375rem] text-text/80 sm:text-base">{t(`items.${key}.body`)}</span>
+                </span>
+                <span className="inline-flex translate-x-3 items-center gap-2 text-sm font-semibold text-aqua opacity-0 transition-[opacity,translate] duration-[300ms,400ms] ease-brand group-hover/row:translate-x-0 group-hover/row:opacity-100 group-focus-visible/row:translate-x-0 group-focus-visible/row:opacity-100 max-sm:hidden ltr:-translate-x-3">
                   {t('cta')}
                   <ArrowIcon />
                 </span>
