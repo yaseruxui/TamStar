@@ -66,14 +66,15 @@ export const sectors: readonly Sector[] = [
 ];
 
 /**
- * Client voices, in display order. Put a client's photo (shared with their permission) in
- * /public/images/clients/ and set `image` to its path; until then the illustrated avatar is shown.
+ * Client voices, in display order. The current photos are AI-generated portraits (Figma AI), not
+ * real people; swap in clients' own photos (with their permission) in /public/images/clients/.
+ * With `image: null` the illustrated avatar is shown.
  */
 export const testimonials: readonly Testimonial[] = [
-  { key: 'one', avatar: 'shemagh', image: null },
-  { key: 'two', avatar: 'hijab', image: null },
-  { key: 'three', avatar: 'ghutra', image: null },
-  { key: 'four', avatar: 'hijabLight', image: null },
+  { key: 'one', avatar: 'shemagh', image: '/images/clients/client-one.webp' },
+  { key: 'two', avatar: 'hijab', image: '/images/clients/client-two.webp' },
+  { key: 'three', avatar: 'ghutra', image: '/images/clients/client-three.webp' },
+  { key: 'four', avatar: 'hijabLight', image: '/images/clients/client-four.webp' },
 ];
 
 export const posts: readonly Post[] = [
