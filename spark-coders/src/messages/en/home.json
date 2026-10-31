@@ -16,7 +16,23 @@
     "ctaPrimary": "Book a free consultation",
     "ctaSecondary": "See our work",
     "stackLabel": "The tools we build with",
-    "stackAria": "Technologies we use"
+    "stackAria": "Technologies we use",
+    "stage": {
+      "website": "Website",
+      "app": "App",
+      "storeName": "Lamsa",
+      "storeHeadline": "Quiet elegance, every day",
+      "storeCta": "Shop now",
+      "products": {
+        "one": "Wool sweater",
+        "two": "Classic abaya",
+        "three": "Leather bag"
+      },
+      "price": "SAR 249",
+      "checkoutTitle": "Your bag",
+      "checkoutTotal": "Total",
+      "checkoutPay": "Pay with mada"
+    }
   },
   "intro": {
     "aria": "Why Spark Coders",

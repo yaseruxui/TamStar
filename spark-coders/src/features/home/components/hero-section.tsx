@@ -4,11 +4,11 @@ import { ArrowIcon } from '@/components/ui/icons';
 import { heroWords } from '../data/content';
 import { HeroIntro } from './hero-intro';
 import { HeroRotator } from './hero-rotator';
-import { HeroShowcase } from './hero-showcase';
+import { HeroCodeStage } from './hero-code-stage';
 import { TechMarquee } from './tech-marquee';
 
 export async function HeroSection() {
-  const [t, tWork] = await Promise.all([getTranslations('home.hero'), getTranslations('home.work')]);
+  const t = await getTranslations('home.hero');
 
   return (
     <section id="top" className="relative isolate overflow-hidden pt-[calc(var(--header-h)+clamp(32px,6vw,72px))]">
@@ -16,8 +16,8 @@ export async function HeroSection() {
         aria-hidden="true"
         className="absolute -inset-x-[10%] -top-[20%] -z-10 h-[120%] animate-drift bg-[radial-gradient(40%_45%_at_18%_30%,rgb(178_108_255/0.28),transparent_70%),radial-gradient(35%_40%_at_80%_60%,rgb(12_142_199/0.25),transparent_70%),radial-gradient(25%_30%_at_55%_15%,rgb(127_238_250/0.12),transparent_70%)] blur-[10px]"
       />
-      <div className="container-site relative z-10 lg:min-h-[540px]">
-        <div className="lg:max-w-[58%]">
+      <div className="container-site relative z-10 lg:min-h-[500px]">
+        <div className="lg:max-w-[54%]">
           <HeroIntro
             intro={t.rich('intro', { b: (chunks) => <b className="font-semibold text-text">{chunks}</b> })}
             lines={[t('line1'), t('line2')]}
@@ -35,12 +35,19 @@ export async function HeroSection() {
             }
           />
         </div>
-        <HeroShowcase
-          shots={[
-            { src: '/images/projects/dashboard.webp', alt: tWork('items.dashboard.alt') },
-            { src: '/images/projects/ecommerce.webp', alt: tWork('items.ecommerce.alt') },
-            { src: '/images/projects/clinic.webp', alt: tWork('items.clinic.alt') },
-          ]}
+        <HeroCodeStage
+          copy={{
+            website: t('stage.website'),
+            app: t('stage.app'),
+            storeName: t('stage.storeName'),
+            storeHeadline: t('stage.storeHeadline'),
+            storeCta: t('stage.storeCta'),
+            products: [t('stage.products.one'), t('stage.products.two'), t('stage.products.three')],
+            price: t('stage.price'),
+            checkoutTitle: t('stage.checkoutTitle'),
+            checkoutTotal: t('stage.checkoutTotal'),
+            checkoutPay: t('stage.checkoutPay'),
+          }}
         />
       </div>
       <TechMarquee label={t('stackLabel')} ariaLabel={t('stackAria')} />

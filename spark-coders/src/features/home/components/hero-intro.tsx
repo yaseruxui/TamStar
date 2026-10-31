@@ -78,7 +78,7 @@ export function HeroIntro({ intro, lines, rotator, actions }: HeroIntroProps) {
 
   return (
     <div ref={rootRef}>
-      <h1 className="font-display text-[clamp(2.6rem,8.4vw,6.5rem)] lg:text-[clamp(3.5rem,5.6vw,5.5rem)] leading-[1.32] font-extrabold tracking-[-0.01em] [text-wrap:wrap]">
+      <h1 className="font-display text-[clamp(2.25rem,8vw,3.5rem)] lg:text-[clamp(3rem,4.4vw,4.25rem)] leading-[1.32] font-extrabold tracking-[-0.01em] [text-wrap:wrap]">
         <span data-hero-reveal="" data-hero-line="" className="block">
           {lines[0]}
         </span>
