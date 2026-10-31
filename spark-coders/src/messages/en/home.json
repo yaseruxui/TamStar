@@ -29,7 +29,6 @@
   "work": {
     "title": "Our work.",
     "lead": "A selection of projects we've designed and built for clients across industries.",
-    "eyebrow": "Selected projects",
     "details": "Project details",
     "all": "All projects",
     "items": {
@@ -66,7 +65,6 @@
     }
   },
   "leads": {
-    "eyebrow": "Your website sells for you",
     "title": "More visitors.",
     "titleAccent": "More customers.",
     "body": "A great website isn't just a pretty face — it's a salesperson that works 24/7. We shape every page and every button so visitors become customers who contact you and buy.",
@@ -84,7 +82,6 @@
     }
   },
   "delight": {
-    "eyebrow": "A comfortable experience",
     "title": "Easy to use",
     "titleAccent": "from the first visit.",
     "body": "We organise information clearly so visitors find what they need fast, and we test every page before launch so the next step is always obvious.",
@@ -98,7 +95,6 @@
     }
   },
   "edit": {
-    "eyebrow": "A simple dashboard",
     "title": "Edit your site",
     "titleAccent": "yourself.",
     "body": "No waiting on a developer, no complexity. Change text, images and prices from a simple dashboard — as easily as editing this text.",
@@ -206,7 +202,6 @@
     }
   },
   "outro": {
-    "eyebrow": "Where to next?",
     "note": "Fast, clear websites and apps that bring you more customers."
   }
 }

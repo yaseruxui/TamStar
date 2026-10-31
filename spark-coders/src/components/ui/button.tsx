@@ -3,7 +3,7 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 import { cn } from '@/utils/cn';
 
 export const buttonVariants = cva(
-  'group/btn inline-flex cursor-pointer items-center justify-center gap-[0.6em] rounded-full border border-transparent font-display font-semibold transition-[translate,box-shadow,background-color,border-color,background-position] duration-350 ease-brand disabled:cursor-not-allowed disabled:opacity-60 [&_svg]:transition-transform [&_svg]:duration-350 [&_svg]:ease-brand hover:[&_svg]:-translate-x-1 ltr:hover:[&_svg]:translate-x-1',
+  'inline-flex cursor-pointer items-center justify-center gap-[0.6em] rounded-full border border-transparent font-display font-semibold transition-[translate,scale,box-shadow,background-color,border-color,background-position] duration-350 ease-brand active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-60 disabled:active:scale-100',
   {
     variants: {
       variant: {
@@ -12,8 +12,8 @@ export const buttonVariants = cva(
         light: 'bg-text text-ink hover:bg-aqua',
       },
       size: {
-        sm: 'min-h-10 px-[1.15em] py-[0.45em] text-sm',
-        md: 'min-h-12 px-[1.5em] py-[0.7em] text-[0.95rem]',
+        sm: 'min-h-10 px-[1.15em] py-[0.45em] text-sm has-[svg]:pe-[calc(1.15em-2px)]',
+        md: 'min-h-12 px-[1.5em] py-[0.7em] text-[0.95rem] has-[svg]:pe-[calc(1.5em-2px)]',
       },
     },
     defaultVariants: { variant: 'grad', size: 'md' },

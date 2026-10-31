@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input, Label, Textarea } from '@/components/ui/field';
 import { ArrowIcon } from '@/components/ui/icons';
 import { site } from '@/lib/config/site';
+import { shakeInvalidFields } from '../lib/shake-invalid';
 import { submitContact } from '../services/actions';
 import { initialFormStatus, interestKeys } from '../types';
 import { FormMessage } from './form-message';
@@ -19,9 +20,7 @@ export function ContactForm() {
 
   useEffect(() => {
     if (state.status === 'success') formRef.current?.reset();
-    if (state.status === 'invalid') {
-      formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
-    }
+    if (state.status === 'invalid' && formRef.current) shakeInvalidFields(formRef.current);
   }, [state]);
 
   const message =

@@ -107,16 +107,15 @@ export function SiteMenu({ items, socials, labels, localeSwitch }: SiteMenuProps
                         ref={index === 0 ? firstLinkRef : undefined}
                         href={item.href}
                         onClick={() => hide()}
-                        className="flex items-baseline gap-[18px] font-display text-[clamp(2rem,6vw,4.5rem)] leading-[1.35] font-extrabold transition-colors duration-250 hover:text-aqua"
+                        className="flex items-baseline font-display text-[clamp(2rem,6vw,4.5rem)] leading-[1.35] font-extrabold transition-colors duration-250 hover:text-aqua"
                       >
-                        <span className="text-sm font-semibold text-faint">{String(index + 1).padStart(2, '0')}</span>
                         {item.label}
                       </a>
                     </li>
                   ))}
                 </ol>
                 <div>
-                  <p className="eyebrow">{labels.followUs}</p>
+                  <p className="label-sm">{labels.followUs}</p>
                   <ul className="mt-3 mb-7 grid gap-2">
                     {socials.map((social) => (
                       <li key={social.label}>

@@ -65,7 +65,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
   const clientMessages = Object.fromEntries(CLIENT_NAMESPACES.map((ns) => [ns, messages[ns]]));
 
   return (
-    <html lang={locale} dir={localeDirection[locale]} className={cn(fontVariables)}>
+    <html lang={locale} dir={localeDirection[locale]} className={cn(fontVariables)} suppressHydrationWarning>
+      <head>
+        {/* Flags that JS runs before first paint, so entrance styles never hide content without it. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body>
         <a
           href="#main"

@@ -36,11 +36,19 @@ export function PageLoader({ label }: { label: string }) {
 
   useEffect(() => {
     const skip = reduced || hasSeenIntro();
-    if (!skip) markIntroSeen();
+    const root = document.documentElement;
+    if (!skip) {
+      markIntroSeen();
+      // Read by the hero timeline so its entrance starts as the curtain lifts.
+      root.dataset.intro = 'playing';
+    }
     const start = requestAnimationFrame(() => setPhase(skip ? 'done' : 'play'));
     if (skip) return () => cancelAnimationFrame(start);
     const leave = window.setTimeout(() => setPhase('leave'), DURATION_MS);
-    const done = window.setTimeout(() => setPhase('done'), DURATION_MS + 700);
+    const done = window.setTimeout(() => {
+      setPhase('done');
+      delete root.dataset.intro;
+    }, DURATION_MS + 700);
     return () => {
       cancelAnimationFrame(start);
       window.clearTimeout(leave);

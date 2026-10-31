@@ -54,18 +54,21 @@ export function TestimonialsCarousel({ quotes, labels }: TestimonialsCarouselPro
           type="button"
           aria-label={labels.prev}
           onClick={() => go(-1)}
-          className="grid size-12 cursor-pointer place-items-center rounded-full border border-line-strong bg-glass transition-colors duration-250 hover:border-aqua"
+          className="grid size-12 cursor-pointer place-items-center rounded-full border border-line-strong bg-glass transition-[border-color,scale] duration-250 ease-brand hover:border-aqua active:scale-[0.96]"
         >
           <ArrowIcon className="-scale-x-100 ltr:scale-x-100" />
         </button>
-        <span dir="ltr" className="font-display text-muted">
-          {active + 1} / {quotes.length}
+        <span dir="ltr" className="font-display text-muted tabular-nums">
+          <span key={active} className="swap-in inline-block">
+            {active + 1}
+          </span>{' '}
+          / {quotes.length}
         </span>
         <button
           type="button"
           aria-label={labels.next}
           onClick={() => go(1)}
-          className="grid size-12 cursor-pointer place-items-center rounded-full border border-line-strong bg-glass transition-colors duration-250 hover:border-aqua"
+          className="grid size-12 cursor-pointer place-items-center rounded-full border border-line-strong bg-glass transition-[border-color,scale] duration-250 ease-brand hover:border-aqua active:scale-[0.96]"
         >
           <ArrowIcon />
         </button>

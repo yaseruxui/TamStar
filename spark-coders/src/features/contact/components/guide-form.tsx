@@ -5,6 +5,7 @@ import { useActionState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/field';
 import { site } from '@/lib/config/site';
+import { shakeInvalidFields } from '../lib/shake-invalid';
 import { submitGuide } from '../services/actions';
 import { initialFormStatus } from '../types';
 import { FormMessage } from './form-message';
@@ -17,6 +18,7 @@ export function GuideForm() {
 
   useEffect(() => {
     if (state.status === 'success') formRef.current?.reset();
+    if (state.status === 'invalid' && formRef.current) shakeInvalidFields(formRef.current);
   }, [state]);
 
   const message =
@@ -35,7 +37,7 @@ export function GuideForm() {
       ref={formRef}
       action={action}
       noValidate
-      className="relative mt-[clamp(40px,6vw,64px)] max-w-[640px] rounded-card bg-ink/60 p-6 backdrop-blur-[8px]"
+      className="relative mt-[clamp(40px,6vw,64px)] max-w-[640px] rounded-[30px] bg-ink/70 p-6 shadow-[0_24px_60px_-30px_rgb(7_5_26/0.9)]"
     >
       <p className="mb-4 text-muted">
         {t.rich('guide.question', { b: (chunks) => <b className="text-text">{chunks}</b> })}

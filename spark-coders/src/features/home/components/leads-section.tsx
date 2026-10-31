@@ -14,13 +14,7 @@ export async function LeadsSection() {
         <LeadsPhysics tags={leadTags.map((key) => t(`tags.${key}`))} ariaLabel={t('canvasAria')} tapLabel={t('tap')} />
       </ErrorBoundary>
       <div className="container-site pointer-events-none relative">
-        <SectionHeading
-          align="center"
-          eyebrow={t('eyebrow')}
-          title={t('title')}
-          accent={t('titleAccent')}
-          body={t('body')}
-        />
+        <SectionHeading align="center" title={t('title')} accent={t('titleAccent')} body={t('body')} />
       </div>
     </article>
   );

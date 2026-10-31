@@ -16,7 +16,6 @@ export async function SiteFooter() {
   return (
     <footer className="overflow-hidden border-t border-line bg-ink-2 pt-[clamp(64px,10vw,120px)] pb-8">
       <div className="container-site">
-        <p className="eyebrow mb-4">{tHome('eyebrow')}</p>
         <SkodrWordmark
           withSlogan
           gradient
@@ -30,7 +29,7 @@ export async function SiteFooter() {
             <p className="mt-4 text-muted">{tHome('note')}</p>
           </div>
           <nav aria-label={tNav('quickLinks')}>
-            <p className="eyebrow">{tNav('quickLinks')}</p>
+            <p className="label-sm">{tNav('quickLinks')}</p>
             <ul className="mt-3.5 grid gap-1.5">
               {footerSections.map((key) => (
                 <li key={key}>
@@ -42,7 +41,7 @@ export async function SiteFooter() {
             </ul>
           </nav>
           <nav aria-label={tNav('socialAria')}>
-            <p className="eyebrow">{t('followUs')}</p>
+            <p className="label-sm">{t('followUs')}</p>
             <ul className="mt-3.5 grid gap-1.5">
               {site.socials.slice(0, 3).map((social) => (
                 <li key={social.key}>

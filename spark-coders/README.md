@@ -69,7 +69,17 @@ src/
 | Confetti        | none (canvas 2D)    | Bursts on click and once on first view.                                                     |
 | Cursor & loader | none                | Mouse devices only; the intro plays once per session.                                       |
 
-All motion respects `prefers-reduced-motion`.
+| Hero entrance | gsap + SplitText | Headline lines rise out of their masks; content stays visible without JS. |
+| Pinned intro | gsap ScrollTrigger | `pin` + `scrub: 1`; the timeline's progress also drives the 3D scene. |
+| Tabs, links, forms | CSS (transitions.dev patterns) | Sliding tab pill, learn-more arrow, error shake, soft text swap, card tilt. |
+
+All motion respects `prefers-reduced-motion`: loops stop, nothing pins, and state changes keep their
+opacity cue without travel or blur.
+
+Design rules applied (impeccable craft floor, make-interfaces-feel-better): no labels above headings,
+gradient text only for the hero's changing word and the wordmark, display type capped at 6rem,
+≥ 5:1 contrast for small text, balanced headings, tabular numerals, 0.96 press scale, icon stroke
+matched to text weight, themed scrollbar/caret/selection.
 
 ## Brand tokens (`src/styles/globals.css`)
 

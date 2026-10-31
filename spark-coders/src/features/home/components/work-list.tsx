@@ -5,6 +5,7 @@ import { ArrowIcon } from '@/components/ui/icons';
 import { Pill } from '@/components/ui/pill';
 import { Reveal } from '@/components/ui/reveal';
 import { useFinePointer } from '@/hooks/use-fine-pointer';
+import { gsap } from '@/lib/gsap';
 import { cn } from '@/utils/cn';
 import type { ProjectRow } from '../types';
 import { ProjectArt } from './project-art';
@@ -21,27 +22,29 @@ interface WorkListProps {
 export function WorkList({ rows, detailsLabel }: WorkListProps) {
   const fine = useFinePointer();
   const previewRef = useRef<HTMLDivElement>(null);
-  const target = useRef({ x: 0, y: 0 });
-  const current = useRef({ x: 0, y: 0 });
-  const frame = useRef(0);
+  const movers = useRef<{ x: gsap.QuickToFunc; y: gsap.QuickToFunc } | null>(null);
   const [hovered, setHovered] = useState<ProjectRow | null>(null);
 
-  useEffect(() => () => cancelAnimationFrame(frame.current), []);
-
-  const animate = () => {
+  useEffect(() => {
     const node = previewRef.current;
-    const c = current.current;
-    const t = target.current;
-    c.x += (t.x - c.x) * 0.18;
-    c.y += (t.y - c.y) * 0.18;
-    if (node) node.style.translate = `${c.x}px ${c.y}px`;
-    frame.current = Math.abs(t.x - c.x) + Math.abs(t.y - c.y) > 0.5 ? requestAnimationFrame(animate) : 0;
-  };
+    if (!fine || !node) return;
+    movers.current = {
+      x: gsap.quickTo(node, 'x', { duration: 0.45, ease: 'power3.out' }),
+      y: gsap.quickTo(node, 'y', { duration: 0.45, ease: 'power3.out' }),
+    };
+    return () => {
+      movers.current = null;
+      gsap.killTweensOf(node);
+    };
+  }, [fine]);
 
   const onMove = (event: ReactPointerEvent) => {
-    target.current = { x: event.clientX, y: event.clientY };
-    if (!hovered) current.current = { ...target.current };
-    if (!frame.current) frame.current = requestAnimationFrame(animate);
+    const move = movers.current;
+    if (!move) return;
+    // Jump straight to the pointer when the card first appears, then glide.
+    if (!hovered && previewRef.current) gsap.set(previewRef.current, { x: event.clientX, y: event.clientY });
+    move.x(event.clientX);
+    move.y(event.clientY);
   };
 
   return (

@@ -12,12 +12,8 @@ export async function TeamSection() {
     <section id="team" className="border-t border-line py-[clamp(80px,12vw,160px)]">
       <div className="container-site grid gap-[clamp(32px,5vw,72px)] lg:grid-cols-[1fr_2.2fr]">
         <div className="self-start lg:sticky lg:top-[calc(var(--header-h)+24px)]">
-          <Reveal as="h2" className="display-xl">
-            {t('title')}
-          </Reveal>
-          <Reveal as="p" className="mt-5 text-muted">
-            {t('body')}
-          </Reveal>
+          <h2 className="display-xl">{t('title')}</h2>
+          <p className="mt-5 text-muted">{t('body')}</p>
         </div>
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] sm:gap-5">
           {team.map((member, index) => (

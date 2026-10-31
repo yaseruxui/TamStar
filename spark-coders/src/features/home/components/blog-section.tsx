@@ -12,15 +12,11 @@ export async function BlogSection() {
     <section id="blog" className="border-t border-line bg-ink-2 py-[clamp(80px,12vw,160px)]">
       <div className="container-site">
         <div className="mb-[clamp(32px,5vw,56px)] flex flex-wrap items-end justify-between gap-6">
-          <Reveal as="h2" className="display-xl">
-            {t('title')}
-          </Reveal>
-          <Reveal>
-            <ButtonLink href="#" variant="ghost">
-              {t('all')}
-              <ArrowIcon />
-            </ButtonLink>
-          </Reveal>
+          <h2 className="display-xl">{t('title')}</h2>
+          <ButtonLink href="#" variant="ghost">
+            {t('all')}
+            <ArrowIcon />
+          </ButtonLink>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, index) => (

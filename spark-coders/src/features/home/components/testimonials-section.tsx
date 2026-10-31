@@ -1,5 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { Reveal } from '@/components/ui/reveal';
 import { testimonials } from '../data/content';
 import { TestimonialsCarousel } from './testimonials-carousel';
 
@@ -14,9 +13,9 @@ export async function TestimonialsSection() {
   return (
     <section aria-labelledby="testimonials-title" className="py-[clamp(80px,12vw,160px)]">
       <div className="container-site">
-        <Reveal as="h2" id="testimonials-title" className="eyebrow">
+        <h2 id="testimonials-title" className="font-display text-2xl font-extrabold text-muted">
           {t('title')}
-        </Reveal>
+        </h2>
         <TestimonialsCarousel quotes={quotes} labels={{ prev: tCommon('prev'), next: tCommon('next') }} />
       </div>
     </section>

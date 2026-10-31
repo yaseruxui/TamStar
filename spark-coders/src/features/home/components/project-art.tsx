@@ -14,7 +14,13 @@ interface ProjectArtProps {
 /** A project or post visual: the photo when supplied, otherwise a brand-gradient mock screen. */
 export function ProjectArt({ accent, image, alt, sizes, className }: ProjectArtProps) {
   return (
-    <figure className={cn('relative m-0 overflow-hidden', accentBackground[accent], className)}>
+    <figure
+      className={cn(
+        'relative m-0 overflow-hidden outline outline-1 -outline-offset-1 outline-white/10',
+        accentBackground[accent],
+        className,
+      )}
+    >
       {image ? (
         <Image src={image} alt={alt} fill sizes={sizes} className="object-cover" />
       ) : (

@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 /*
- * skodr — Spark Coders identity (dark theme).
+ * SKODR — Spark Coders identity (dark theme).
  * Palette taken from the logo mark: violet → plum → ocean → aqua on deep ink.
  * Token names are shared by every component; change values here, not in markup.
  */
@@ -23,7 +23,8 @@
 
   --color-text: #f5f2ff;
   --color-muted: #aba5d3;
-  --color-faint: #716c9c;
+  /* ≥ 5:1 on every ink surface (small labels, dates, captions). */
+  --color-faint: #8a84b8;
   --color-danger: #ff9db5;
   --color-danger-line: #ff7a9c;
 
@@ -34,22 +35,15 @@
   --radius-card: 18px;
   --radius-panel: 24px;
 
+  /* Motion tokens (transitions.dev scale). */
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --animate-rise: rise 1s var(--ease-brand) both;
   --animate-drift: drift 18s ease-in-out infinite alternate;
   --animate-marquee: marquee 32s linear infinite;
   --animate-ping-soft: ping-soft 1.8s infinite;
-  --animate-fade-up: fade-up 0.5s var(--ease-brand);
+  --animate-shake: shake 280ms linear;
 
-  @keyframes rise {
-    from {
-      transform: translateY(105%);
-    }
-    to {
-      transform: none;
-    }
-  }
   @keyframes drift {
     to {
       transform: translate3d(-3%, 4%, 0) scale(1.06);
@@ -65,10 +59,26 @@
       box-shadow: 0 0 0 10px rgb(127 238 250 / 0);
     }
   }
-  @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(12px);
+  /* transitions.dev "error state shake": four legs (80/60/80/60 ms), each with its own ease. */
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+      animation-timing-function: var(--ease-brand);
+    }
+    28.57% {
+      transform: translateX(6px);
+      animation-timing-function: var(--ease-brand);
+    }
+    57.14% {
+      transform: translateX(-6px);
+      animation-timing-function: var(--ease-brand);
+    }
+    78.57% {
+      transform: translateX(4px);
+      animation-timing-function: var(--ease-brand);
+    }
+    100% {
+      transform: translateX(0);
     }
   }
 }
@@ -80,6 +90,16 @@
   --grad: linear-gradient(115deg, #b26cff 0%, #6e29ac 34%, #0c8ec7 70%, #7feefa 100%);
   --grad-text: linear-gradient(100deg, #c98eff 0%, #9a62f5 28%, #2ca6e2 66%, #7feefa 100%);
   --grad-soft: linear-gradient(115deg, #6e29ac 0%, #0c8ec7 100%);
+
+  --duration-stagger: 40ms;
+  --duration-quick: 150ms;
+  --duration-fast: 250ms;
+  --duration-slow: 400ms;
+  --duration-very-slow: 500ms;
+  --blur-small: 2px;
+  --blur-medium: 3px;
+  --distance-micro: 4px;
+  --distance-medium: 12px;
 }
 
 @media (max-width: 640px) {
@@ -96,6 +116,7 @@
   padding-inline: var(--gutter);
 }
 
+/* Reserved for the one signature moment (the hero's changing word) and the wordmark. */
 @utility text-gradient {
   background: var(--grad-text);
   -webkit-background-clip: text;
@@ -114,12 +135,13 @@
 @utility display-xl {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.75rem, 9vw, 8rem);
-  line-height: 1.05;
+  font-size: clamp(2.75rem, 8vw, 6rem);
+  line-height: 1.08;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
-@utility eyebrow {
+@utility label-sm {
   font-family: var(--font-display);
   font-size: 0.8125rem;
   font-weight: 600;
@@ -130,9 +152,17 @@
 /* ---------- Base ---------- */
 @layer base {
   html {
-    scroll-behavior: smooth;
     scroll-padding-top: var(--header-h);
     -webkit-text-size-adjust: 100%;
+    scrollbar-color: var(--color-plum) var(--color-ink);
+    scrollbar-width: thin;
+  }
+
+  /* Smooth anchor jumps only for people who have not asked for less motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
@@ -142,7 +172,26 @@
     font-size: 1.0625rem;
     line-height: 1.75;
     overflow-x: clip;
+    caret-color: var(--color-aqua);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  blockquote {
+    text-wrap: pretty;
+  }
+
+  a {
+    text-underline-offset: 0.25em;
   }
 
   ::selection {
@@ -165,22 +214,37 @@
 
 /* ---------- Motion primitives shared by several components ---------- */
 @layer components {
-  /* Scroll reveal: hidden only once the client has hydrated, so content never disappears without JS. */
+  /*
+   * List entrance (transitions.dev "texts reveal"): a short blurred rise, staggered per item.
+   * Hidden only once the client has hydrated, so content never disappears without JS.
+   */
   .js-ready [data-reveal] {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(var(--distance-medium));
+    filter: blur(var(--blur-medium));
     transition:
-      opacity 0.9s var(--ease-brand),
-      transform 0.9s var(--ease-brand);
+      opacity var(--duration-very-slow) var(--ease-brand),
+      transform var(--duration-very-slow) var(--ease-brand),
+      filter var(--duration-very-slow) var(--ease-brand);
     transition-delay: var(--reveal-delay, 0s);
   }
   .js-ready [data-reveal][data-in] {
     opacity: 1;
     transform: none;
+    filter: none;
   }
 
   /*
-   * Sticky scrub paragraphs: an inline span whose background runs through its lines in reading
+   * Hero lines are hidden before the entrance timeline runs. `.js` is set by an inline script in
+   * <head>; the fallback animation reveals them anyway if the timeline never starts.
+   */
+  .js [data-hero-reveal] {
+    visibility: hidden;
+    animation: reveal-fallback 0s 2.5s forwards;
+  }
+
+  /*
+   * Scroll-scrubbed paragraphs: an inline span whose background runs through its lines in reading
    * order, so the text fills line by line from faint to bright as `--fill` goes 0 → 100%.
    */
   .scrub-fill {
@@ -200,25 +264,57 @@
   [dir='ltr'] .scrub-fill {
     background-position: left, left;
   }
-  .scrub-fill .accent {
-    background: var(--grad-text);
-    -webkit-background-clip: text;
-    background-clip: text;
+  /* Without JS the intro is a plain filled sentence; the timeline takes over when it runs. */
+  html:not(.js) [data-sentence] {
+    --fill: 100%;
+  }
+  html:not(.js) [data-sentence]:not(:first-child) {
+    display: none;
+  }
+
+  /* transitions.dev "learn more hover": the arrow nudges forward and its head opens up. */
+  .learn-arrow {
+    transition: translate 350ms var(--ease-brand);
+  }
+  .learn-arm {
+    transform-box: view-box;
+    transform-origin: 5px 12px;
+    transition: rotate 350ms var(--ease-brand);
+  }
+  :is(a, button):hover > .learn-arrow,
+  :is(a, button):focus-visible > .learn-arrow {
+    translate: -2px 0;
+  }
+  [dir='ltr'] :is(a, button):hover > .learn-arrow,
+  [dir='ltr'] :is(a, button):focus-visible > .learn-arrow {
+    translate: 2px 0;
+  }
+  :is(a, button):hover > .learn-arrow .learn-arm-top,
+  :is(a, button):focus-visible > .learn-arrow .learn-arm-top {
+    rotate: 8deg;
+  }
+  :is(a, button):hover > .learn-arrow .learn-arm-bottom,
+  :is(a, button):focus-visible > .learn-arrow .learn-arm-bottom {
+    rotate: -8deg;
+  }
+
+  /* transitions.dev "text swap soft": changing values cross-blur in place. */
+  .swap-in {
+    animation: swap-in var(--duration-fast) var(--ease-brand);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+@keyframes reveal-fallback {
+  to {
+    visibility: visible;
   }
-  .js-ready [data-reveal] {
-    opacity: 1;
-    transform: none;
+}
+
+@keyframes swap-in {
+  from {
+    opacity: 0;
+    filter: blur(var(--blur-small));
+    transform: translateY(var(--distance-micro));
   }
 }
 
@@ -238,5 +334,29 @@
   to {
     clip-path: inset(0 0 0 0);
     opacity: 1;
+  }
+}
+
+/*
+ * Reduced motion: spatial movement goes, meaning stays. Loops stop, entrances and swaps keep
+ * their opacity change but lose travel and blur.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .js-ready [data-reveal] {
+    transform: none;
+    filter: none;
+  }
+  .js [data-hero-reveal] {
+    visibility: visible;
+    animation: none;
+  }
+  .animate-marquee,
+  .animate-drift,
+  .animate-shake {
+    animation: none;
+  }
+  .learn-arrow,
+  .learn-arm {
+    transition: none;
   }
 }

@@ -1,5 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { Reveal } from '@/components/ui/reveal';
 import { site } from '@/lib/config/site';
 import { ContactForm } from './contact-form';
 
@@ -13,18 +12,13 @@ export async function ContactSection() {
     >
       <div className="container-site grid items-start gap-[clamp(40px,6vw,96px)] lg:grid-cols-[1fr_1.2fr]">
         <div>
-          <Reveal
-            as="h2"
-            className="font-display text-[clamp(2.4rem,5vw,4.25rem)] leading-[1.05] font-extrabold tracking-[-0.01em]"
-          >
+          <h2 className="font-display text-[clamp(2.4rem,5vw,4.25rem)] leading-[1.08] font-extrabold tracking-[-0.01em]">
             {t('title')}
             <br />
-            <span className="text-gradient">{t('titleAccent')}</span>
-          </Reveal>
-          <Reveal as="p" className="mt-5 text-muted">
-            {t('lead')}
-          </Reveal>
-          <Reveal as="ul" className="mt-8 grid gap-3">
+            <span className="text-violet">{t('titleAccent')}</span>
+          </h2>
+          <p className="mt-5 text-muted">{t('lead')}</p>
+          <ul className="mt-8 grid gap-3">
             <li className="flex items-baseline gap-4">
               <span className="min-w-16 text-sm text-faint">{t('emailLabel')}</span>
               <a href={`mailto:${site.email}`} dir="ltr" className="hover:text-aqua">
@@ -37,11 +31,9 @@ export async function ContactSection() {
                 {site.phoneDisplay}
               </a>
             </li>
-          </Reveal>
+          </ul>
         </div>
-        <Reveal>
-          <ContactForm />
-        </Reveal>
+        <ContactForm />
       </div>
     </section>
   );
