@@ -11,7 +11,8 @@ export const SLOGAN_PATH =
 
 export const WIDTH = 4194.1;
 export const NAME_HEIGHT = 847.3;
-export const FULL_HEIGHT = 1157.5;
+/** Includes a little room under the slogan so it never sits on the edge of the drawing. */
+export const FULL_HEIGHT = 1181.5;
 
 interface SkodrWordmarkProps {
   /** Adds the strapline under the lettering. */
@@ -32,7 +33,7 @@ export function SkodrWordmark({ withSlogan = false, gradient = false, className,
       role={title ? 'img' : undefined}
       aria-label={title}
       aria-hidden={title ? undefined : true}
-      className={cn('block h-auto', className)}
+      className={cn('block h-auto overflow-visible', className)}
     >
       {gradient ? (
         <defs>

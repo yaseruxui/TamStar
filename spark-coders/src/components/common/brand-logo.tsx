@@ -8,12 +8,15 @@ interface BrandLogoProps {
   className?: string;
 }
 
-/** The S mark + SKODR lettering. The lettering is Latin and always reads left-to-right. */
+/**
+ * The full SKODR lockup: S mark, lettering and the "CRAFTING DIGITAL EXCELLENCE" slogan,
+ * in the header and the footer. The lettering is Latin and always reads left-to-right.
+ */
 export function BrandLogo({ size = 'md', className }: BrandLogoProps) {
-  const markHeight = size === 'lg' ? 44 : 34;
+  const markHeight = size === 'lg' ? 56 : 44;
   const markWidth = Math.round((markHeight * site.mark.width) / site.mark.height);
   return (
-    <span dir="ltr" className={cn('inline-flex items-center gap-2.5', className)}>
+    <span dir="ltr" className={cn('inline-flex items-center gap-3', className)}>
       <Image
         src={site.mark.src}
         alt=""
@@ -21,8 +24,13 @@ export function BrandLogo({ size = 'md', className }: BrandLogoProps) {
         height={markHeight}
         priority={size === 'md'}
         sizes={`${markWidth}px`}
+        className={cn(size === 'md' && 'max-sm:h-[38px] max-sm:w-auto')}
       />
-      <SkodrWordmark className={cn('text-text', size === 'lg' ? 'w-[132px]' : 'w-[100px]')} />
+      {size === 'lg' ? (
+        <SkodrWordmark withSlogan className="w-[230px] text-text" />
+      ) : (
+        <SkodrWordmark withSlogan className="w-[144px] text-text sm:w-[168px]" />
+      )}
     </span>
   );
 }
