@@ -83,20 +83,21 @@ export function ScrubIntro({ ariaLabel, paragraphs, scrollHint }: ScrubIntroProp
     <section ref={sectionRef} aria-label={ariaLabel} className="relative h-svh overflow-hidden motion-reduce:h-auto">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_45%_at_25%_50%,rgb(110_41_172/0.28),transparent_70%),radial-gradient(35%_40%_at_70%_70%,rgb(12_142_199/0.18),transparent_70%)] rtl:-scale-x-100"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(32%_42%_at_50%_52%,rgb(110_41_172/0.38),transparent_70%),radial-gradient(22%_30%_at_50%_55%,rgb(12_142_199/0.22),transparent_70%)]"
       />
-      <div className="container-site relative grid h-full items-center gap-6 pt-(--header-h) max-lg:grid-rows-[1fr_auto] lg:grid-cols-2 motion-reduce:py-24">
-        <div className="relative h-full min-h-[38svh] lg:order-2">
-          <ErrorBoundary fallback={<CanvasSkeleton />}>
-            <SparkScene progressRef={progressRef} />
-          </ErrorBoundary>
-        </div>
-        <div className="relative grid pb-[12svh] lg:pb-0 motion-reduce:gap-8 motion-reduce:pb-0">
+      {/* The mark sits centre stage behind the sentence, as in the reference layout. */}
+      <div className="pointer-events-none absolute inset-0 pt-(--header-h) opacity-85 motion-reduce:hidden">
+        <ErrorBoundary fallback={<CanvasSkeleton />}>
+          <SparkScene progressRef={progressRef} distance={11} />
+        </ErrorBoundary>
+      </div>
+      <div className="container-site relative grid h-full place-items-center pt-(--header-h) text-center motion-reduce:py-24">
+        <div className="relative grid w-full max-w-[min(100%,72rem)] motion-reduce:gap-8">
           {paragraphs.map((text) => (
             <p
               key={text}
               data-sentence=""
-              className="col-start-1 row-start-1 font-display text-[clamp(1.9rem,4.4vw,4rem)] leading-[1.4] font-extrabold motion-reduce:row-auto"
+              className="col-start-1 row-start-1 self-center font-display text-[clamp(2rem,4.8vw,4.75rem)] leading-[1.35] font-extrabold motion-reduce:row-auto"
             >
               <span className="scrub-fill">{text}</span>
             </p>

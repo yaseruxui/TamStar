@@ -23,6 +23,8 @@ import { buildMarkGeometries, MARK_HEIGHT, MARK_WIDTH } from '../lib/mark-geomet
 interface SparkSceneProps {
   /** 0 → 1 scroll progress of the surrounding sticky section, written by the parent each frame. */
   progressRef: RefObject<number>;
+  /** Camera distance; larger values make the mark smaller in its canvas. */
+  distance?: number;
 }
 
 /** World-space width of the mark. */
@@ -33,7 +35,7 @@ const MARK_SIZE = 3.2;
  * scrolls through the intro, tilts toward the pointer and floats gently. Rendering pauses
  * whenever it is off-screen.
  */
-export default function SparkScene({ progressRef }: SparkSceneProps) {
+export default function SparkScene({ progressRef, distance = 7.2 }: SparkSceneProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
 
@@ -57,7 +59,7 @@ export default function SparkScene({ progressRef }: SparkSceneProps) {
 
     const scene = new Scene();
     const camera = new PerspectiveCamera(32, 1, 0.1, 100);
-    camera.position.set(0, 0, 7.2);
+    camera.position.set(0, 0, distance);
 
     scene.add(new AmbientLight(0xffffff, 1.1));
     const key = new DirectionalLight(0xffffff, 1.8);
@@ -106,7 +108,7 @@ export default function SparkScene({ progressRef }: SparkSceneProps) {
       renderer.domElement.style.height = `${height}px`;
       camera.aspect = width / height;
       // Keep the whole mark in frame on narrow (portrait) canvases.
-      camera.position.z = camera.aspect < 1 ? 7.2 / Math.max(camera.aspect, 0.55) : 7.2;
+      camera.position.z = camera.aspect < 1 ? distance / Math.max(camera.aspect, 0.55) : distance;
       camera.updateProjectionMatrix();
       requestRender();
     };
@@ -173,7 +175,7 @@ export default function SparkScene({ progressRef }: SparkSceneProps) {
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, [progressRef, reduced]);
+  }, [progressRef, reduced, distance]);
 
   return <div ref={hostRef} className="absolute inset-0" />;
 }

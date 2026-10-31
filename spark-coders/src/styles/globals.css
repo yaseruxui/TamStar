@@ -310,7 +310,8 @@ html[data-brand-font='thmanyah'] {
     -webkit-box-decoration-break: slice;
     box-decoration-break: slice;
     background-image:
-      linear-gradient(var(--color-text), var(--color-text)), linear-gradient(var(--color-ink-3), var(--color-ink-3));
+      linear-gradient(var(--color-text), var(--color-text)),
+      linear-gradient(rgb(171 165 211 / 0.34), rgb(171 165 211 / 0.34));
     background-size:
       var(--fill, 0%) 100%,
       100% 100%;
