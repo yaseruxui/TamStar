@@ -13,7 +13,7 @@ interface SectionHeadingProps {
 export function SectionHeading({ title, accent, body, align = 'start', className }: SectionHeadingProps) {
   return (
     <div className={cn(align === 'center' && 'mx-auto text-center', className)}>
-      <h3 className="mb-6 font-display text-[clamp(2.4rem,6vw,5.25rem)] leading-[1.12] font-extrabold tracking-[-0.01em]">
+      <h3 className="display-xl mb-6">
         <Kashida text={title} />
         <br />
         <span className="text-violet">

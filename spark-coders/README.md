@@ -80,7 +80,7 @@ All motion respects `prefers-reduced-motion`: loops stop, nothing pins, and stat
 opacity cue without travel or blur.
 
 Design rules applied (impeccable craft floor, make-interfaces-feel-better): no labels above headings,
-gradient text only for the hero's changing word and the wordmark, display type capped at 6rem,
+gradient text only for the hero's changing word and the wordmark, section titles share one size (display-xl, ≤ 3.75rem),
 ≥ 5:1 contrast for small text, balanced headings, tabular numerals, 0.96 press scale, icon stroke
 matched to text weight, themed scrollbar/caret/selection.
 

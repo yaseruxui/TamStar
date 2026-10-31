@@ -13,7 +13,7 @@ export async function ContactSection() {
     >
       <div className="container-site grid items-start gap-[clamp(40px,6vw,96px)] lg:grid-cols-[1fr_1.2fr]">
         <div>
-          <h2 className="font-display text-[clamp(2.4rem,5vw,4.25rem)] leading-[1.08] font-extrabold tracking-[-0.01em]">
+          <h2 className="display-xl">
             {t('title')}
             <br />
             <span className="text-violet">

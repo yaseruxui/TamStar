@@ -190,11 +190,12 @@ html[data-brand-font='thmanyah'] {
   background-image: var(--grad-soft);
 }
 
+/* The one size for every section title, kept below the hero headline. */
 @utility display-xl {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.75rem, 8vw, 6rem);
-  line-height: 1.08;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.2;
   letter-spacing: -0.01em;
   text-wrap: balance;
 }
