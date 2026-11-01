@@ -3,7 +3,7 @@ export const site = {
   wordmark: 'SPARKODERS',
   slogan: 'Crafting Digital Excellence',
   domain: 'skodr.com',
-  email: 'hello@skodr.com',
+  email: 'support@sparkoders.com',
   phone: '+000000000',
   phoneDisplay: '+000 000 000',
   /** Square raster mark for structured data, manifest and social cards. */
