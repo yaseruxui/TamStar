@@ -1,11 +1,14 @@
-/** In-page sections of the one-page site, in menu order. Labels live in `navigation.items`. */
+/**
+ * Menu entries, in order. `id` is the home-page section's anchor; entries with a `page` open that
+ * page instead. Labels live in `navigation.items`.
+ */
 export const navSections = [
-  { key: 'home', href: '#top' },
-  { key: 'work', href: '#work' },
-  { key: 'services', href: '#services' },
-  { key: 'team', href: '#team' },
-  { key: 'blog', href: '#blog' },
-  { key: 'contact', href: '#contact' },
+  { key: 'home', id: 'top' },
+  { key: 'work', id: 'work', page: '/work' },
+  { key: 'services', id: 'services' },
+  { key: 'team', id: 'team' },
+  { key: 'blog', id: 'blog', page: '/blog' },
+  { key: 'contact', id: 'contact' },
 ] as const;
 
 export type NavSectionKey = (typeof navSections)[number]['key'];

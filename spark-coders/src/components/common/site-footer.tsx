@@ -1,15 +1,22 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { footerSections, navSections } from '@/lib/config/navigation';
 import { site } from '@/lib/config/site';
+import { homeSection, navHref } from '@/lib/i18n/paths';
+import { resolveLocale } from '@/lib/i18n/resolve-locale';
 import { BrandLogo } from './brand-logo';
 
 export async function SiteFooter() {
-  const [t, tNav, tHome] = await Promise.all([
+  const [t, tNav, tHome, rawLocale] = await Promise.all([
     getTranslations('common'),
     getTranslations('navigation'),
     getTranslations('home.outro'),
+    getLocale(),
   ]);
-  const hrefFor = (key: (typeof footerSections)[number]) => navSections.find((s) => s.key === key)?.href ?? '#top';
+  const locale = resolveLocale(rawLocale);
+  const hrefFor = (key: (typeof footerSections)[number]) => {
+    const section = navSections.find((s) => s.key === key);
+    return section ? navHref(locale, section) : homeSection(locale, 'top');
+  };
   const year = new Date().getFullYear();
 
   return (
@@ -17,7 +24,7 @@ export async function SiteFooter() {
       <div className="container-site">
         <div className="grid grid-cols-2 gap-10 border-b border-line pb-10 lg:grid-cols-[2fr_1fr_1fr]">
           <div className="col-span-2 lg:col-span-1">
-            <a href="#top" aria-label={site.wordmark} className="inline-flex">
+            <a href={homeSection(locale, 'top')} aria-label={site.wordmark} className="inline-flex">
               <BrandLogo size="lg" />
             </a>
             <p className="mt-5 max-w-[34rem] leading-relaxed text-muted">{tHome('note')}</p>
@@ -53,7 +60,7 @@ export async function SiteFooter() {
         </div>
         <div className="flex flex-wrap justify-between gap-3 pt-6 text-sm text-faint">
           <span>{t('rights', { year })}</span>
-          <a href="#top" className="hover:text-text">
+          <a href="#" className="hover:text-text">
             {t('backToTop')} ↑
           </a>
         </div>

@@ -3,6 +3,8 @@ import { ButtonLink } from '@/components/ui/button';
 import { ArrowIcon } from '@/components/ui/icons';
 import { site } from '@/lib/config/site';
 import { getPathname } from '@/lib/i18n/navigation';
+import { homeSection, navHref } from '@/lib/i18n/paths';
+import { socialIconPaths } from '@/lib/config/social-icons';
 import { routing } from '@/lib/i18n/routing';
 import { navSections } from '@/lib/config/navigation';
 import { BrandLogo } from './brand-logo';
@@ -18,7 +20,7 @@ export async function SiteHeader() {
       <div className="container-site">
         {/* Floating glass bar; firmer once the page scrolls or the menu is open. */}
         <div className="flex h-14 items-center justify-between gap-4 rounded-full bg-ink/45 ps-4 pe-2 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08),0_18px_40px_-24px_rgb(0_0_0/0.9)] backdrop-blur-[14px] transition-[background-color,box-shadow] duration-400 ease-brand group-data-scrolled/header:bg-ink/75 group-data-scrolled/header:shadow-[inset_0_0_0_1px_var(--color-line-strong),0_24px_50px_-24px_rgb(0_0_0/0.95)] group-has-[[aria-expanded=true]]/header:bg-ink/85 sm:h-[60px] sm:ps-7 sm:pe-3 lg:ps-9 lg:pe-4">
-          <a href="#top" aria-label={tNav('homeAria')} className="inline-flex">
+          <a href={getPathname({ href: '/', locale })} aria-label={tNav('homeAria')} className="inline-flex">
             <BrandLogo />
           </a>
           <div className="flex items-center gap-2 sm:gap-3">
@@ -31,13 +33,20 @@ export async function SiteHeader() {
             >
               {tNav('switchLocaleShort')}
             </a>
-            <ButtonLink href="#contact" size="sm" className="max-sm:hidden">
+            <ButtonLink href={homeSection(locale, 'contact')} size="sm" className="max-sm:hidden">
               {t('startProject')}
               <ArrowIcon />
             </ButtonLink>
             <SiteMenu
-              items={navSections.map((section) => ({ href: section.href, label: tNav(`items.${section.key}`) }))}
-              socials={site.socials.map((social) => ({ href: social.href, label: t(`socials.${social.key}`) }))}
+              items={navSections.map((section) => ({
+                href: navHref(locale, section),
+                label: tNav(`items.${section.key}`),
+              }))}
+              socials={site.socials.map((social) => ({
+                href: social.href,
+                label: t(`socials.${social.key}`),
+                icon: socialIconPaths[social.key],
+              }))}
               labels={{
                 open: t('menu'),
                 close: t('close'),
@@ -48,6 +57,7 @@ export async function SiteHeader() {
                 cta: t('startProject'),
               }}
               email={site.email}
+              contactHref={homeSection(locale, 'contact')}
             />
           </div>
         </div>

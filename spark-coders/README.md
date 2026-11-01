@@ -33,6 +33,8 @@ src/
 │   ├── [locale]/              # ar | en, both statically prerendered
 │   │   ├── layout.tsx         # <html lang/dir>, fonts, metadata, JSON-LD, header/footer, cursor, intro loader
 │   │   ├── page.tsx           # composes the home sections
+│   │   ├── work/ · work/[slug]/   # all projects · case study (static per locale × project)
+│   │   ├── blog/ · blog/[slug]/   # all articles · article (static per locale × post)
 │   │   ├── error.tsx · loading.tsx · not-found.tsx · [...rest]/page.tsx
 │   │   └── opengraph-image.tsx
 │   ├── icon.svg · manifest.ts · robots.ts · sitemap.ts
@@ -55,7 +57,7 @@ src/
 │       └── types/
 ├── hooks/                     # media query, reduced motion, fine pointer, in-view, scroll progress
 ├── lib/                       # env (Zod), fonts, i18n (routing/navigation/request), seo, site config
-├── messages/{ar,en}/          # common · navigation · metadata · home · contact (ar is the source type)
+├── messages/{ar,en}/          # common · navigation · metadata · home · contact · pages · projects · articles (ar is the source type)
 ├── services/                  # webhook delivery (server-only)
 ├── styles/globals.css         # Tailwind v4 @theme tokens, base, shared motion primitives
 ├── types/                     # next-intl AppConfig, CSS custom properties, SEO, matter-js typings
@@ -93,6 +95,8 @@ matched to text weight, themed scrollbar/caret/selection.
 
 ## Content to replace before launch
 
+- Case studies (`messages/*/projects.json`) and articles (`messages/*/articles.json`) are sample
+  content: client names, figures and text must be replaced with real ones before launch.
 - Project, blog and team photos: put files in `public/images/…` and set `image` in
   `src/features/home/data/content.ts` (until then each card shows its brand-gradient artwork).
 - Team names, testimonial authors, social links and phone number (`src/messages/*`, `src/lib/config/site.ts`).

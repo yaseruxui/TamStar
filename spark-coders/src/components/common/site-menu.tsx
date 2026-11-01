@@ -11,11 +11,17 @@ export interface MenuLink {
   label: string;
 }
 
+export interface SocialLink extends MenuLink {
+  /** 24×24 glyph path. */
+  icon: string;
+}
+
 interface SiteMenuProps {
   items: readonly MenuLink[];
-  socials: readonly MenuLink[];
+  socials: readonly SocialLink[];
   labels: { open: string; close: string; nav: string; followUs: string; note: string; ctaTitle: string; cta: string };
   email: string;
+  contactHref: string;
 }
 
 const CLOSE_MS = 350;
@@ -24,7 +30,7 @@ const CLOSE_MS = 350;
  * Full-screen menu: toggle button + overlay. The overlay is portalled to <body> so the frosted
  * header (which creates a containing block via backdrop-filter) stays above it. Escape closes it.
  */
-export function SiteMenu({ items, socials, labels, email }: SiteMenuProps) {
+export function SiteMenu({ items, socials, labels, email, contactHref }: SiteMenuProps) {
   /** `rendered` keeps the overlay in the DOM during its fade-out; `open` drives the fade itself. */
   const [rendered, setRendered] = useState(false);
   const [open, setOpen] = useState(false);
@@ -103,14 +109,14 @@ export function SiteMenu({ items, socials, labels, email }: SiteMenuProps) {
               )}
             >
               <div className="container-site grid flex-1 content-center items-center gap-[clamp(16px,4vh,56px)] lg:grid-cols-[1.35fr_1fr] lg:gap-[clamp(48px,7vw,120px)]">
-                <ol className="border-t border-line">
+                <ol>
                   {items.map((item, index) => (
                     <li
                       key={item.href}
                       // Links rise in one after another as the menu opens.
                       style={{ transitionDelay: open ? `${80 + index * 45}ms` : '0ms' }}
                       className={cn(
-                        'border-b border-line transition-[opacity,translate] duration-500 ease-brand motion-reduce:translate-y-0',
+                        'transition-[opacity,translate] duration-500 ease-brand motion-reduce:translate-y-0',
                         open ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0',
                       )}
                     >
@@ -144,7 +150,7 @@ export function SiteMenu({ items, socials, labels, email }: SiteMenuProps) {
                   </p>
                   <p className="mt-2 text-muted max-sm:hidden">{labels.note}</p>
                   <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3 sm:mt-5">
-                    <a href="#contact" onClick={() => hide()} className={buttonVariants({ size: 'md' })}>
+                    <a href={contactHref} onClick={() => hide()} className={buttonVariants({ size: 'md' })}>
                       {labels.cta}
                       <ArrowIcon />
                     </a>
@@ -158,15 +164,19 @@ export function SiteMenu({ items, socials, labels, email }: SiteMenuProps) {
                   </div>
                   <div className="mt-4 border-t border-line pt-4 sm:mt-6 sm:pt-5">
                     <p className="label-sm max-sm:sr-only">{labels.followUs}</p>
-                    <ul className="flex flex-wrap gap-2 sm:mt-3">
+                    <ul className="flex flex-wrap gap-2.5 sm:mt-3">
                       {socials.map((social) => (
                         <li key={social.label}>
                           <a
                             href={social.href}
                             rel="noopener"
-                            className="inline-flex min-h-9 items-center rounded-full px-3.5 text-sm sm:min-h-10 sm:px-4 sm:text-[0.9375rem] text-muted shadow-[inset_0_0_0_1px_var(--color-line-strong)] transition-[color,box-shadow,background-color] duration-300 hover:bg-white/5 hover:text-text hover:shadow-[inset_0_0_0_1px_rgb(127_238_250/0.5)]"
+                            aria-label={social.label}
+                            title={social.label}
+                            className="grid size-11 place-items-center rounded-full text-muted shadow-[inset_0_0_0_1px_var(--color-line-strong)] transition-[color,box-shadow,background-color,translate] duration-300 ease-brand hover:-translate-y-0.5 hover:bg-white/5 hover:text-aqua hover:shadow-[inset_0_0_0_1px_rgb(127_238_250/0.5)]"
                           >
-                            {social.label}
+                            <svg viewBox="0 0 24 24" aria-hidden="true" className="size-[18px]" fill="currentColor">
+                              <path d={social.icon} />
+                            </svg>
                           </a>
                         </li>
                       ))}

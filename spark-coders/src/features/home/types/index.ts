@@ -18,7 +18,6 @@ export type Accent = 1 | 2 | 3 | 4 | 5 | 6;
 export interface Project {
   key: ProjectKey;
   accent: Accent;
-  href: string;
   /** Path under /public. `null` renders the brand-gradient artwork instead of a photo. */
   image: string | null;
 }
@@ -26,7 +25,6 @@ export interface Project {
 export interface Post {
   key: PostKey;
   accent: Accent;
-  href: string;
   /** ISO date; rendered with the locale's calendar formatting. */
   date: string;
   image: string | null;

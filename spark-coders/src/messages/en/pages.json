@@ -1,0 +1,34 @@
+{
+  "work": {
+    "title": "Our work",
+    "lead": "Projects we designed and built for clients across sectors, from learning platforms to stores and apps.",
+    "metaTitle": "Our work",
+    "metaDescription": "Selected Spark Coders projects: learning platforms, online stores, booking systems, delivery apps and dashboards.",
+    "all": "All",
+    "back": "All work",
+    "client": "Client",
+    "sector": "Sector",
+    "year": "Year",
+    "duration": "Duration",
+    "services": "Services",
+    "challenge": "The challenge",
+    "solution": "The solution",
+    "features": "Key features",
+    "results": "Results",
+    "next": "Next project",
+    "ctaTitle": "Have a similar project?",
+    "ctaBody": "Tell us about your idea and we'll come back with a clear plan and a quote within two working days.",
+    "cta": "Start your project"
+  },
+  "blog": {
+    "title": "Blog",
+    "lead": "Practical advice to help you plan your website or app and avoid the common mistakes.",
+    "metaTitle": "Blog",
+    "metaDescription": "Articles and advice from the Spark Coders team on planning, designing and building websites and apps.",
+    "back": "All articles",
+    "readTime": "{time} read",
+    "related": "More articles",
+    "read": "Read article",
+    "ctaTitle": "Got a project in mind?"
+  }
+}

@@ -39,12 +39,12 @@ export const techStack: readonly Tech[] = [
  * set `image` to null to fall back to the brand-gradient artwork.
  */
 export const projects: readonly Project[] = [
-  { key: 'education', accent: 1, href: '#', image: '/images/projects/education.webp' },
-  { key: 'ecommerce', accent: 2, href: '#', image: '/images/projects/ecommerce.webp' },
-  { key: 'clinic', accent: 3, href: '#', image: '/images/projects/clinic.webp' },
-  { key: 'delivery', accent: 4, href: '#', image: '/images/projects/delivery.webp' },
-  { key: 'dashboard', accent: 5, href: '#', image: '/images/projects/dashboard.webp' },
-  { key: 'restaurant', accent: 6, href: '#', image: '/images/projects/restaurant.webp' },
+  { key: 'education', accent: 1, image: '/images/projects/education.webp' },
+  { key: 'ecommerce', accent: 2, image: '/images/projects/ecommerce.webp' },
+  { key: 'clinic', accent: 3, image: '/images/projects/clinic.webp' },
+  { key: 'delivery', accent: 4, image: '/images/projects/delivery.webp' },
+  { key: 'dashboard', accent: 5, image: '/images/projects/dashboard.webp' },
+  { key: 'restaurant', accent: 6, image: '/images/projects/restaurant.webp' },
 ];
 
 export const leadTags: readonly LeadTagKey[] = [
@@ -88,7 +88,7 @@ export const testimonials: readonly Testimonial[] = [
 ];
 
 export const posts: readonly Post[] = [
-  { key: 'content', accent: 1, href: '#', date: '2026-09-08', image: '/images/blog/content.webp' },
-  { key: 'team', accent: 2, href: '#', date: '2026-09-01', image: '/images/blog/team.webp' },
-  { key: 'brief', accent: 3, href: '#', date: '2026-08-25', image: '/images/blog/brief.webp' },
+  { key: 'content', accent: 1, date: '2026-09-08', image: '/images/blog/content.webp' },
+  { key: 'team', accent: 2, date: '2026-09-01', image: '/images/blog/team.webp' },
+  { key: 'brief', accent: 3, date: '2026-08-25', image: '/images/blog/brief.webp' },
 ];
