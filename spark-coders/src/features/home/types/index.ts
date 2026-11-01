@@ -32,7 +32,7 @@ export interface Post {
 
 export interface TeamMember {
   key: TeamMemberKey;
-  /** Portrait in /public/images/team/ (currently AI-generated; replace with the team's own photos). */
+  /** Portrait in /public/images/team/ (pm and marketer are still AI-generated placeholders). */
   image: string;
 }
 

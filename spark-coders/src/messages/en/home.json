@@ -124,25 +124,25 @@
     "title": "Our team",
     "body": "A specialist team that brings you clear solutions instead of problems, saves your time and works with you step by step until your project is ready.",
     "members": {
-      "founder": {
-        "name": "Team member name",
-        "role": "Founder & CTO",
-        "bio": "Oversees the technical side of every project and makes sure each site is fast, secure and scalable."
+      "cto": {
+        "name": "Ahmed Kamal",
+        "role": "Chief Technology Officer",
+        "bio": "Leads the technical team and sets the architecture of every project, keeping it fast, secure and ready to scale."
+      },
+      "fullstack": {
+        "name": "Abanoub Messiha",
+        "role": "Full-stack Developer",
+        "bio": "Builds interfaces and back-end systems end to end, turning designs into sites and apps that run smoothly."
+      },
+      "uxui": {
+        "name": "Yaser Ahmed",
+        "role": "UX/UI Designer & Business Analyst",
+        "bio": "Analyses what your business needs and turns it into a clear user journey and simple, tidy interfaces."
       },
       "pm": {
         "name": "Team member name",
         "role": "Project manager",
         "bio": "Keeps you updated through every stage and makes sure deadlines are met."
-      },
-      "designer": {
-        "name": "Team member name",
-        "role": "UI/UX designer",
-        "bio": "Designs clean, easy-to-use interfaces that reflect your brand."
-      },
-      "developer": {
-        "name": "Team member name",
-        "role": "App developer",
-        "bio": "Turns designs into apps that run smoothly on phones and desktops."
       },
       "marketer": {
         "name": "Team member name",
