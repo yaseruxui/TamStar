@@ -1,7 +1,7 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { footerSections, navSections } from '@/lib/config/navigation';
 import { site } from '@/lib/config/site';
-import { localePath, navHref } from '@/lib/i18n/paths';
+import { localePath, navHref, routes } from '@/lib/i18n/paths';
 import { resolveLocale } from '@/lib/i18n/resolve-locale';
 import { BrandLogo } from './brand-logo';
 
@@ -60,9 +60,14 @@ export async function SiteFooter() {
         </div>
         <div className="flex flex-wrap justify-between gap-3 pt-6 text-sm text-faint">
           <span>{t('rights', { year })}</span>
-          <a href="#" className="hover:text-text">
-            {t('backToTop')} ↑
-          </a>
+          <span className="flex flex-wrap gap-x-6 gap-y-2">
+            <a href={localePath(locale, routes.privacy)} className="hover:text-text">
+              {t('privacy')}
+            </a>
+            <a href="#" className="hover:text-text">
+              {t('backToTop')} ↑
+            </a>
+          </span>
         </div>
       </div>
     </footer>

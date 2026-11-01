@@ -25,5 +25,7 @@
   "success": "Thank you! We got your message and will reply within one business day.",
   "invalid": "Please complete the required fields with valid details.",
   "failed": "We couldn't send your message right now. Please try again shortly.",
-  "unconfigured": "Direct sending isn't enabled yet. Email us at {email}."
+  "unconfigured": "Direct sending isn't enabled yet. Email us at {email}.",
+  "privacyNote": "By sending this form you agree to our",
+  "privacyLink": "privacy policy"
 }

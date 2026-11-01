@@ -19,7 +19,7 @@ Copy `.env.example` to `.env.local`:
 
 | Variable                 | Purpose                                                                                     |
 | ------------------------ | ------------------------------------------------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL`   | Canonical origin for metadata, sitemap and hreflang (default `https://skodr.com`).          |
+| `NEXT_PUBLIC_SITE_URL`   | Canonical origin for metadata, sitemap and hreflang (default `https://sparkoders.com`).     |
 | `SITE_PASSWORD`          | Four digits. With `SITE_GATE_SECRET`, the whole site sits behind `/unlock`; unset → public. |
 | `SITE_GATE_SECRET`       | ≥ 32 random characters that sign the unlock cookie; changing it signs everyone out.         |
 | `NEXT_PUBLIC_BRAND_FONT` | `default` (Alexandria + IBM Plex) or `thmanyah` (see Brand font below).                     |
@@ -36,7 +36,7 @@ src/
 │   │   ├── services/ · about/ · contact/  # inner pages (the menu links to pages only)
 │   │   ├── work/ · work/[slug]/   # all projects · case study (static per locale × project)
 │   │   ├── blog/ · blog/[slug]/   # all articles · article (static per locale × post)
-│   │   ├── error.tsx · loading.tsx · not-found.tsx · [...rest]/page.tsx
+│   │   ├── error.tsx · not-found.tsx · [...rest]/page.tsx (no loading boundary, so unknown URLs answer 404)
 │   │   └── opengraph-image.tsx
 │   ├── icon.svg · manifest.ts · robots.ts · sitemap.ts
 ├── assets/fonts/              # Alexandria + IBM Plex Sans Arabic (SIL OFL), loaded with next/font/local

@@ -131,5 +131,45 @@
   "contact": {
     "metaTitle": "Contact",
     "metaDescription": "Send us your project details and the Spark Coders team will reply within one working day."
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "lead": "How we handle the information you send us through this site.",
+    "metaDescription": "Spark Coders privacy policy: what we collect, how we use and protect it, and your rights.",
+    "updated": "Last updated: {date}",
+    "sections": [
+      {
+        "title": "What we collect",
+        "body": [
+          "When you fill in the contact form we receive your name, your company or project name, your email, your phone number if you add it, the services you're interested in and your message.",
+          "We don't use cookies for advertising or tracking, and we don't load any scripts from other sites."
+        ]
+      },
+      {
+        "title": "How we use it",
+        "body": [
+          "We use your information only to reply to your request, prepare a quote and follow up on your project.",
+          "We never sell your information or share it with anyone for marketing."
+        ]
+      },
+      {
+        "title": "Where it is kept",
+        "body": [
+          "Messages are sent encrypted (HTTPS) to the team's internal systems and are seen only by the team members handling your request.",
+          "We keep the information for as long as we're in touch or working together, and delete it when you ask."
+        ]
+      },
+      {
+        "title": "Your rights",
+        "body": [
+          "You can ask for a copy of your information, or ask us to correct or delete it, at any time.",
+          "Contact us at {email} and we'll reply within a few working days."
+        ]
+      },
+      {
+        "title": "Changes to this policy",
+        "body": ["We may update this policy from time to time and will show the new date at the top of this page."]
+      }
+    ]
   }
 }

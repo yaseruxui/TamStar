@@ -7,6 +7,7 @@ import { JsReady } from '@/components/common/js-ready';
 import { PageLoader } from '@/components/common/page-loader';
 import { SiteFooter } from '@/components/common/site-footer';
 import { SiteHeader } from '@/components/common/site-header';
+import { WhatsAppButton } from '@/components/common/whatsapp-button';
 import { JsonLdScript } from '@/components/seo/json-ld';
 import { site } from '@/lib/config/site';
 import { brandFont, siteUrl } from '@/lib/env';
@@ -100,6 +101,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
           <SiteHeader />
           <main id="main">{children}</main>
           <SiteFooter />
+          <WhatsAppButton />
           <CustomCursor />
         </NextIntlClientProvider>
         <JsonLdScript

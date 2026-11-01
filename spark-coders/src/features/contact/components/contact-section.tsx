@@ -1,4 +1,6 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { localePath, routes } from '@/lib/i18n/paths';
+import { resolveLocale } from '@/lib/i18n/resolve-locale';
 import { site } from '@/lib/config/site';
 import { ContactForm } from './contact-form';
 import { Kashida } from '@/components/ui/kashida';
@@ -6,7 +8,8 @@ import { cn } from '@/utils/cn';
 
 /** Contact block: the closing section of the home page, or the body of the contact page (`asPage`). */
 export async function ContactSection({ asPage = false }: { asPage?: boolean }) {
-  const t = await getTranslations('contact');
+  const [t, rawLocale] = await Promise.all([getTranslations('contact'), getLocale()]);
+  const locale = resolveLocale(rawLocale);
   const Heading = asPage ? 'h1' : 'h2';
 
   return (
@@ -44,7 +47,7 @@ export async function ContactSection({ asPage = false }: { asPage?: boolean }) {
             </li>
           </ul>
         </div>
-        <ContactForm />
+        <ContactForm privacyHref={localePath(locale, routes.privacy)} />
       </div>
     </section>
   );

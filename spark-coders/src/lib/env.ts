@@ -20,7 +20,7 @@ const serverSchema = z.object({
 });
 
 const publicSchema = z.object({
-  NEXT_PUBLIC_SITE_URL: z.url().default('https://skodr.com'),
+  NEXT_PUBLIC_SITE_URL: z.url().default('https://sparkoders.com'),
   /**
    * `thmanyah` switches headings and text to Thmanyah Sans. Only enable it where the licensed files
    * are installed in public/fonts/thmanyah/ and Thmanyah has approved web use.

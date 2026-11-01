@@ -26,5 +26,10 @@
     "home": "Back to home"
   },
   "prev": "Previous",
-  "next": "Next"
+  "next": "Next",
+  "whatsapp": {
+    "label": "Message us on WhatsApp",
+    "message": "Hi Spark Coders, I have a project idea and would like to know more."
+  },
+  "privacy": "Privacy policy"
 }

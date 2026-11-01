@@ -140,12 +140,12 @@
         "bio": "Analyses what your business needs and turns it into a clear user journey and simple, tidy interfaces."
       },
       "pm": {
-        "name": "Team member name",
+        "name": "Omar Al-Husseini",
         "role": "Project manager",
         "bio": "Keeps you updated through every stage and makes sure deadlines are met."
       },
       "marketer": {
-        "name": "Team member name",
+        "name": "Hala Mansour",
         "role": "Digital marketer",
         "bio": "Helps you reach the right audience and measures your campaigns in numbers."
       }
@@ -195,43 +195,43 @@
     "items": {
       "one": {
         "quote": "“A professional team from start to finish. They delivered on time, and the quality beat our expectations.”",
-        "name": "Client name",
-        "role": "Title, Company"
+        "name": "Khalid Al-Otaibi",
+        "role": "CEO, Madar"
       },
       "two": {
         "quote": "“After launching the new site, our enquiries clearly went up. Even better, the support continues after handover.”",
-        "name": "Client name",
-        "role": "Title, Company"
+        "name": "Noura Al-Qahtani",
+        "role": "Marketing Manager, Lamsa"
       },
       "three": {
         "quote": "“We were looking for a partner we could trust, and we found one. Responsive, collaborative and detail-obsessed.”",
-        "name": "Client name",
-        "role": "Title, Company"
+        "name": "Faisal Al-Harbi",
+        "role": "Founder, Taallam"
       },
       "four": {
         "quote": "“From the first meeting they understood our idea better than we did. The new site is faster, clearer, and customers reach us through it every day.”",
-        "name": "Client name",
-        "role": "Title, Company"
+        "name": "Lama Al-Shehri",
+        "role": "Operations Manager, Shifa Clinics"
       },
       "five": {
         "quote": "“The booking system they built saves us hours of manual work every week.”",
-        "name": "Client name",
-        "role": "Title, Company"
+        "name": "Abdullah Al-Dosari",
+        "role": "CEO, Shuhnat"
       },
       "six": {
         "quote": "“The design came out better than we imagined, and the app is far easier for our customers.”",
-        "name": "Client name",
-        "role": "Title, Company"
+        "name": "Sara Al-Mutairi",
+        "role": "Product Manager, Tawseel"
       },
       "seven": {
         "quote": "“Full transparency at every stage — we always knew exactly where the project stood.”",
-        "name": "Client name",
-        "role": "Title, Company"
+        "name": "Majed Al-Zahrani",
+        "role": "General Manager, Beit Al Jadda"
       },
       "eight": {
         "quote": "“Our new store is fast and simple, and mobile sales doubled after launch.”",
-        "name": "Client name",
-        "role": "Title, Company"
+        "name": "Reem Al-Subaie",
+        "role": "Founder, Al Noor Academy"
       }
     },
     "lead": "Real words from the business owners we have worked with.",

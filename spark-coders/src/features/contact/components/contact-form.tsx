@@ -12,7 +12,7 @@ import { initialFormStatus, interestKeys } from '../types';
 import { FormMessage } from './form-message';
 import { Honeypot } from './honeypot';
 
-export function ContactForm() {
+export function ContactForm({ privacyHref }: { privacyHref: string }) {
   const t = useTranslations('contact');
   const [state, action, pending] = useActionState(submitContact, initialFormStatus);
   const formRef = useRef<HTMLFormElement>(null);
@@ -101,6 +101,13 @@ export function ContactForm() {
         </Button>
         <FormMessage message={message} tone={state.status === 'success' ? 'ok' : 'error'} />
       </div>
+      <p className="text-sm text-faint sm:col-span-2">
+        {t('privacyNote')}{' '}
+        <a href={privacyHref} className="text-muted underline underline-offset-4 hover:text-aqua">
+          {t('privacyLink')}
+        </a>
+        .
+      </p>
     </form>
   );
 }

@@ -2,10 +2,12 @@
 export const site = {
   wordmark: 'SPARKODERS',
   slogan: 'Crafting Digital Excellence',
-  domain: 'skodr.com',
+  domain: 'sparkoders.com',
   email: 'support@sparkoders.com',
   phone: '+000000000',
   phoneDisplay: '+000 000 000',
+  /** WhatsApp number in international format, digits only (placeholder until the real one is set). */
+  whatsapp: '000000000000',
   /** Square raster mark for structured data, manifest and social cards. */
   logo: '/brand/sparkoders-mark-512.png',
   /** Trimmed mark used in the interface (intrinsic 640×442). */
