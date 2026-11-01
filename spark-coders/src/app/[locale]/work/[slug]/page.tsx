@@ -9,7 +9,7 @@ import { Reveal } from '@/components/ui/reveal';
 import { ProjectArt } from '@/features/home/components/project-art';
 import { projects } from '@/features/home/data/content';
 import { getProjectRows, isProjectKey, type ProjectResult } from '@/features/work/lib/projects';
-import { homeSection, localePath, routes } from '@/lib/i18n/paths';
+import { localePath, routes } from '@/lib/i18n/paths';
 import { resolveLocale } from '@/lib/i18n/resolve-locale';
 import { routing } from '@/lib/i18n/routing';
 import { buildPageMetadata } from '@/lib/seo/metadata';
@@ -193,7 +193,7 @@ export default async function ProjectPage({ params }: PageProps<'/[locale]/work/
         </div>
       </section>
 
-      <CtaBand title={t('ctaTitle')} body={t('ctaBody')} label={t('cta')} href={homeSection(locale, 'contact')} />
+      <CtaBand title={t('ctaTitle')} body={t('ctaBody')} label={t('cta')} href={localePath(locale, routes.contact)} />
     </>
   );
 }

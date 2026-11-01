@@ -1,7 +1,7 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { footerSections, navSections } from '@/lib/config/navigation';
 import { site } from '@/lib/config/site';
-import { homeSection, navHref } from '@/lib/i18n/paths';
+import { localePath, navHref } from '@/lib/i18n/paths';
 import { resolveLocale } from '@/lib/i18n/resolve-locale';
 import { BrandLogo } from './brand-logo';
 
@@ -15,7 +15,7 @@ export async function SiteFooter() {
   const locale = resolveLocale(rawLocale);
   const hrefFor = (key: (typeof footerSections)[number]) => {
     const section = navSections.find((s) => s.key === key);
-    return section ? navHref(locale, section) : homeSection(locale, 'top');
+    return section ? navHref(locale, section) : localePath(locale, '/');
   };
   const year = new Date().getFullYear();
 
@@ -24,7 +24,7 @@ export async function SiteFooter() {
       <div className="container-site">
         <div className="grid grid-cols-2 gap-10 border-b border-line pb-10 lg:grid-cols-[2fr_1fr_1fr]">
           <div className="col-span-2 lg:col-span-1">
-            <a href={homeSection(locale, 'top')} aria-label={site.wordmark} className="inline-flex">
+            <a href={localePath(locale, '/')} aria-label={site.wordmark} className="inline-flex">
               <BrandLogo size="lg" />
             </a>
             <p className="mt-5 max-w-[34rem] leading-relaxed text-muted">{tHome('note')}</p>

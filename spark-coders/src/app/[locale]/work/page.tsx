@@ -4,7 +4,7 @@ import { CtaBand } from '@/components/common/cta-band';
 import { PageHero } from '@/components/common/page-hero';
 import { WorkCards } from '@/features/home/components/work-cards';
 import { getProjectRows } from '@/features/work/lib/projects';
-import { homeSection, routes } from '@/lib/i18n/paths';
+import { localePath, routes } from '@/lib/i18n/paths';
 import { resolveLocale } from '@/lib/i18n/resolve-locale';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 
@@ -40,7 +40,7 @@ export default async function WorkPage({ params }: PageProps<'/[locale]/work'>) 
           <WorkCards rows={rows} detailsLabel={tHome('details')} />
         </div>
       </section>
-      <CtaBand title={t('ctaTitle')} body={t('ctaBody')} label={t('cta')} href={homeSection(locale, 'contact')} />
+      <CtaBand title={t('ctaTitle')} body={t('ctaBody')} label={t('cta')} href={localePath(locale, routes.contact)} />
     </>
   );
 }

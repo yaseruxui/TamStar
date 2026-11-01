@@ -4,7 +4,7 @@ import { CtaBand } from '@/components/common/cta-band';
 import { PageHero } from '@/components/common/page-hero';
 import { PostCard } from '@/features/blog/components/post-card';
 import { getPostCards } from '@/features/blog/lib/posts';
-import { homeSection, routes } from '@/lib/i18n/paths';
+import { localePath, routes } from '@/lib/i18n/paths';
 import { resolveLocale } from '@/lib/i18n/resolve-locale';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 
@@ -46,7 +46,7 @@ export default async function BlogPage({ params }: PageProps<'/[locale]/blog'>) 
         title={t('ctaTitle')}
         body={tWork('ctaBody')}
         label={tWork('cta')}
-        href={homeSection(locale, 'contact')}
+        href={localePath(locale, routes.contact)}
       />
     </>
   );

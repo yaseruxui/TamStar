@@ -3,9 +3,9 @@
   "homeAria": "SPARKODERS — home",
   "items": {
     "home": "Home",
-    "work": "Our work",
     "services": "Services",
-    "team": "Team",
+    "work": "Our work",
+    "about": "About us",
     "blog": "Blog",
     "contact": "Contact"
   },

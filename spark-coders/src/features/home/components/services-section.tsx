@@ -1,4 +1,8 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { ButtonLink } from '@/components/ui/button';
+import { ArrowIcon } from '@/components/ui/icons';
+import { localePath, routes } from '@/lib/i18n/paths';
+import { resolveLocale } from '@/lib/i18n/resolve-locale';
 import { Kashida } from '@/components/ui/kashida';
 import { services } from '../data/content';
 import { ServicesList } from './services-list';
@@ -8,7 +12,8 @@ import { ServicesList } from './services-list';
  * beside the pointer. Each row leads to the contact form.
  */
 export async function ServicesSection() {
-  const t = await getTranslations('home.services');
+  const [t, rawLocale] = await Promise.all([getTranslations('home.services'), getLocale()]);
+  const locale = resolveLocale(rawLocale);
 
   return (
     <section
@@ -18,10 +23,16 @@ export async function ServicesSection() {
     >
       <div className="container-site">
         <div className="mb-[clamp(32px,5vw,56px)] flex flex-wrap items-end justify-between gap-6">
-          <h2 className="display-xl">
-            <Kashida text={t('title')} />
-          </h2>
-          <p className="max-w-[26rem] text-text/85">{t('lead')}</p>
+          <div className="max-w-2xl">
+            <h2 className="display-xl">
+              <Kashida text={t('title')} />
+            </h2>
+            <p className="mt-4 text-lg text-text/85">{t('lead')}</p>
+          </div>
+          <ButtonLink href={localePath(locale, routes.services)} variant="ghost">
+            {t('all')}
+            <ArrowIcon />
+          </ButtonLink>
         </div>
         <ServicesList
           ctaLabel={t('cta')}

@@ -2,24 +2,32 @@ import { getTranslations } from 'next-intl/server';
 import { site } from '@/lib/config/site';
 import { ContactForm } from './contact-form';
 import { Kashida } from '@/components/ui/kashida';
+import { cn } from '@/utils/cn';
 
-export async function ContactSection() {
+/** Contact block: the closing section of the home page, or the body of the contact page (`asPage`). */
+export async function ContactSection({ asPage = false }: { asPage?: boolean }) {
   const t = await getTranslations('contact');
+  const Heading = asPage ? 'h1' : 'h2';
 
   return (
     <section
       id="contact"
-      className="border-t border-line bg-[radial-gradient(50%_60%_at_0%_100%,rgb(110_41_172/0.3),transparent_70%)] bg-ink py-[clamp(80px,12vw,160px)]"
+      className={cn(
+        'bg-[radial-gradient(50%_60%_at_0%_100%,rgb(110_41_172/0.3),transparent_70%)] bg-ink',
+        asPage
+          ? 'pt-[calc(var(--header-h)+clamp(40px,7vw,96px))] pb-[clamp(80px,12vw,160px)]'
+          : 'border-t border-line py-[clamp(80px,12vw,160px)]',
+      )}
     >
       <div className="container-site grid items-start gap-[clamp(40px,6vw,96px)] lg:grid-cols-[1fr_1.2fr]">
         <div>
-          <h2 className="display-xl">
+          <Heading className="display-xl">
             {t('title')}
             <br />
             <span className="text-violet">
               <Kashida text={t('titleAccent')} />
             </span>
-          </h2>
+          </Heading>
           <p className="mt-5 text-muted">{t('lead')}</p>
           <ul className="mt-8 grid gap-3">
             <li className="flex items-baseline gap-4">

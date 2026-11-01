@@ -33,6 +33,7 @@ src/
 │   ├── [locale]/              # ar | en, both statically prerendered
 │   │   ├── layout.tsx         # <html lang/dir>, fonts, metadata, JSON-LD, header/footer, cursor, intro loader
 │   │   ├── page.tsx           # composes the home sections
+│   │   ├── services/ · about/ · contact/  # inner pages (the menu links to pages only)
 │   │   ├── work/ · work/[slug]/   # all projects · case study (static per locale × project)
 │   │   ├── blog/ · blog/[slug]/   # all articles · article (static per locale × post)
 │   │   ├── error.tsx · loading.tsx · not-found.tsx · [...rest]/page.tsx

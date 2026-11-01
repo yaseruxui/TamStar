@@ -3,7 +3,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { ArrowIcon } from '@/components/ui/icons';
 import { site } from '@/lib/config/site';
 import { getPathname } from '@/lib/i18n/navigation';
-import { homeSection, navHref } from '@/lib/i18n/paths';
+import { localePath, navHref, routes } from '@/lib/i18n/paths';
 import { socialIconPaths } from '@/lib/config/social-icons';
 import { routing } from '@/lib/i18n/routing';
 import { navSections } from '@/lib/config/navigation';
@@ -33,7 +33,7 @@ export async function SiteHeader() {
             >
               {tNav('switchLocaleShort')}
             </a>
-            <ButtonLink href={homeSection(locale, 'contact')} size="sm" className="max-sm:hidden">
+            <ButtonLink href={localePath(locale, routes.contact)} size="sm" className="max-sm:hidden">
               {t('startProject')}
               <ArrowIcon />
             </ButtonLink>
@@ -57,7 +57,7 @@ export async function SiteHeader() {
                 cta: t('startProject'),
               }}
               email={site.email}
-              contactHref={homeSection(locale, 'contact')}
+              contactHref={localePath(locale, routes.contact)}
             />
           </div>
         </div>

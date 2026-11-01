@@ -7,7 +7,7 @@ import { getPostCards, isPostKey } from '@/features/blog/lib/posts';
 import { ArrowIcon } from '@/components/ui/icons';
 import { ProjectArt } from '@/features/home/components/project-art';
 import { posts } from '@/features/home/data/content';
-import { homeSection, localePath, routes } from '@/lib/i18n/paths';
+import { localePath, routes } from '@/lib/i18n/paths';
 import { resolveLocale } from '@/lib/i18n/resolve-locale';
 import { routing } from '@/lib/i18n/routing';
 import { buildPageMetadata } from '@/lib/seo/metadata';
@@ -132,7 +132,7 @@ export default async function PostPage({ params }: PageProps<'/[locale]/blog/[sl
         title={t('ctaTitle')}
         body={tWork('ctaBody')}
         label={tWork('cta')}
-        href={homeSection(locale, 'contact')}
+        href={localePath(locale, routes.contact)}
       />
     </>
   );
