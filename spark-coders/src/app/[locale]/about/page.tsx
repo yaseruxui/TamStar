@@ -83,7 +83,7 @@ export default async function AboutPage({ params }: PageProps<'/[locale]/about'>
                   {VALUE_ICONS[index]}
                 </svg>
               </span>
-              <b className="font-display text-xl text-gradient-blue">{value.title}</b>
+              <b className="font-display text-xl text-violet">{value.title}</b>
               <p className="mt-2 text-muted">{value.body}</p>
             </Reveal>
           ))}
